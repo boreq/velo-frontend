@@ -1,13 +1,15 @@
+$height: 5px;
+
 .progress-bar {
-    background-color: $box-inversed-text-dimmed-color;
+    background-color: $box-dark-text-dimmed-color;
 
     &, & .filled-in {
-        border-radius: 5px;
-        height: 5px;
+        border-radius: $height;
+        height: $height;
     }
 
     .filled-in {
         width: 33%;
-        background-color: $box-inversed-text-color;
+        background-color: $primary-color;
     }
 }

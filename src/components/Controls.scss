@@ -3,8 +3,8 @@ $spacing: 10px;
 .controls {
     display: flex;
     align-items: center;
-    background-color: $box-inversed-background-color;
-    color: $box-inversed-text-color;
+    background-color: $box-dark-background-color;
+    color: $box-dark-text-color;
 
     a:hover {
         color: $primary-color;
@@ -73,7 +73,7 @@ $spacing: 10px;
             }
 
             .album {
-                color: $box-inversed-text-dimmed-color;
+                color: $box-dark-text-dimmed-color;
             }
         }
     }
@@ -84,7 +84,7 @@ $spacing: 10px;
         .volume {
             display: flex;
             align-items: center;
-            justify-content: end;
+            justify-content: flex-end;
 
             .mute {
                 margin-right: $spacing;
