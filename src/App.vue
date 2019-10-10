@@ -19,7 +19,6 @@
 
     html {
         font-family: 'Raleway', sans-serif;
-        //font-family: 'Roboto', sans-serif;
         font-size: 12px;
         background-color: $box-normal-background-color;
     }
@@ -36,7 +35,7 @@
             overflow: auto;
 
             .container {
-                max-width: 1200px;
+                max-width: 800px;
                 margin: 0 auto;
             }
         }

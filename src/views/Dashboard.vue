@@ -7,7 +7,11 @@
 
       <div class="title">Talking Heads 77 (Deluxe Version)</div>
 
-      <SubHeader></SubHeader>
+      <SubHeader text="Songs"></SubHeader>
+
+      <Songs></Songs>
+
+      <SubHeader text="Albums"></SubHeader>
 
       <div class="albums">
           <album class="album"></album>
