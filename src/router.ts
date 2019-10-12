@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Dashboard from './views/Dashboard.vue';
+import Browse from './views/Browse.vue';
 
 Vue.use(Router);
 
@@ -11,12 +11,12 @@ export default new Router({
         {
             path: '/browse/*',
             name: 'browse-children',
-            component: Dashboard,
+            component: Browse,
         },
         {
             path: '/browse',
             name: 'browse',
-            component: Dashboard,
+            component: Browse,
         },
         {
             path: '*',
