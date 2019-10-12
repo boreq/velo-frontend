@@ -9,9 +9,18 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [
         {
-            path: '/',
-            name: 'dashboard',
+            path: '/browse/*',
+            name: 'browse-children',
             component: Dashboard,
+        },
+        {
+            path: '/browse',
+            name: 'browse',
+            component: Dashboard,
+        },
+        {
+            path: '*',
+            redirect: 'browse',
         },
     ],
 });
