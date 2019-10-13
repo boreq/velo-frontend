@@ -13,6 +13,7 @@ $image-size: 200px;
         .image  {
             width: $image-size;
             height: $image-size;
+            background-color: $primary-color;
 
             img {
                 height: 100%;
