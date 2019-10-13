@@ -1,9 +1,9 @@
-.songs {
+.tracks {
     font-size: 15px;
     padding: 0;
     margin: 0;
 
-    .song {
+    .track {
         display: flex;
         padding: .4em 0;
 
@@ -17,9 +17,13 @@
 
         .title {
             flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .duration {
+            margin-left: 1em;
         }
     }
 

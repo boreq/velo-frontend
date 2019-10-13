@@ -1,6 +1,6 @@
 <template>
-    <ul class="songs">
-        <li v-for="index in 10" class="song">
+    <ul class="tracks">
+        <li v-for="track, index in tracks" class="track">
 
             <div class="play" v-if="index != 3">
                 <a>
@@ -14,8 +14,8 @@
                 </a>
             </div>
 
-            <div class="title">
-                Calling Occupants Of Interplanetary Craft
+            <div class="title" :title="track.title">
+                {{ track.title }}
             </div>
 
             <div class="duration">
@@ -26,5 +26,5 @@
         
     </ul>
 </template>
-<script lang="ts" src="./Songs.ts"></script>
-<style scoped lang="scss" src="./Songs.scss"></style>
+<script lang="ts" src="./Tracks.ts"></script>
+<style scoped lang="scss" src="./Tracks.scss"></style>

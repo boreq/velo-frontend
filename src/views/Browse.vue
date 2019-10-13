@@ -18,9 +18,9 @@
               {{ album.title }}
           </div>
 
-          <div v-if="album.songs">
-              <SubHeader text="Songs"></SubHeader>
-              <Songs :songs="album.songs"></Songs>
+          <div v-if="album.tracks">
+              <SubHeader text="Tracks"></SubHeader>
+              <Tracks :tracks="album.tracks"></Tracks>
           </div>
 
           <div v-if="album.albums">

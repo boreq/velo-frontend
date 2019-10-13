@@ -5,7 +5,7 @@ import { Track } from '@/dto/Track';
 import ProgressBar from '@/components/ProgressBar.vue';
 import SubHeader from '@/components/SubHeader.vue';
 import Albums from '@/components/Albums.vue';
-import Songs from '@/components/Songs.vue';
+import Tracks from '@/components/Tracks.vue';
 
 
 @Component({
@@ -13,7 +13,7 @@ import Songs from '@/components/Songs.vue';
         ProgressBar,
         Albums,
         SubHeader,
-        Songs,
+        Tracks,
     },
 })
 export default class Browse extends Vue {
