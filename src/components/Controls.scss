@@ -52,6 +52,15 @@ $font-size-small: 12px;
 
             .current, .duration {
                 line-height: 1;
+                min-width: 50px;
+            }
+
+            .current {
+                text-align: right;
+            }
+
+            .duration {
+                text-align: left;
             }
         }
     }
