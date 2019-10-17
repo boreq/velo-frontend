@@ -2,14 +2,14 @@
     <div class="controls">
 
         <div class="left">
-            <div class="artwork">
+            <div class="artwork" v-if="nowPlaying">
             </div>
-            <div class="name">
-                <div class="title">
-                    Psycho Killer - 2005 Remaster
+            <div class="title">
+                <div class="trackTitle">
+                    {{ trackTitle }}
                 </div>
-                <div class="album">
-                    Talking Heads
+                <div class="albumTitle">
+                    {{ albumTitle }}
                 </div>
             </div>
         </div>
@@ -37,15 +37,15 @@
 
             <div class="progress">
                 <div class="current">
-                    3:57
+                    {{ currentTime }}
                 </div>
 
                 <div class="bar">
                     <progress-bar></progress-bar>
                 </div>
 
-                <div class="remaining">
-                    6:05
+                <div class="duration">
+                    {{ duration }}
                 </div>
             </div>
         </div>

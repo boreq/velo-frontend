@@ -1,10 +1,14 @@
 $spacing: 10px;
+$artwork-size: 45px;
+$font-size: 15px;
+$font-size-small: 12px;
 
 .controls {
     display: flex;
     align-items: center;
     background-color: $box-dark-background-color;
     color: $box-dark-text-color;
+    font-size: $font-size;
 
     a:hover {
         color: $primary-color;
@@ -38,42 +42,56 @@ $spacing: 10px;
             display: flex;
             margin: 0 $spacing $spacing $spacing;
             align-items: center;
+            height: $font-size;
+            font-size: $font-size;
 
             .bar {
                 flex: 1;
                 margin: 0 $spacing;
             }
+
+            .current, .duration {
+                line-height: 1;
+            }
         }
     }
 
     .left, .right {
-        min-width: 300px;
+        width: 300px;
     }
 
     .left {
         margin: $spacing 0 $spacing $spacing;
         display: flex;
-        min-height: 100%;
+        height: $artwork-size;
 
         .artwork {
             background-color: $primary-color;
-            width: 45px;
-            height: 45px;
+            width: $artwork-size;
+            height: $artwork-size;
             margin-right: $spacing;
+            flex: 0 0 auto;
         }
 
-        .name {
+        .title {
             flex: 1;
+            overflow: hidden;
             display: flex;
             flex-flow: column;
 
-            .title {
-                font-size: 15px;
+            .trackTitle, .albumTitle {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .trackTitle {
                 margin-bottom: $spacing;
             }
 
-            .album {
+            .albumTitle {
                 color: $box-dark-text-dimmed-color;
+                font-size: $font-size-small;
             }
         }
     }

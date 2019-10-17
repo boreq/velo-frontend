@@ -1,6 +1,7 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { Entry } from '@/store';
 import { ApiService } from '@/services/ApiService';
+import { PlaybackData } from '@/dto/PlaybackData';
 
 
 @Component({
@@ -9,6 +10,7 @@ import { ApiService } from '@/services/ApiService';
 export default class Player extends Vue {
 
     private apiService = new ApiService();
+    private intervalID: number;
 
     get nowPlaying(): Entry {
         return this.$store.getters.nowPlaying;
@@ -24,6 +26,23 @@ export default class Player extends Vue {
 
     get audio(): HTMLAudioElement {
         return this.$refs['audio'] as HTMLAudioElement;
+    }
+
+    created(): void {
+        this.intervalID = window.setInterval(this.emitValues, 100);
+    }
+
+    destroyed(): void {
+        window.clearInterval(this.intervalID);
+    }
+
+    private emitValues(): void {
+        const playbackData: PlaybackData = {
+            currentTime: this.audio.currentTime,
+            duration: this.audio.duration,
+            volume: this.audio.volume,
+        };
+        this.$emit('playback-data', playbackData);
     }
 
     @Watch('nowPlaying')

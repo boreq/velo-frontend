@@ -6,9 +6,9 @@
             </div>
         </div>
         <div class="controls">
-            <controls></controls>
+            <controls :playbackData="playbackData"></controls>
         </div>
-        <player></player>
+        <player @playback-data="onPlaybackData($event)"></player>
     </div>
 </template>
 

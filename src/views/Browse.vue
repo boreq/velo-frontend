@@ -20,7 +20,7 @@
 
           <div v-if="album.tracks">
               <SubHeader text="Tracks"></SubHeader>
-              <Tracks :tracks="album.tracks"></Tracks>
+              <Tracks :tracks="album.tracks" :album="album"></Tracks>
           </div>
 
           <div v-if="album.albums">
