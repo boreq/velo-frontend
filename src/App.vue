@@ -8,42 +8,10 @@
         <div class="controls">
             <controls></controls>
         </div>
+        <player></player>
     </div>
 </template>
 
-<style lang="scss">
-    html, body {
-        margin: 0;
-        padding: 0;
-    }
-
-    html {
-        font-family: 'Raleway', sans-serif;
-        font-size: 12px;
-        background-color: $box-normal-background-color;
-    }
-
-    #app {
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        flex-flow: column;
-
-        .content {
-            flex: 1;
-            overflow: auto;
-
-            .container {
-                max-width: 800px;
-                margin: 0 auto;
-            }
-        }
-
-        .controls {
-        }
-    }
-
-</style>
+<style lang="scss" src="./App.scss"></style>
 
 <script lang="ts" src="./App.ts"></script>

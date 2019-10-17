@@ -2,14 +2,8 @@
     <ul class="tracks">
         <li v-for="track, index in tracks" class="track">
 
-            <div class="play" v-if="index != 3">
-                <a>
-                    <i class="fas fa-play"></i>
-                </a>
-            </div>
-
-            <div class="play playing" v-if="index == 3">
-                <a>
+            <div class="play" :class="{ playing: isNowPlaying(track) }">
+                <a v-on:click="playTrack(track)">
                     <i class="fas fa-play"></i>
                 </a>
             </div>

@@ -10,7 +10,7 @@
         .play {
             margin: 0 1em;
 
-            &.playing {
+            &.playing, &:hover {
                 color: $primary-color;
             }
         }

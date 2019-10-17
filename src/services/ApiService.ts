@@ -1,5 +1,6 @@
 import { Album } from '@/dto/Album';
 import axios, { AxiosResponse } from 'axios'; // do not add { }, some webshit bs?
+import { Track } from '@/dto/Track';
 
 export class ApiService {
 
@@ -9,5 +10,9 @@ export class ApiService {
         return axios.get<Album>(process.env.VUE_APP_API_PREFIX + url);
     }
 
+    trackUrl(track: Track): string {
+        const url = `track/${track.fileHash}`;
+        return process.env.VUE_APP_API_PREFIX + url;
+    }
 
 }
