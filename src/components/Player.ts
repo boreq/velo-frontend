@@ -25,7 +25,7 @@ export default class Player extends Vue {
     }
 
     get audio(): HTMLAudioElement {
-        return this.$refs['audio'] as HTMLAudioElement;
+        return this.$refs.audio as HTMLAudioElement;
     }
 
     created(): void {
@@ -36,6 +36,13 @@ export default class Player extends Vue {
         window.clearInterval(this.intervalID);
     }
 
+
+    @Watch('nowPlaying')
+    onNowPlayingChanged(val: number, oldVal: number): void {
+        this.audio.src = this.nowPlayingUrl;
+        this.audio.play();
+    }
+
     private emitValues(): void {
         const playbackData: PlaybackData = {
             currentTime: this.audio.currentTime,
@@ -43,12 +50,6 @@ export default class Player extends Vue {
             volume: this.audio.volume,
         };
         this.$emit('playback-data', playbackData);
-    }
-
-    @Watch('nowPlaying')
-    onNowPlayingChanged(val: number, oldVal: number): void {
-        this.audio.src = this.nowPlayingUrl;
-        this.audio.play();
     }
 
 }

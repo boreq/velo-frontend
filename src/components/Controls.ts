@@ -49,4 +49,11 @@ export default class Controls extends Vue {
         return null;
     }
 
+    get currentTimePercentage(): number {
+        if (this.playbackData && this.playbackData.currentTime && this.playbackData.duration) {
+            return this.playbackData.currentTime / this.playbackData.duration;
+        }
+        return 0;
+    }
+
 }

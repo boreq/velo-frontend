@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="bar">
-                    <progress-bar></progress-bar>
+                    <progress-bar :value="currentTimePercentage"></progress-bar>
                 </div>
 
                 <div class="duration">
