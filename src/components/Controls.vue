@@ -3,6 +3,7 @@
 
         <div class="left">
             <div class="artwork" v-if="nowPlaying">
+                <thumbnail :album="nowPlaying.album"></thumbnail>
             </div>
             <div class="title">
                 <div class="trackTitle">

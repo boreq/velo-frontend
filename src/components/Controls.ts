@@ -1,5 +1,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import ProgressBar from '@/components/ProgressBar.vue';
+import Thumbnail from '@/components/Thumbnail.vue';
 import { Entry, Mutation, SetVolumeCommand } from '@/store';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { TextService } from '@/services/TextService';
@@ -9,6 +10,7 @@ import { seekEvent } from '@/components/Player';
 @Component({
     components: {
         ProgressBar,
+        Thumbnail,
     },
 })
 export default class Controls extends Vue {

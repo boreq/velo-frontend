@@ -30,6 +30,10 @@ $image-size: 200px;
         background-color: $primary-color;
         cursor: pointer;
         color: white;
+
+        .image {
+            background-color: $box-normal-background-color;
+        }
     }
 }
 

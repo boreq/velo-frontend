@@ -15,4 +15,9 @@ export class ApiService {
         return process.env.VUE_APP_API_PREFIX + url;
     }
 
+    thumbnailUrl(album: Album): string {
+        const url = `thumbnail/${album.thumbnail.id}`;
+        return process.env.VUE_APP_API_PREFIX + url;
+    }
+
 }
