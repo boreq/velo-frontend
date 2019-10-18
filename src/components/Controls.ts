@@ -87,4 +87,8 @@ export default class Controls extends Vue {
         this.$store.commit(Mutation.SetVolume, command);
     }
 
+    seek(position: number): void {
+        this.$root.$emit('seek', position);
+    }
+
 }

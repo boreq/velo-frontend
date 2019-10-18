@@ -38,6 +38,9 @@ export default class Player extends Vue {
 
     mounted(): void {
         this.audio.volume = this.volume;
+        this.$root.$on('seek', (position: number) => {
+            this.audio.currentTime = this.audio.duration * position;
+        });
     }
 
     destroyed(): void {
