@@ -4,6 +4,8 @@ import { ApiService } from '@/services/ApiService';
 import { PlaybackData } from '@/dto/PlaybackData';
 
 
+export const seekEvent = 'seek';
+
 @Component({
     components: {},
 })
@@ -38,7 +40,7 @@ export default class Player extends Vue {
 
     mounted(): void {
         this.audio.volume = this.volume;
-        this.$root.$on('seek', (position: number) => {
+        this.$root.$on(seekEvent, (position: number) => {
             this.audio.currentTime = this.audio.duration * position;
         });
     }

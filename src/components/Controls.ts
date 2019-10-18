@@ -3,6 +3,7 @@ import ProgressBar from '@/components/ProgressBar.vue';
 import { Entry, Mutation, SetVolumeCommand } from '@/store';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { TextService } from '@/services/TextService';
+import { seekEvent } from '@/components/Player';
 
 
 @Component({
@@ -88,7 +89,7 @@ export default class Controls extends Vue {
     }
 
     seek(position: number): void {
-        this.$root.$emit('seek', position);
+        this.$root.$emit(seekEvent, position);
     }
 
 }
