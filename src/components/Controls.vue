@@ -17,7 +17,7 @@
         <div class="center">
             <div class="core">
                 <div class="previous">
-                    <a>
+                    <a @click="onPrevious()">
                         <i class="fas fa-step-backward"></i>
                     </a>
                 </div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="next">
-                    <a>
+                    <a @click="onNext()">
                         <i class="fas fa-step-forward"></i>
                     </a>
                 </div>

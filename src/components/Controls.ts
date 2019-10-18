@@ -68,4 +68,12 @@ export default class Controls extends Vue {
         }
     }
 
+    onPrevious(): void {
+        this.$store.commit(Mutation.Previous);
+    }
+
+    onNext(): void {
+        this.$store.commit(Mutation.Next);
+    }
+
 }

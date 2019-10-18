@@ -9,6 +9,8 @@ export enum Mutation {
     Replace = 'replace',
     Play = 'play',
     Pause = 'pause',
+    Previous = 'previous',
+    Next = 'next',
 }
 
 export class Entry {
@@ -43,6 +45,22 @@ export default new Vuex.Store<State>({
         },
         [Mutation.Pause](state: State): void {
             state.paused = true;
+        },
+        [Mutation.Previous](state: State): void {
+            if (!emptyArray(state.entries)) {
+                state.playingIndex -= 1;
+                if (state.playingIndex < 0) {
+                    state.playingIndex = state.entries.length - 1;
+                }
+            }
+        },
+        [Mutation.Next](state: State): void {
+            if (!emptyArray(state.entries)) {
+                state.playingIndex += 1;
+                if (state.playingIndex > state.entries.length - 1) {
+                    state.playingIndex = 0;
+                }
+            }
         },
     },
     getters: {
