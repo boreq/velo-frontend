@@ -1,15 +1,25 @@
 $height: 5px;
+$clickable-area-offset: 5px;
 
 .progress-bar {
-    background-color: $box-dark-text-dimmed-color;
 
-    &, & .filled-in {
-        border-radius: $height;
-        height: $height;
+    padding: $clickable-area-offset 0;
+
+    &:hover {
+        cursor: pointer;
     }
 
-    .filled-in {
-        width: 33%;
-        background-color: $primary-color;
+    .bar {
+        background-color: $box-dark-text-dimmed-color;
+
+        &, & .filled-in {
+            border-radius: $height;
+            height: $height;
+        }
+
+        .filled-in {
+            width: 33%;
+            background-color: $primary-color;
+        }
     }
 }

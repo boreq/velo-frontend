@@ -36,8 +36,16 @@ export default class Player extends Vue {
         this.intervalID = window.setInterval(this.emitValues, 100);
     }
 
+    mounted(): void {
+        this.audio.volume = this.volume;
+    }
+
     destroyed(): void {
         window.clearInterval(this.intervalID);
+    }
+
+    get volume(): number {
+        return this.$store.state.volume;
     }
 
     @Watch('nowPlaying')
@@ -55,13 +63,20 @@ export default class Player extends Vue {
         }
     }
 
+    @Watch('volume')
+    onVolumeChanged(volume: number): void {
+        this.audio.volume = volume;
+    }
+
     private emitValues(): void {
-        const playbackData: PlaybackData = {
-            currentTime: this.audio.currentTime,
-            duration: this.audio.duration,
-            volume: this.audio.volume,
-        };
-        this.$emit('playback-data', playbackData);
+        if (this.audio) {
+            const playbackData: PlaybackData = {
+                currentTime: this.audio.currentTime,
+                duration: this.audio.duration,
+                volume: this.audio.volume,
+            };
+            this.$emit('playback-data', playbackData);
+        }
     }
 
     private play(): void {

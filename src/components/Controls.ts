@@ -1,6 +1,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import ProgressBar from '@/components/ProgressBar.vue';
-import { Entry, Mutation } from '@/store';
+import { Entry, Mutation, SetVolumeCommand } from '@/store';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { TextService } from '@/services/TextService';
 
@@ -57,7 +57,11 @@ export default class Controls extends Vue {
     }
 
     get paused(): boolean {
-       return this.$store.state.paused;
+        return this.$store.state.paused;
+    }
+
+    get volume(): number {
+        return this.$store.state.volume;
     }
 
     onPlayPause(): void {
@@ -74,6 +78,13 @@ export default class Controls extends Vue {
 
     onNext(): void {
         this.$store.commit(Mutation.Next);
+    }
+
+    changeVolume(volume: number): void {
+        const command: SetVolumeCommand = {
+            volume: volume,
+        };
+        this.$store.commit(Mutation.SetVolume, command);
     }
 
 }

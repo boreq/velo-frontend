@@ -59,7 +59,7 @@
                     </a>
                 </div>
                 <div class="bar">
-                    <progress-bar></progress-bar>
+                    <progress-bar :value="volume" @value-selected="changeVolume($event)"></progress-bar>
                 </div>
             </div>
         </div>
