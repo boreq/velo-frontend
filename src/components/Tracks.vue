@@ -13,11 +13,10 @@
             </div>
 
             <div class="duration">
-                4:12
+                {{ formatDuration(track) }}
             </div>
 
         </li>
-        
     </ul>
 </template>
 <script lang="ts" src="./Tracks.ts"></script>

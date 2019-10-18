@@ -1,7 +1,8 @@
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Album } from '@/dto/Album';
 import { Track } from '@/dto/Track';
-import { Mutation, Entry, ReplaceCommand } from '@/store';
+import { Entry, Mutation, ReplaceCommand } from '@/store';
+import { TextService } from '@/services/TextService';
 
 
 @Component
@@ -12,6 +13,8 @@ export default class Tracks extends Vue {
 
     @Prop()
     album: Album;
+
+    private textServce = new TextService();
 
     get nowPlaying(): Entry {
         return this.$store.getters.nowPlaying;
@@ -39,6 +42,10 @@ export default class Tracks extends Vue {
             playingIndex: playingIndex,
         };
         this.$store.commit(Mutation.Replace, command);
+    }
+
+    formatDuration(track: Track): string {
+        return this.textServce.formatTime(track.duration);
     }
 
 }
