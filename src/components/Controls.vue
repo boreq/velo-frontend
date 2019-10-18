@@ -23,8 +23,9 @@
                 </div>
 
                 <div class="play">
-                    <a>
-                        <i class="far fa-play-circle"></i>
+                    <a @click="onPlayPause()">
+                        <i class="far fa-play-circle" v-if="paused"></i>
+                        <i class="far fa-pause-circle" v-if="!paused"></i>
                     </a>
                 </div>
 

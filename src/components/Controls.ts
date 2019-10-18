@@ -1,6 +1,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import ProgressBar from '@/components/ProgressBar.vue';
-import { Entry } from '@/store';
+import { Entry, Mutation } from '@/store';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { TextService } from '@/services/TextService';
 
@@ -54,6 +54,18 @@ export default class Controls extends Vue {
             return this.playbackData.currentTime / this.playbackData.duration;
         }
         return 0;
+    }
+
+    get paused(): boolean {
+       return this.$store.state.paused;
+    }
+
+    onPlayPause(): void {
+        if (this.paused) {
+            this.$store.commit(Mutation.Play);
+        } else {
+            this.$store.commit(Mutation.Pause);
+        }
     }
 
 }

@@ -7,6 +7,8 @@ Vue.use(Vuex);
 
 export enum Mutation {
     Replace = 'replace',
+    Play = 'play',
+    Pause = 'pause',
 }
 
 export class Entry {
@@ -17,6 +19,7 @@ export class Entry {
 export class State {
     entries: Entry[];
     playingIndex: number;
+    paused: boolean;
 }
 
 export class ReplaceCommand {
@@ -28,11 +31,18 @@ export default new Vuex.Store<State>({
     state: {
         entries: [],
         playingIndex: null,
+        paused: null,
     },
     mutations: {
-        replace(state: State, command: ReplaceCommand): void {
+        [Mutation.Replace](state: State, command: ReplaceCommand): void {
             state.entries = command.entries;
             state.playingIndex = command.playingIndex;
+        },
+        [Mutation.Play](state: State): void {
+            state.paused = false;
+        },
+        [Mutation.Pause](state: State): void {
+            state.paused = true;
         },
     },
     getters: {

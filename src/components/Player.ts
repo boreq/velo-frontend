@@ -1,5 +1,5 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { Entry } from '@/store';
+import { Entry, Mutation } from '@/store';
 import { ApiService } from '@/services/ApiService';
 import { PlaybackData } from '@/dto/PlaybackData';
 
@@ -14,6 +14,10 @@ export default class Player extends Vue {
 
     get nowPlaying(): Entry {
         return this.$store.getters.nowPlaying;
+    }
+
+    get paused(): boolean {
+        return this.$store.state.paused;
     }
 
     get nowPlayingUrl(): string {
@@ -36,11 +40,19 @@ export default class Player extends Vue {
         window.clearInterval(this.intervalID);
     }
 
-
     @Watch('nowPlaying')
     onNowPlayingChanged(val: number, oldVal: number): void {
         this.audio.src = this.nowPlayingUrl;
-        this.audio.play();
+        this.play();
+    }
+
+    @Watch('paused')
+    onPausedChanged(val: boolean, oldVal: boolean): void {
+        if (val) {
+            this.audio.pause();
+        } else {
+            this.audio.play();
+        }
     }
 
     private emitValues(): void {
@@ -51,5 +63,11 @@ export default class Player extends Vue {
         };
         this.$emit('playback-data', playbackData);
     }
+
+    private play(): void {
+        this.$store.commit(Mutation.Play);
+        this.audio.play();
+    }
+
 
 }
