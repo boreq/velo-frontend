@@ -11,7 +11,7 @@ export class ApiService {
     }
 
     trackUrl(track: Track): string {
-        const url = `track/${track.fileHash}`;
+        const url = `track/${track.id}`;
         return process.env.VUE_APP_API_PREFIX + url;
     }
 

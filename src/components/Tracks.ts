@@ -23,7 +23,7 @@ export default class Tracks extends Vue {
     isNowPlaying(track: Track): boolean {
         const entry = this.nowPlaying;
         if (entry) {
-            return track.fileHash === entry.track.fileHash;
+            return track.id === entry.track.id;
         }
         return false;
     }
