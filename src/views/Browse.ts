@@ -40,10 +40,7 @@ export default class Browse extends Vue {
     }
 
     selectAlbum(album: Album): void {
-        const ids = [];
-        if (this.album.parents) {
-            ids.push(this.album.parents.map(v => v.id));
-        }
+        const ids = this.album.parents ? this.album.parents.map(v => v.id) : [];
         ids.push(album.id);
         const path = ids.join('/');
         this.$router.push({ path: `/browse/${path}` });

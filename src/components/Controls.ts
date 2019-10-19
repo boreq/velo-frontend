@@ -5,6 +5,7 @@ import { Entry, Mutation, SetVolumeCommand } from '@/store';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { TextService } from '@/services/TextService';
 import { seekEvent } from '@/components/Player';
+import { NavigationService } from '@/services/NavigationService';
 
 
 @Component({
@@ -19,6 +20,7 @@ export default class Controls extends Vue {
     playbackData: PlaybackData;
 
     private textService = new TextService();
+    private navigationService = new NavigationService();
 
     get nowPlaying(): Entry {
         return this.$store.getters.nowPlaying;
@@ -92,6 +94,15 @@ export default class Controls extends Vue {
 
     seek(position: number): void {
         this.$root.$emit(seekEvent, position);
+    }
+
+    goToNowPlayingSong(): void {
+        this.goToNowPlayingAlbum();
+    }
+
+    goToNowPlayingAlbum(): void {
+        const path = this.navigationService.getBrowseUrl(this.nowPlaying.album);
+        this.$router.push({ path: path });
     }
 
 }

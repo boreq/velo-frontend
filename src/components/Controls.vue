@@ -3,14 +3,20 @@
 
         <div class="left">
             <div class="artwork" v-if="nowPlaying">
-                <thumbnail :album="nowPlaying.album"></thumbnail>
+                <a @click="goToNowPlayingAlbum()">
+                    <thumbnail :album="nowPlaying.album"></thumbnail>
+                </a>
             </div>
             <div class="title">
                 <div class="trackTitle">
-                    {{ trackTitle }}
+                    <a @click="goToNowPlayingSong()">
+                        {{ trackTitle }}
+                    </a>
                 </div>
                 <div class="albumTitle">
-                    {{ albumTitle }}
+                    <a @click="goToNowPlayingAlbum()">
+                        {{ albumTitle }}
+                    </a>
                 </div>
             </div>
         </div>
