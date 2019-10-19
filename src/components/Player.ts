@@ -52,7 +52,7 @@ export default class Player extends Vue {
     }
 
     get volume(): number {
-        return this.$store.state.volume;
+        return this.$store.getters.volume;
     }
 
     @Watch('nowPlaying')

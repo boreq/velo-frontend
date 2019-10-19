@@ -12,6 +12,8 @@ export enum Mutation {
     Previous = 'previous',
     Next = 'next',
     SetVolume = 'setVolume',
+    Mute = 'mute',
+    Unmute = 'unmute',
 }
 
 export class Entry {
@@ -24,6 +26,7 @@ export class State {
     playingIndex: number;
     paused: boolean;
     volume: number; // [0, 1]
+    muted: boolean;
 }
 
 export class ReplaceCommand {
@@ -41,6 +44,7 @@ export default new Vuex.Store<State>({
         playingIndex: null,
         paused: true,
         volume: 0.5,
+        muted: false,
     },
     mutations: {
         [Mutation.Replace](state: State, command: ReplaceCommand): void {
@@ -79,14 +83,27 @@ export default new Vuex.Store<State>({
             if (state.volume > 1) {
                 state.volume = 1;
             }
+            state.muted = state.volume === 0;
+        },
+        [Mutation.Mute](state: State): void {
+            state.muted = true;
+        },
+        [Mutation.Unmute](state: State): void {
+            state.muted = false;
         },
     },
     getters: {
-        nowPlaying: (state: State) => {
+        nowPlaying: (state: State): Entry => {
             if (emptyArray(state.entries)) {
                 return null;
             }
             return state.entries[state.playingIndex];
+        },
+        volume: (state: State): number => {
+            if (state.muted) {
+                return 0;
+            }
+            return state.volume;
         },
     },
 });

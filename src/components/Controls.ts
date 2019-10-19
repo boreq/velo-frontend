@@ -66,7 +66,11 @@ export default class Controls extends Vue {
     }
 
     get volume(): number {
-        return this.$store.state.volume;
+        return this.$store.getters.volume;
+    }
+
+    get muted(): boolean {
+        return this.$store.state.muted;
     }
 
     onPlayPause(): void {
@@ -94,6 +98,14 @@ export default class Controls extends Vue {
 
     seek(position: number): void {
         this.$root.$emit(seekEvent, position);
+    }
+
+    toggleMute(): void {
+        if (this.$store.state.muted) {
+            this.$store.commit(Mutation.Unmute);
+        } else {
+            this.$store.commit(Mutation.Mute);
+        }
     }
 
     goToNowPlayingSong(): void {

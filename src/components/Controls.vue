@@ -61,8 +61,9 @@
         <div class="right">
             <div class="volume">
                 <div class="mute">
-                    <a>
-                        <i class="fas fa-volume-up"></i>
+                    <a @click="toggleMute()">
+                        <i class="fas fa-volume-up" v-if="!muted"></i>
+                        <i class="fas fa-volume-mute" v-if="muted"></i>
                     </a>
                 </div>
                 <div class="bar">
