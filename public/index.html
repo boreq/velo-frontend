@@ -7,16 +7,43 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>Eggplant</title>
 
+    <style>
+      .no-js-message {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: #fd79a8;
+        font-size: 20px;
+        color: white;
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+        padding: 5em;
+      }
+
+      .no-js-message .eggplant {
+          font-size: 100px;
+          margin-bottom: 20px;
+      }
+    </style>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
   </head>
   <body class="just-site-wrapper">
     <noscript>
-      <strong>We're sorry but Eggplant doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <div class="no-js-message">
+        <div class="eggplant">
+          🍆
+        </div>
+        <div>
+          We're sorry but Eggplant doesn't work properly without JavaScript enabled.
+        </div>
+      </div>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
