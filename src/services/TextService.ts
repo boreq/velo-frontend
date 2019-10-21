@@ -3,7 +3,7 @@ export class TextService {
     formatTime(numberOfSeconds: number): string {
         const hours = Math.floor(numberOfSeconds / 3600);
         const minutes = Math.floor((numberOfSeconds % 3600) / 60);
-        const seconds = this.pad(Math.floor(numberOfSeconds % 60), 2);
+        const seconds = Math.floor(numberOfSeconds % 60);
         if (hours) {
             return `${hours}:${this.pad(minutes, 2)}:${this.pad(seconds, 2)}`;
         } else {

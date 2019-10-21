@@ -34,23 +34,6 @@ export default class Player extends Vue {
         return this.$refs.audio as HTMLAudioElement;
     }
 
-    created(): void {
-        this.intervalID = window.setInterval(this.emitValues, 100);
-    }
-
-    mounted(): void {
-        this.audio.volume = this.volume;
-        this.$root.$on(seekEvent, (position: number) => {
-            if (this.nowPlaying) {
-                this.audio.currentTime = this.audio.duration * position;
-            }
-        });
-    }
-
-    destroyed(): void {
-        window.clearInterval(this.intervalID);
-    }
-
     get volume(): number {
         return this.$store.getters.volume;
     }
@@ -75,6 +58,23 @@ export default class Player extends Vue {
         this.audio.volume = volume;
     }
 
+    created(): void {
+        this.intervalID = window.setInterval(this.emitValues, 100);
+    }
+
+    mounted(): void {
+        this.audio.volume = this.volume;
+        this.$root.$on(seekEvent, (position: number) => {
+            if (this.nowPlaying) {
+                this.audio.currentTime = this.audio.duration * position;
+            }
+        });
+    }
+
+    destroyed(): void {
+        window.clearInterval(this.intervalID);
+    }
+
     onEnded(event: Event): void {
         this.$store.commit(Mutation.Next);
     }
@@ -84,7 +84,6 @@ export default class Player extends Vue {
             const playbackData: PlaybackData = {
                 currentTime: this.audio.currentTime,
                 duration: this.audio.duration,
-                volume: this.audio.volume,
             };
             this.$emit('playback-data', playbackData);
         }

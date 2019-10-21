@@ -14,7 +14,7 @@ export default class Tracks extends Vue {
     @Prop()
     album: Album;
 
-    private textServce = new TextService();
+    private textService = new TextService();
 
     get nowPlaying(): Entry {
         return this.$store.getters.nowPlaying;
@@ -45,7 +45,7 @@ export default class Tracks extends Vue {
     }
 
     formatDuration(track: Track): string {
-        return this.textServce.formatTime(track.duration);
+        return this.textService.formatTime(track.duration);
     }
 
 }

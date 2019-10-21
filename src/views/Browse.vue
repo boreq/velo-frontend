@@ -7,7 +7,7 @@
                       Eggplant
                   </router-link>
               </li>
-              <li v-for="parent, index in album.parents">
+              <li v-for="parent in album.parents">
                   <router-link :to="parentUrl(parent)">
                       {{ parent.title }}
                   </router-link>
@@ -25,7 +25,7 @@
 
           <div v-if="album.albums">
               <SubHeader text="Albums"></SubHeader>
-              <Albums :albums="album.albums" v-on:select-album="selectAlbum($event)"></Albums>
+              <Albums :albums="album.albums" @select-album="selectAlbum"></Albums>
           </div>
       </div>
   </div>

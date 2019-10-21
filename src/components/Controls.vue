@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="bar">
-                    <progress-bar :value="currentTimePercentage" @value-selected="seek($event)"></progress-bar>
+                    <progress-bar :value="currentTimePercentage" @value-selected="seek"></progress-bar>
                 </div>
 
                 <div class="duration">
@@ -67,7 +67,7 @@
                     </a>
                 </div>
                 <div class="bar">
-                    <progress-bar :value="volume" @value-selected="changeVolume($event)"></progress-bar>
+                    <progress-bar :value="volume" @value-selected="changeVolume"></progress-bar>
                 </div>
             </div>
         </div>

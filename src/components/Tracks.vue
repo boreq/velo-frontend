@@ -1,9 +1,8 @@
 <template>
     <ul class="tracks">
-        <li v-for="track, index in tracks" class="track">
-
+        <li v-for="track in tracks" class="track">
             <div class="play" :class="{ playing: isNowPlaying(track) }">
-                <a v-on:click="playTrack(track)">
+                <a @click="playTrack(track)">
                     <i class="fas fa-play"></i>
                 </a>
             </div>
@@ -15,7 +14,6 @@
             <div class="duration">
                 {{ formatDuration(track) }}
             </div>
-
         </li>
     </ul>
 </template>
