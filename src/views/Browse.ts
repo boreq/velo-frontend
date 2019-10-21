@@ -4,6 +4,7 @@ import { Album } from '@/dto/Album';
 import SubHeader from '@/components/SubHeader.vue';
 import Albums from '@/components/Albums.vue';
 import Tracks from '@/components/Tracks.vue';
+import Thumbnail from '@/components/Thumbnail.vue';
 
 
 @Component({
@@ -11,6 +12,7 @@ import Tracks from '@/components/Tracks.vue';
         Albums,
         SubHeader,
         Tracks,
+        Thumbnail,
     },
 })
 export default class Browse extends Vue {

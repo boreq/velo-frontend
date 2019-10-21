@@ -3,7 +3,6 @@ $image-size: 200px;
 .albums {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
 
     .album {
         color: $box-normal-text-color;
@@ -23,6 +22,10 @@ $image-size: 200px;
 
         .title {
             margin-top: .5em;
+            max-width: $image-size;
+            min-height: 4em;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 
