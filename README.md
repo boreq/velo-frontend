@@ -1,4 +1,4 @@
-# Plum frontend
+# Eggplant frontend
 
 ## Project setup
 ```
