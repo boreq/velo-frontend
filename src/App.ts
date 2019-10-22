@@ -1,6 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Controls from '@/components/Controls.vue';
 import Player from '@/components/Player.vue';
+import ConversionStatus from '@/components/ConversionStatus.vue';
 import { PlaybackData } from '@/dto/PlaybackData';
 
 
@@ -8,6 +9,7 @@ import { PlaybackData } from '@/dto/PlaybackData';
     components: {
         Controls,
         Player,
+        ConversionStatus,
     },
 })
 export default class App extends Vue {

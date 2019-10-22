@@ -1,6 +1,11 @@
 <template>
     <div id="app">
         <div class="content">
+            <div class="sidebar">
+                <div class="item">
+                    <conversion-status></conversion-status>
+                </div>
+            </div>
             <div class="container">
                 <router-view/>
             </div>

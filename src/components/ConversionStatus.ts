@@ -1,0 +1,110 @@
+import { Component, Vue } from 'vue-property-decorator';
+import { ApiService } from '@/services/ApiService';
+import { Stats, StoreStats } from '@/dto/Stats';
+
+
+@Component
+export default class ConversionStatus extends Vue {
+
+    stats: Stats = null;
+
+    private timeoutId: number = null;
+
+    private readonly apiService = new ApiService();
+
+    get isConverting(): boolean {
+        const thumbnails = this.getThumbnailStats();
+        if (thumbnails) {
+            if (thumbnails.allItems > thumbnails.convertedItems) {
+                return true;
+            }
+        }
+
+        const tracks = this.getTrackStats();
+        if (tracks) {
+            if (tracks.allItems > tracks.convertedItems) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    get text(): string {
+        const text: string[] = [];
+
+        const thumbnails = this.getThumbnailStats();
+        if (thumbnails) {
+            const percentage = this.getPercentage(thumbnails);
+            if (percentage !== null && percentage !== 100) {
+                text.push(`Converting thumbnails (${this.getPercentageText(percentage)}).`);
+            }
+        }
+
+        const tracks = this.getTrackStats();
+        if (tracks) {
+            const percentage = this.getPercentage(tracks);
+            if (percentage !== null && percentage !== 100) {
+                text.push(`Converting tracks (${this.getPercentageText(percentage)}).`);
+            }
+        }
+
+        return text.join(' ');
+    }
+
+
+    created(): void {
+        this.update();
+    }
+
+    destroyed(): void {
+        if (this.timeoutId) {
+            window.clearTimeout(this.timeoutId);
+        }
+    }
+
+    private getPercentage(stats: StoreStats): number {
+        if (stats.convertedItems === 0) {
+            return null;
+        }
+        return stats.convertedItems / stats.allItems * 100;
+    }
+
+    private getPercentageText(percentage: number): string {
+        const text = percentage.toFixed(0);
+        return `${text}%`;
+    }
+
+    private schedule(): void {
+        this.timeoutId = window.setTimeout(this.update, 10000);
+    }
+
+    private update(): void {
+        this.apiService.stats()
+            .then(
+                response => {
+                    this.stats = response.data;
+                    this.schedule();
+                },
+                error => {
+                    this.stats = null;
+                    this.schedule();
+                });
+    }
+
+    private getThumbnailStats(): StoreStats {
+        if (this.stats && this.stats.conversion) {
+            return this.stats.conversion.thumbnails;
+        }
+        return null;
+    }
+
+    private getTrackStats(): StoreStats {
+        if (this.stats && this.stats.conversion) {
+            return this.stats.conversion.tracks;
+        }
+        return null;
+    }
+
+}
