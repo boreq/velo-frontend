@@ -70,7 +70,7 @@ export default class ConversionStatus extends Vue {
     }
 
     private getPercentage(stats: StoreStats): number {
-        if (stats.convertedItems === 0) {
+        if (stats.allItems === 0) {
             return null;
         }
         return stats.convertedItems / stats.allItems * 100;
