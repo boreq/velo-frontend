@@ -3,9 +3,14 @@ import { Album } from '@/dto/Album';
 import { Track } from '@/dto/Track';
 import { Entry, Mutation, ReplaceCommand } from '@/store';
 import { TextService } from '@/services/TextService';
+import Spinner from '@/components/Spinner.vue';
 
 
-@Component
+@Component({
+    components: {
+        Spinner,
+    },
+})
 export default class Tracks extends Vue {
 
     @Prop()
@@ -16,16 +21,16 @@ export default class Tracks extends Vue {
 
     private textService = new TextService();
 
-    get nowPlaying(): Entry {
-        return this.$store.getters.nowPlaying;
-    }
-
     isNowPlaying(track: Track): boolean {
-        const entry = this.nowPlaying;
-        if (entry) {
-            return track.id === entry.track.id;
+        const nowPlaying: Entry = this.$store.getters.nowPlaying;
+        if (nowPlaying) {
+            return track.id === nowPlaying.track.id;
         }
         return false;
+    }
+
+    isBeingConverted(track: Track): boolean {
+        return !track.duration;
     }
 
     playTrack(track: Track): void {

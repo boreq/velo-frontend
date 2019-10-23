@@ -1,3 +1,3 @@
 export class Thumbnail {
-    id: string;
+    fileId: string;
 }

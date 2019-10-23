@@ -12,7 +12,12 @@
             </div>
 
             <div class="duration">
-                {{ formatDuration(track) }}
+                <div v-if="!isBeingConverted(track)">
+                    {{ formatDuration(track) }}
+                </div>
+                <div v-if="isBeingConverted(track)">
+                    <spinner v-tooltip="'This track has not been converted yet.'"></spinner>
+                </div>
             </div>
         </li>
     </ul>

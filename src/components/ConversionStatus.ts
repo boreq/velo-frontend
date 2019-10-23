@@ -1,9 +1,14 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { ApiService } from '@/services/ApiService';
 import { Stats, StoreStats } from '@/dto/Stats';
+import Spinner from '@/components/Spinner.vue';
 
 
-@Component
+@Component({
+    components: {
+        Spinner,
+    },
+})
 export default class ConversionStatus extends Vue {
 
     stats: Stats = null;

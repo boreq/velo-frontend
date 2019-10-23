@@ -17,12 +17,12 @@ export class ApiService {
     }
 
     trackUrl(track: Track): string {
-        const url = `track/${track.id}`;
+        const url = `track/${track.fileId}`;
         return process.env.VUE_APP_API_PREFIX + url;
     }
 
     thumbnailUrl(album: Album): string {
-        const url = `thumbnail/${album.thumbnail.id}`;
+        const url = `thumbnail/${album.thumbnail.fileId}`;
         return process.env.VUE_APP_API_PREFIX + url;
     }
 

@@ -19,6 +19,8 @@ export default class Browse extends Vue {
 
     album: Album = null;
 
+    private timeoutId: number;
+
     private apiService = new ApiService();
 
     @Watch('$route')
@@ -47,10 +49,18 @@ export default class Browse extends Vue {
     }
 
     private load(): void {
+        if (this.timeoutId) {
+            window.clearTimeout(this.timeoutId);
+        }
         const ids = this.getIdsFromRoute();
         this.apiService.browse(ids)
             .then(response => {
                 this.album = response.data;
+
+                const trackAwaitingConversion = this.album.tracks.find(track => !track.duration);
+                if (trackAwaitingConversion) {
+                    this.timeoutId = window.setTimeout(this.load, 5000);
+                }
             });
     }
 
