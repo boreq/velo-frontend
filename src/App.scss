@@ -29,6 +29,7 @@ a {
         > .sidebar {
             width: 50px;
             background-color: $secondary-color;
+            flex-shrink: 0;
 
             .item {
                 width: 100%;
