@@ -32,6 +32,10 @@ export default class Browse extends Vue {
         this.load();
     }
 
+    destroyed(): void {
+        this.clearTimeout();
+    }
+
     parentUrl(album: Album): string {
         const currentIndex = this.album.parents.indexOf(album);
         const ids = this.album.parents
@@ -49,9 +53,7 @@ export default class Browse extends Vue {
     }
 
     private load(): void {
-        if (this.timeoutId) {
-            window.clearTimeout(this.timeoutId);
-        }
+        this.clearTimeout();
         const ids = this.getIdsFromRoute();
         this.apiService.browse(ids)
             .then(response => {
@@ -59,9 +61,21 @@ export default class Browse extends Vue {
 
                 const trackAwaitingConversion = this.album.tracks.find(track => !track.duration);
                 if (trackAwaitingConversion) {
-                    this.timeoutId = window.setTimeout(this.load, 5000);
+                    this.scheduleTimeout();
                 }
             });
+    }
+
+    private scheduleTimeout(): void {
+        this.clearTimeout();
+        this.timeoutId = window.setTimeout(this.load, 5000);
+    }
+
+    private clearTimeout(): void {
+        if (this.timeoutId) {
+            window.clearTimeout(this.timeoutId);
+            this.timeoutId = null;
+        }
     }
 
     private getIdsFromRoute(): string[] {
