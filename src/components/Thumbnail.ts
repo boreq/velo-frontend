@@ -30,21 +30,28 @@ export default class Thumbnail extends Vue {
         return null;
     }
 
+    destroyed(): void {
+        this.clearTimeout();
+    }
+
     onError(event: Event): void {
         this.converting = true;
         this.reload();
-
     }
 
     onLoad(event: Event): void {
         this.converting = false;
     }
 
-    private reload() {
+    private reload(): void {
+        this.clearTimeout();
+        this.timeoutId = window.setTimeout(() => this.image.src = this.thumbnailUrl, 5000);
+    }
+
+    private clearTimeout(): void {
         if (this.timeoutId) {
             window.clearTimeout(this.timeoutId);
         }
-        this.timeoutId = window.setTimeout(() => this.image.src = this.thumbnailUrl, 5000);
     }
 
 }
