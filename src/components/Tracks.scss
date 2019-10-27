@@ -1,11 +1,14 @@
 .tracks {
-    font-size: 15px;
     padding: 0;
     margin: 0;
 
     .track {
         display: flex;
-        padding: .5em 0;
+        padding: 1em 2em;
+
+        &:nth-child(even) {
+            background-color: $box-normal-background-color-alt;
+        }
 
         .play {
             margin: 0 1em 0 0;
