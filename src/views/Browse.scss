@@ -1,4 +1,5 @@
 $padding: 2em;
+$artwork-size: 200px;
 
 .browse {
     display: block;
@@ -66,8 +67,8 @@ $padding: 2em;
                 }
 
                 .artwork {
-                    width: 200px;
-                    height: 200px;
+                    width: $artwork-size;
+                    height: $artwork-size;
                     margin: 1em 0em 1em auto;
                     box-shadow: $box-normal-box-shadow;
                     background-color: $primary-color;
@@ -102,6 +103,25 @@ $padding: 2em;
         .wrapper {
             .sidebar {
                 width: 300px;
+            }
+        }
+    }
+
+    @media (max-width: $responsive-threshold-mobile) {
+        .wrapper {
+            flex-direction: column;
+
+            .sidebar {
+                width: auto;
+                text-align: center;
+                border-right: none;
+                border-bottom: $box-normal-border;
+
+                .album {
+                    .artwork {
+                        display: none;
+                    }
+                }
             }
         }
     }

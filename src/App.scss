@@ -1,13 +1,18 @@
+* {
+    transition: .5s all;
+}
+
 html, body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 html {
     font-family: 'Raleway', sans-serif;
     font-size: 12px;
     color: $box-normal-text-color;
-    background: url('./assets/images/background.jpg') no-repeat center center fixed;
+    background: url('./assets/images/background.jpg') no-repeat center bottom fixed;
     background-size: cover;
 }
 
@@ -55,6 +60,40 @@ a {
     }
 
     > .controls {
+    }
+
+    @media (max-height: 800px) {
+        > .content {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    }
+
+    @media (max-height: 600px) {
+        > .content {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 1400px) {
+        > .content {
+            padding-right: 100px;
+            padding-left: 100px;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        > .content {
+            padding-right: 50px;
+            padding-left: 50px;
+        }
+    }
+
+    @media (max-width: $responsive-threshold-mobile) {
+        > .content {
+            padding: 20px;
+        }
     }
 }
 

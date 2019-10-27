@@ -21,4 +21,8 @@ $clickable-area-offset: 5px;
             background-color: $primary-color;
         }
     }
+
+    * {
+        transition: none;
+    }
 }

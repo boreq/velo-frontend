@@ -1,4 +1,5 @@
 $image-size: 200px;
+$image-size-small: 100px;
 
 .albums {
     display: flex;
@@ -9,9 +10,10 @@ $image-size: 200px;
         padding: 1em;
         font-size: 16px;
 
-        .image  {
+        .image {
             width: $image-size;
             height: $image-size;
+            margin: 0 auto;
             background-color: $primary-color;
             box-shadow: $box-normal-box-shadow;
 
@@ -22,6 +24,7 @@ $image-size: 200px;
         }
 
         .title {
+            margin: 0 auto;
             margin-top: .5em;
             max-width: $image-size;
             min-height: 4em;
@@ -37,6 +40,31 @@ $image-size: 200px;
 
         .image {
             background-color: $box-normal-background-color;
+        }
+    }
+
+}
+
+@media (max-width: $responsive-threshold-mobile) {
+    .albums {
+        justify-content: center;
+        align-items: stretch;
+        flex-flow: column;
+
+        .album {
+            text-align: center;
+
+            .image {
+                width: $image-size-small;
+                height: $image-size-small;
+            }
+
+            .title {
+                min-height: 0;
+                text-wrap: none;
+                white-space: nowrap;
+                max-width: 100%;
+            }
         }
     }
 }
