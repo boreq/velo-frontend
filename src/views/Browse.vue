@@ -2,7 +2,7 @@
     <div class="browse">
         <div class="wrapper">
             <div class="sidebar">
-                <div v-if="album">
+                <div class="album" v-if="album">
                     <ul class="crumbs">
                         <li>
                             <router-link to="/browse">
@@ -24,19 +24,19 @@
                         <thumbnail :album="album"></thumbnail>
                     </div>
                 </div>
+
+                <NowPlaying class="now-playing"></NowPlaying>
             </div>
 
             <div class="content">
-                <div v-if="album">
-                    <div v-if="album.tracks">
-                        <SubHeader text="Tracks"></SubHeader>
-                        <Tracks :tracks="album.tracks" :album="album"></Tracks>
-                    </div>
+                <div v-if="album && album.tracks">
+                    <SubHeader text="Tracks"></SubHeader>
+                    <Tracks :tracks="album.tracks" :album="album"></Tracks>
+                </div>
 
-                    <div v-if="album.albums">
-                        <SubHeader text="Albums"></SubHeader>
-                        <Albums :albums="album.albums" @select-album="selectAlbum"></Albums>
-                    </div>
+                <div v-if="album && album.albums">
+                    <SubHeader text="Albums"></SubHeader>
+                    <Albums :albums="album.albums" @select-album="selectAlbum"></Albums>
                 </div>
             </div>
         </div>

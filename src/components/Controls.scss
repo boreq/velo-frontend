@@ -1,125 +1,62 @@
 $spacing: 10px;
-$artwork-size: 45px;
 $font-size: 15px;
-$font-size-small: 12px;
 
 .controls {
     display: flex;
-    align-items: center;
-    background-color: $box-dark-background-color;
+    flex-flow: column;
     color: $box-dark-text-color;
     font-size: $font-size;
+    margin: $spacing;
 
     a:hover {
         color: $primary-color;
         cursor: pointer;
     }
 
-    .center {
+    .core {
+        display: flex;
         flex: 1;
-        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: $spacing;
 
+        > * {
+            margin: 0 50px;
+            font-size: 15px;
+        }
+
+        .play {
+            text-transform: uppercase;
+            font-weight: $font-weight-black;
+            letter-spacing: 4px;
+            font-size: 12px;
+            width: 70px;
+            text-align: center;
+        }
+    }
+
+    .progress {
         display: flex;
+        align-items: center;
+        height: $font-size;
+        font-size: $font-size;
 
-        .core {
-            display: flex;
+        .bar {
             flex: 1;
-            justify-content: center;
-            align-items: center;
-            margin: $spacing $spacing 0 $spacing;
-
-            .previous, .next {
-                font-size: 15px;
-            }
-
-            .play {
-                font-size: 25px;
-                margin: 0 .5em;
-            }
+            margin: 0 $spacing;
         }
 
-        .progress {
-            display: flex;
-            margin: 0 $spacing $spacing $spacing;
-            align-items: center;
-            height: $font-size;
-            font-size: $font-size;
-
-            .bar {
-                flex: 1;
-                margin: 0 $spacing;
-            }
-
-            .current, .duration {
-                line-height: 1;
-                min-width: 50px;
-            }
-
-            .current {
-                text-align: right;
-            }
-
-            .duration {
-                text-align: left;
-            }
-        }
-    }
-
-    .left, .right {
-        width: 300px;
-    }
-
-    .left {
-        margin: $spacing 0 $spacing $spacing;
-        display: flex;
-        height: $artwork-size;
-
-        .artwork {
-            background-color: $primary-color;
-            width: $artwork-size;
-            height: $artwork-size;
-            margin-right: $spacing;
-            flex: 0 0 auto;
+        .current, .duration {
+            line-height: 1;
+            min-width: 50px;
         }
 
-        .title {
-            flex: 1;
-            overflow: hidden;
-            display: flex;
-            flex-flow: column;
-
-            .trackTitle, .albumTitle {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            .trackTitle {
-                margin-bottom: $spacing;
-            }
-
-            .albumTitle {
-                color: $box-dark-text-dimmed-color;
-                font-size: $font-size-small;
-            }
+        .current {
+            text-align: right;
         }
-    }
 
-    .right {
-        margin: $spacing $spacing $spacing 0;
-
-        .volume {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-
-            .mute {
-                margin-right: $spacing;
-            }
-
-            .bar {
-                width: 100px;
-            }
+        .duration {
+            text-align: left;
         }
     }
 }

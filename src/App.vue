@@ -6,8 +6,10 @@
                     <conversion-status></conversion-status>
                 </div>
             </div>
-            <div class="container">
-                <router-view/>
+            <div class="wrapper">
+                <div class="container">
+                    <router-view/>
+                </div>
             </div>
         </div>
         <div class="controls">

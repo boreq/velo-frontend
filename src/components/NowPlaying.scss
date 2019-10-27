@@ -1,0 +1,53 @@
+$spacing: 10px;
+$artwork-size: 45px;
+$font-size: 15px;
+$font-size-small: 12px;
+
+.now-playing {
+    display: flex;
+    height: $artwork-size;
+
+    .artwork {
+        background-color: $primary-color;
+        width: $artwork-size;
+        height: $artwork-size;
+        margin-right: $spacing;
+        flex: 0 0 auto;
+
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .title {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-flow: column;
+
+        .trackTitle, .albumTitle {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .trackTitle {
+            margin-bottom: $spacing;
+        }
+
+        .albumTitle {
+            color: $box-dark-text-dimmed-color;
+            font-size: $font-size-small;
+        }
+    }
+
+    a {
+        cursor: pointer;
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+}

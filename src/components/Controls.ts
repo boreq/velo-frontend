@@ -1,17 +1,16 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import ProgressBar from '@/components/ProgressBar.vue';
-import Thumbnail from '@/components/Thumbnail.vue';
-import { Entry, Mutation, SetVolumeCommand } from '@/store';
+import { Entry, Mutation } from '@/store';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { TextService } from '@/services/TextService';
 import { seekEvent } from '@/components/Player';
-import { NavigationService } from '@/services/NavigationService';
+import ProgressBar from '@/components/ProgressBar.vue';
+import Volume from '@/components/Volume.vue';
 
 
 @Component({
     components: {
         ProgressBar,
-        Thumbnail,
+        Volume,
     },
 })
 export default class Controls extends Vue {
@@ -20,24 +19,9 @@ export default class Controls extends Vue {
     playbackData: PlaybackData;
 
     private textService = new TextService();
-    private navigationService = new NavigationService();
 
     get nowPlaying(): Entry {
         return this.$store.getters.nowPlaying;
-    }
-
-    get trackTitle(): string {
-        if (this.nowPlaying && this.nowPlaying.track) {
-            return this.nowPlaying.track.title;
-        }
-        return null;
-    }
-
-    get albumTitle(): string {
-        if (this.nowPlaying && this.nowPlaying.album) {
-            return this.nowPlaying.album.title;
-        }
-        return null;
     }
 
     get currentTime(): string {
@@ -65,14 +49,6 @@ export default class Controls extends Vue {
         return this.$store.state.paused;
     }
 
-    get volume(): number {
-        return this.$store.getters.volume;
-    }
-
-    get muted(): boolean {
-        return this.$store.state.muted;
-    }
-
     onPlayPause(): void {
         if (this.paused) {
             this.$store.commit(Mutation.Play);
@@ -89,32 +65,8 @@ export default class Controls extends Vue {
         this.$store.commit(Mutation.Next);
     }
 
-    changeVolume(volume: number): void {
-        const command: SetVolumeCommand = {
-            volume: volume,
-        };
-        this.$store.commit(Mutation.SetVolume, command);
-    }
-
     seek(position: number): void {
         this.$root.$emit(seekEvent, position);
-    }
-
-    toggleMute(): void {
-        if (this.$store.state.muted) {
-            this.$store.commit(Mutation.Unmute);
-        } else {
-            this.$store.commit(Mutation.Mute);
-        }
-    }
-
-    goToNowPlayingSong(): void {
-        this.goToNowPlayingAlbum();
-    }
-
-    goToNowPlayingAlbum(): void {
-        const path = this.navigationService.getBrowseUrl(this.nowPlaying.album);
-        this.$router.push({ path: path });
     }
 
 }

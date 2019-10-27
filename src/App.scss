@@ -7,7 +7,8 @@ html {
     font-family: 'Raleway', sans-serif;
     font-size: 12px;
     color: $box-normal-text-color;
-    background-color: $box-normal-background-color;
+    background: url('./assets/images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 a {
@@ -23,12 +24,13 @@ a {
 
     > .content {
         flex: 1;
-        overflow: auto;
         display: flex;
+        padding: 100px 200px;
+        overflow: hidden;
 
         > .sidebar {
             width: 50px;
-            background-color: $secondary-color;
+            margin-left: -50px;
             flex-shrink: 0;
 
             .item {
@@ -37,10 +39,18 @@ a {
             }
         }
 
-        > .container {
+        > .wrapper {
+            background-color: $box-normal-background-color;
+            box-shadow: $box-normal-box-shadow;
+            border-radius: $box-normal-border-radius;
+            overflow: hidden;
             height: 100%;
             flex: 1 1 0;
-            overflow: hidden;
+
+            > .container {
+                overflow: hidden;
+                height: 100%;
+            }
         }
     }
 

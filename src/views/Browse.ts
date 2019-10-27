@@ -5,6 +5,7 @@ import SubHeader from '@/components/SubHeader.vue';
 import Albums from '@/components/Albums.vue';
 import Tracks from '@/components/Tracks.vue';
 import Thumbnail from '@/components/Thumbnail.vue';
+import NowPlaying from '@/components/NowPlaying.vue';
 
 
 @Component({
@@ -13,6 +14,7 @@ import Thumbnail from '@/components/Thumbnail.vue';
         SubHeader,
         Tracks,
         Thumbnail,
+        NowPlaying,
     },
 })
 export default class Browse extends Vue {
