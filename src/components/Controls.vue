@@ -2,9 +2,11 @@
     <div class="controls">
         <div class="core">
             <div class="shuffle">
-                <a>
-                    <i class="fas fa-random"></i>
-                </a>
+                <Indicator :state="shuffle">
+                    <a @click="onShuffle()">
+                        <i class="fas fa-random"></i>
+                    </a>
+                </Indicator>
             </div>
 
             <div class="previous">
@@ -17,8 +19,8 @@
                 <a @click="onPlayPause()">
                     <span v-if="paused">Play</span>
                     <span v-if="!paused">Pause</span>
-<!--                    <i class="far fa-play-circle" v-if="paused"></i>-->
-<!--                    <i class="far fa-pause-circle" v-if="!paused"></i>-->
+                    <!--                    <i class="far fa-play-circle" v-if="paused"></i>-->
+                    <!--                    <i class="far fa-pause-circle" v-if="!paused"></i>-->
                 </a>
             </div>
 

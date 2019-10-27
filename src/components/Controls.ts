@@ -5,12 +5,14 @@ import { TextService } from '@/services/TextService';
 import { seekEvent } from '@/components/Player';
 import ProgressBar from '@/components/ProgressBar.vue';
 import Volume from '@/components/Volume.vue';
+import Indicator from '@/components/Indicator.vue';
 
 
 @Component({
     components: {
         ProgressBar,
         Volume,
+        Indicator,
     },
 })
 export default class Controls extends Vue {
@@ -49,11 +51,23 @@ export default class Controls extends Vue {
         return this.$store.state.paused;
     }
 
+    get shuffle(): boolean {
+        return this.$store.state.shuffle;
+    }
+
     onPlayPause(): void {
         if (this.paused) {
             this.$store.commit(Mutation.Play);
         } else {
             this.$store.commit(Mutation.Pause);
+        }
+    }
+
+    onShuffle(): void {
+        if (this.shuffle) {
+            this.$store.commit(Mutation.NoShuffle);
+        } else {
+            this.$store.commit(Mutation.Shuffle);
         }
     }
 

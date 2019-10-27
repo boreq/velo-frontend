@@ -1,0 +1,17 @@
+.indicator {
+    $baseWidth: 5px;
+
+    .bar {
+        height: $baseWidth;
+        border-radius: $baseWidth;
+        margin: 1em auto;
+        background-color: $box-dark-text-color;
+
+        &.enabled {
+            background-color: $primary-color;
+        }
+    }
+
+    .content {
+    }
+}
