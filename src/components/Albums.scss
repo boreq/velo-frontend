@@ -31,18 +31,16 @@ $image-size-small: 100px;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-    }
 
-    .album:hover {
-        background-color: $primary-color;
-        cursor: pointer;
-        color: white;
+        &:hover {
+            cursor: pointer;
+            color: $primary-color;
 
-        .image {
-            background-color: $box-normal-background-color;
+            .image {
+                transform: scale(1.05);
+            }
         }
     }
-
 }
 
 @media (max-width: $responsive-threshold-mobile) {
