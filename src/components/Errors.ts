@@ -6,7 +6,6 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class Errors extends Vue {
 
     static readonly errorEvent = 'eggplant_error';
-    private static errorId = 0;
 
     static sendError(vue: Vue, text: string): void {
         const error: Error = {
@@ -17,12 +16,13 @@ export default class Errors extends Vue {
         vue.$root.$emit(this.errorEvent, error);
     }
 
+    private static errorId = 0;
+    private static readonly visibilityDuration = 10;
+    private static readonly animationDuration = 2;
+
     errors: Error[] = [];
 
     private intervalID: number;
-
-    private readonly visibilityDuration = 10;
-    private readonly animationDuration = 2;
 
     mounted(): void {
         this.$root.$on(Errors.errorEvent, (error: Error) => {
@@ -37,13 +37,13 @@ export default class Errors extends Vue {
 
     shouldHide(error: Error): boolean {
         const secondsDuration = this.duration(new Date(), error.created);
-        return secondsDuration > this.visibilityDuration;
+        return secondsDuration > Errors.visibilityDuration;
     }
 
     private processErrors(): void {
         this.errors = this.errors.filter(error => {
             const secondsDuration = this.duration(new Date(), error.created);
-            return secondsDuration < (this.visibilityDuration + this.animationDuration);
+            return secondsDuration < (Errors.visibilityDuration + Errors.animationDuration);
         });
     }
 
