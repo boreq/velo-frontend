@@ -13,6 +13,7 @@ $font-size-small: 12px;
         height: $artwork-size;
         margin-right: $spacing;
         flex: 0 0 auto;
+        box-shadow: $box-normal-box-shadow;
 
         a {
             display: block;

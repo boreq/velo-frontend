@@ -1,3 +1,5 @@
+$padding: 2em;
+
 .browse {
     display: block;
     height: 100%;
@@ -17,7 +19,7 @@
             flex-flow: column;
 
             .album, .now-playing {
-                padding: 2em;
+                padding: $padding;
             }
 
             .album {
@@ -34,7 +36,6 @@
                         display: inline-block;
                         margin: 0;
                         padding: 0;
-
                         padding-bottom: 5px;
 
                         &::after {
@@ -68,10 +69,8 @@
                     width: 200px;
                     height: 200px;
                     margin: 1em 0em 1em auto;
-                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+                    box-shadow: $box-normal-box-shadow;
                     background-color: $primary-color;
-                    border-radius: $box-normal-border-radius;
-                    overflow: hidden;
                 }
             }
 
@@ -81,12 +80,12 @@
         }
 
         .content {
-            padding: 2em;
+            padding: $padding;
             flex: 1;
             overflow-y: auto;
 
             .tracks {
-                margin: 0 -2em;
+                margin: 0 (-($padding));
             }
         }
     }

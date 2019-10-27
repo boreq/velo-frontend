@@ -13,6 +13,7 @@ $image-size: 200px;
             width: $image-size;
             height: $image-size;
             background-color: $primary-color;
+            box-shadow: $box-normal-box-shadow;
 
             img {
                 height: 100%;
