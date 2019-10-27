@@ -1,6 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Controls from '@/components/Controls.vue';
 import Player from '@/components/Player.vue';
+import Errors from '@/components/Errors.vue';
 import ConversionStatus from '@/components/ConversionStatus.vue';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { Mutation } from '@/store';
@@ -11,6 +12,7 @@ import { Mutation } from '@/store';
         Controls,
         Player,
         ConversionStatus,
+        Errors,
     },
 })
 export default class App extends Vue {

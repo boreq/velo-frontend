@@ -16,6 +16,7 @@
             <controls :playbackData="playbackData"></controls>
         </div>
         <player @playback-data="onPlaybackData($event)"></player>
+        <errors></errors>
     </div>
 </template>
 

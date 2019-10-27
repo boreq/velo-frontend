@@ -47,7 +47,7 @@ a {
         > .wrapper {
             background-color: $box-normal-background-color;
             box-shadow: $box-normal-box-shadow;
-            border-radius: $box-normal-border-radius;
+            border-radius: $box-border-radius;
             overflow: hidden;
             height: 100%;
             flex: 1 1 0;
@@ -60,6 +60,12 @@ a {
     }
 
     > .controls {
+    }
+
+    > .errors {
+        position: absolute;
+        bottom: 0;
+        right: 0;
     }
 
     @media (max-height: 800px) {

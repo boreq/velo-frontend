@@ -1,0 +1,35 @@
+.errors {
+    margin: 0;
+    padding: 0;
+
+    .error {
+        list-style-type: none;
+        padding: 1em;
+        margin: 1em;
+        border-radius: $box-border-radius;
+        background-color: #ef6155;
+        width: 250px;
+        color: $box-dark-text-color;
+        box-shadow: $box-normal-box-shadow;
+        transition: 0s all;
+        overflow: hidden;
+
+        &.hide {
+            animation: hide 500ms linear 0s 1 normal forwards;
+        }
+    }
+}
+
+@keyframes hide {
+    0% {
+        transform-origin: center bottom;
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform-origin: center bottom;
+        transform: translateX(300px);
+        opacity: 0;
+    }
+}
