@@ -26,7 +26,7 @@ export default class Browse extends Vue {
     private apiService = new ApiService();
 
     @Watch('$route')
-    onRouteChanged(to, from): void {
+    onRouteChanged(): void {
         this.load();
     }
 

@@ -11,6 +11,8 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
@@ -19,6 +21,7 @@
     ],
     "paths": {
       "@/*": [
+
         "src/*"
       ]
     },
@@ -40,3 +43,4 @@
     "node_modules"
   ]
 }
+

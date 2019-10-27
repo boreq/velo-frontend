@@ -21,7 +21,7 @@ export default class Thumbnail extends Vue {
 
     private timeoutId: number;
 
-    private apiService = new ApiService();
+    private readonly apiService = new ApiService();
 
     get thumbnailUrl(): string {
         if (this.album) {
@@ -34,12 +34,12 @@ export default class Thumbnail extends Vue {
         this.clearTimeout();
     }
 
-    onError(event: Event): void {
+    onError(): void {
         this.converting = true;
         this.reload();
     }
 
-    onLoad(event: Event): void {
+    onLoad(): void {
         this.converting = false;
     }
 

@@ -39,13 +39,13 @@ export default class Player extends Vue {
     }
 
     @Watch('nowPlaying')
-    onNowPlayingChanged(val: number, oldVal: number): void {
+    onNowPlayingChanged(): void {
         this.audio.src = this.nowPlayingUrl;
         this.play();
     }
 
     @Watch('paused')
-    onPausedChanged(val: boolean, oldVal: boolean): void {
+    onPausedChanged(val: boolean): void {
         if (val) {
             this.audio.pause();
         } else {
@@ -75,11 +75,11 @@ export default class Player extends Vue {
         window.clearInterval(this.intervalID);
     }
 
-    onEnded(event: Event): void {
+    onEnded(): void {
         this.$store.commit(Mutation.Next);
     }
 
-    onError(event: Event): void {
+    onError(): void {
         this.$store.commit(Mutation.Next);
     }
 

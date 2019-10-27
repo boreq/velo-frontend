@@ -29,15 +29,15 @@ export default class ProgressBar extends Vue {
         }
     }
 
-    onMouseDown(event: MouseEvent): void {
+    onMouseDown(): void {
         this.mouseDown = true;
     }
 
-    onMouseUp(event: MouseEvent): void {
+    onMouseUp(): void {
         this.mouseDown = false;
     }
 
-    onMouseLeave(event: MouseEvent): void {
+    onMouseLeave(): void {
         this.mouseDown = false;
     }
 

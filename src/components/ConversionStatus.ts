@@ -92,7 +92,7 @@ export default class ConversionStatus extends Vue {
                     this.stats = response.data;
                     this.schedule();
                 },
-                error => {
+                () => {
                     this.stats = null;
                     this.schedule();
                 });
