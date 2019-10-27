@@ -5,7 +5,7 @@
             <i class="fas fa-volume-mute" v-if="muted"></i>
         </a>
         <div class="bar">
-            <ProgressBar :value="volume" @value-selected="changeVolume"></ProgressBar>
+            <VerticalProgressBar :value="volume" @value-selected="changeVolume"></VerticalProgressBar>
         </div>
     </div>
 </template>

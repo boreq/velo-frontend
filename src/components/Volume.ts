@@ -1,11 +1,11 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { Mutation, SetVolumeCommand } from '@/store';
-import ProgressBar from '@/components/ProgressBar.vue';
+import VerticalProgressBar from '@/components/VerticalProgressBar.vue';
 
 
 @Component({
     components: {
-        ProgressBar,
+        VerticalProgressBar,
     },
 })
 export default class Volume extends Vue {

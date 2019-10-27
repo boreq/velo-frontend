@@ -1,3 +1,5 @@
+$hover-area-offset: 2em;
+
 .volume {
     position: relative;
 
@@ -15,10 +17,10 @@
     .bar {
         position: absolute;
         display: none;
-        top: -38px; // after changing this value make sure that this element overlaps slightly with .button
-        width: 100px;
+        top: -142px; // after changing this value make sure that this element overlaps slightly with .button
+        height: 100px;
         z-index: 999;
-        padding: 1em 1em .5em 1em;
+        padding: $hover-area-offset $hover-area-offset 1em;
         transform: translate(-50%, 0);
         left: 50%;
 
