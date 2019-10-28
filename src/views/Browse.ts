@@ -63,9 +63,11 @@ export default class Browse extends Vue {
                 response => {
                     this.album = response.data;
 
-                    const trackAwaitingConversion = this.album.tracks.find(track => !track.duration);
-                    if (trackAwaitingConversion) {
-                        this.scheduleTimeout();
+                    if (this.album.tracks) {
+                        const trackAwaitingConversion = this.album.tracks.find(track => !track.duration);
+                        if (trackAwaitingConversion) {
+                            this.scheduleTimeout();
+                        }
                     }
                 },
                 () => {
