@@ -84,6 +84,14 @@ export default class Player extends Vue {
         this.$store.commit(Mutation.Next);
     }
 
+    onPlay(): void {
+        this.$store.commit(Mutation.Play);
+    }
+
+    onPause(): void {
+        this.$store.commit(Mutation.Pause);
+    }
+
     private emitValues(): void {
         if (this.audio) {
             const playbackData: PlaybackData = {
