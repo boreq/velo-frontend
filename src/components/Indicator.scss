@@ -1,11 +1,11 @@
 .indicator {
-    $baseWidth: 5px;
+    $baseWidth: 4px;
 
     .bar {
         height: $baseWidth;
         border-radius: $baseWidth;
         margin: 0 auto 1em;
-        background-color: $box-dark-text-color;
+        background-color: $box-dark-text-dimmed-color;
 
         &.enabled {
             background-color: $primary-color;

@@ -10,7 +10,7 @@ export default class Indicator extends Vue {
     @Prop({default: 0})
     width: number;
 
-    private readonly baseWidth = 5;
+    private readonly baseWidth = 4;
 
     get barWidth(): string {
         return `${this.baseWidth + this.width}px`;
