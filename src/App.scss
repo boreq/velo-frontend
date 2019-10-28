@@ -73,13 +73,6 @@ a {
         }
     }
 
-    @media (max-height: 600px) {
-        > .content {
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-    }
-
     @media (max-width: 1400px) {
         > .content {
             padding-right: 100px;
@@ -94,7 +87,7 @@ a {
         }
     }
 
-    @media (max-width: $responsive-threshold-mobile) {
+    @media (max-width: $responsive-threshold-mobile), (max-height: 600px) {
         > .content {
             padding: 20px;
         }
