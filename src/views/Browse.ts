@@ -6,6 +6,7 @@ import Albums from '@/components/Albums.vue';
 import Tracks from '@/components/Tracks.vue';
 import Thumbnail from '@/components/Thumbnail.vue';
 import NowPlaying from '@/components/NowPlaying.vue';
+import Errors from '@/components/Errors';
 
 
 @Component({
@@ -58,14 +59,18 @@ export default class Browse extends Vue {
         this.clearTimeout();
         const ids = this.getIdsFromRoute();
         this.apiService.browse(ids)
-            .then(response => {
-                this.album = response.data;
+            .then(
+                response => {
+                    this.album = response.data;
 
-                const trackAwaitingConversion = this.album.tracks.find(track => !track.duration);
-                if (trackAwaitingConversion) {
-                    this.scheduleTimeout();
-                }
-            });
+                    const trackAwaitingConversion = this.album.tracks.find(track => !track.duration);
+                    if (trackAwaitingConversion) {
+                        this.scheduleTimeout();
+                    }
+                },
+                () => {
+                    Errors.sendError(this, `Network error.`);
+                });
     }
 
     private scheduleTimeout(): void {
