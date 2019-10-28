@@ -1,7 +1,3 @@
-* {
-    transition: 200ms all;
-}
-
 html, body {
     margin: 0;
     padding: 0;
@@ -18,6 +14,7 @@ html {
 
 a {
     cursor: pointer;
+    transition: color $transition-duration, background-color 200ms;
 }
 
 #app {
@@ -32,6 +29,7 @@ a {
         display: flex;
         padding: 100px 200px;
         overflow: hidden;
+        transition: padding 1s;
 
         > .sidebar {
             width: 50px;

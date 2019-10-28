@@ -16,6 +16,7 @@ $image-size-small: 100px;
             margin: 0 auto;
             background-color: $primary-color;
             box-shadow: $box-normal-box-shadow;
+            transition: all $transition-duration;
 
             img {
                 height: 100%;

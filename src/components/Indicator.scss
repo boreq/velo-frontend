@@ -6,12 +6,10 @@
         border-radius: $baseWidth;
         margin: 0 auto 1em;
         background-color: $box-dark-text-dimmed-color;
+        transition: background-color $transition-duration;
 
         &.enabled {
             background-color: $primary-color;
         }
-    }
-
-    .content {
     }
 }
