@@ -8,6 +8,7 @@ import { LoginResponse } from '@/dto/LoginResponse';
 import { Mutation } from '@/store';
 import { AuthService } from '@/services/AuthService';
 import { User } from '@/dto/User';
+import { Invitation } from '@/dto/Invitation';
 
 /*
 declare module 'vue-property-decorator' {
@@ -143,4 +144,8 @@ export class ApiService {
         return this.axios.get<User[]>(process.env.VUE_APP_API_PREFIX + url);
     }
 
+    createInvitation(): Promise<AxiosResponse<Invitation>> {
+        const url = `auth/create-invitation`;
+        return this.axios.post<Invitation>(process.env.VUE_APP_API_PREFIX + url);
+    }
 }

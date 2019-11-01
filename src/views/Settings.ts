@@ -9,6 +9,7 @@ import { ApiService } from '@/services/ApiService';
 import Errors from '@/components/Errors';
 import { User } from '@/dto/User';
 import Users from '@/components/Users.vue';
+import Invitations from '@/components/Invitations.vue';
 
 
 @Component({
@@ -20,6 +21,7 @@ import Users from '@/components/Users.vue';
         ActionBar,
         ActionBarButton,
         Users,
+        Invitations,
     },
 })
 export default class Settings extends Vue {
