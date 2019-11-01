@@ -9,6 +9,7 @@ import { Mutation } from '@/store';
 import { AuthService } from '@/services/AuthService';
 import { User } from '@/dto/User';
 import { Invitation } from '@/dto/Invitation';
+import { RegisterCommand } from '@/dto/RegisterCommand';
 
 /*
 declare module 'vue-property-decorator' {
@@ -137,6 +138,11 @@ export class ApiService {
                     },
                 );
         });
+    }
+
+    register(cmd: RegisterCommand): Promise<AxiosResponse<void>> {
+        const url = `auth/register`;
+        return this.axios.post<void>(process.env.VUE_APP_API_PREFIX + url, cmd);
     }
 
     list(): Promise<AxiosResponse<User[]>> {

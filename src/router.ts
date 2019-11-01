@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Browse from '@/views/Browse.vue';
 import Setup from '@/views/Setup.vue';
 import Login from '@/views/Login.vue';
+import Register from '@/views/Register.vue';
 import Settings from '@/views/Settings.vue';
 
 Vue.use(Router);
@@ -35,6 +36,11 @@ export default new Router({
             path: '/login',
             name: 'login',
             component: Login,
+        },
+        {
+            path: '/register/:token',
+            name: 'register',
+            component: Register,
         },
         {
             path: '*',

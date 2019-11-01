@@ -11,10 +11,12 @@ import AppButton from '@/components/forms/AppButton.vue';
 })
 export default class Invitation extends Vue {
 
+    working = false;
     private token: string = null;
     private readonly apiService = new ApiService(this);
 
     createInvitation(): void {
+        this.working = true;
         this.apiService.createInvitation()
             .then(
                 response => {
@@ -23,7 +25,7 @@ export default class Invitation extends Vue {
                 () => {
                     Errors.sendError(this, 'Generating an invitation failed.');
                 },
-            );
+            ).finally(() => this.working = false);
     }
 
     copy(): void {
