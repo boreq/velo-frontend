@@ -1,11 +1,6 @@
 <template>
     <div id="app">
         <div class="content">
-            <div class="sidebar">
-                <div class="item">
-                    <conversion-status></conversion-status>
-                </div>
-            </div>
             <div class="wrapper">
                 <div class="container">
                     <router-view/>
@@ -17,6 +12,7 @@
         </div>
         <player @playback-data="onPlaybackData($event)"></player>
         <errors></errors>
+        <conversion-status></conversion-status>
     </div>
 </template>
 

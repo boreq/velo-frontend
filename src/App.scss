@@ -31,17 +31,6 @@ a {
         overflow: hidden;
         transition: padding 1s;
 
-        > .sidebar {
-            width: 50px;
-            margin-left: -50px;
-            flex-shrink: 0;
-
-            .item {
-                width: 100%;
-                padding: 1em 0;
-            }
-        }
-
         > .wrapper {
             background-color: $box-normal-background-color;
             box-shadow: $box-normal-box-shadow;
@@ -61,6 +50,13 @@ a {
 
     > .controls {
     }
+
+    .conversion-status {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
 
     > .errors {
         position: absolute;
