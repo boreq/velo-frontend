@@ -41,10 +41,17 @@ export default class Login extends Vue {
                 () => {
                     this.goToBrowse();
                 },
-                () => {
-                    Errors.sendError(this, 'Sign in process could not be completed.');
+                error => {
+                    if (error.response && error.response.status === 403) {
+                        Errors.sendError(this, 'Invalid username or password.');
+                    } else {
+                        Errors.sendError(this, 'Sign in process could not be completed.');
+                    }
                 },
-            );
+            ).finally(
+            () => {
+                this.working = false;
+            });
     }
 
     goToBrowse(): void {
