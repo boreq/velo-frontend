@@ -11,8 +11,9 @@ export const seekEvent = 'seek';
 })
 export default class Player extends Vue {
 
-    private apiService = new ApiService();
     private intervalID: number;
+
+    private readonly apiService = new ApiService(this);
 
     get nowPlaying(): Entry {
         return this.$store.getters.nowPlaying;

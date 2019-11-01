@@ -5,6 +5,8 @@ import Errors from '@/components/Errors.vue';
 import ConversionStatus from '@/components/ConversionStatus.vue';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { Mutation } from '@/store';
+import { ApiService } from '@/services/ApiService';
+import ErrorsClass from '@/components/Errors';
 
 
 @Component({
@@ -19,8 +21,12 @@ export default class App extends Vue {
 
     playbackData: PlaybackData = null;
 
+    private readonly apiService = new ApiService(this);
+
     created() {
         window.addEventListener('keydown', this.onKeyDown);
+        this.redirectToSetupIfNeeded();
+        this.loadCurrentUser();
     }
 
     destroyed(): void {
@@ -41,4 +47,23 @@ export default class App extends Vue {
         this.playbackData = playbackData;
     }
 
+    private redirectToSetupIfNeeded(): void {
+        this.apiService.stats()
+            .then(
+                response => {
+                    if (response.data.users === 0) {
+                        this.$router.push({name: 'setup'});
+                    }
+                },
+                () => {
+                    ErrorsClass.sendError(this, `Could not confirm whether this instance's setup process was completed.`);
+                });
+    }
+
+    private loadCurrentUser() {
+        this.apiService.refreshCurrentUser()
+            .catch(() => {
+                ErrorsClass.sendError(this, `Could not retrieve the current user.`);
+            });
+    }
 }

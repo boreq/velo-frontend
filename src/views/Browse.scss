@@ -1,23 +1,68 @@
 $padding: 2em;
 $artwork-size: 200px;
+$topbar-height: 45px;
 
 .browse {
     display: block;
     height: 100%;
 
     .wrapper {
-        display: flex;
-        align-items: stretch;
+        //display: flex;
+        //align-items: stretch;
         height: 100%;
 
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        grid-template-rows: $topbar-height 1fr;
+        //grid-column-gap: $spacing;
+        //grid-row-gap: $spacing;
+        grid-template-areas:
+                "topbar topbar"
+                "sidebar content";
+
+        .topbar {
+            grid-area: topbar;
+            display: flex;
+
+            .form-input {
+                flex: 1;
+                margin: 0;
+                border-left: 0;
+                border-top: 0;
+            }
+
+            .buttons {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                align-items: stretch;
+
+                .button {
+                    width: $topbar-height;
+                    border-right: $box-normal-border;
+                    border-bottom: $box-normal-border;
+
+                    line-height: $topbar-height;
+                    text-align: center;
+                    color: $box-normal-text-dimmed-color;
+                    font-size: 12px;
+
+                    i {
+                    }
+                }
+            }
+        }
+
         .sidebar {
-            width: 400px;
+            //width: 400px;
             border-right: $box-normal-border;
             box-sizing: border-box;
             color: $box-normal-text-color;
             text-align: right;
             display: flex;
             flex-flow: column;
+            grid-area: sidebar;
 
             .album, .now-playing {
                 padding: $padding;
@@ -82,8 +127,9 @@ $artwork-size: 200px;
 
         .content {
             padding: $padding;
-            flex: 1;
+            //flex: 1;
             overflow-y: auto;
+            grid-area: content;
 
             .tracks {
                 margin: 0 (-($padding));

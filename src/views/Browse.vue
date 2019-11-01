@@ -1,6 +1,15 @@
 <template>
     <div class="browse">
         <div class="wrapper">
+            <div class="topbar">
+                <form-input placeholder="Search"></form-input>
+                <ul class="buttons">
+                    <li class="button">
+                        <login-button></login-button>
+                    </li>
+                </ul>
+            </div>
+
             <div class="sidebar">
                 <div class="album" v-if="album">
                     <ul class="crumbs">

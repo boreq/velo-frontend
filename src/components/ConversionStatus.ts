@@ -15,7 +15,17 @@ export default class ConversionStatus extends Vue {
 
     private timeoutId: number = null;
 
-    private readonly apiService = new ApiService();
+    private readonly apiService = new ApiService(this);
+
+    created(): void {
+        this.update();
+    }
+
+    destroyed(): void {
+        if (this.timeoutId) {
+            window.clearTimeout(this.timeoutId);
+        }
+    }
 
     get isConverting(): boolean {
         const thumbnails = this.getThumbnailStats();
@@ -58,16 +68,6 @@ export default class ConversionStatus extends Vue {
         return text.join(' ');
     }
 
-
-    created(): void {
-        this.update();
-    }
-
-    destroyed(): void {
-        if (this.timeoutId) {
-            window.clearTimeout(this.timeoutId);
-        }
-    }
 
     private getPercentage(stats: StoreStats): number {
         if (stats.allItems === 0) {

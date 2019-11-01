@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { Album } from '@/dto/Album';
 import { Track } from '@/dto/Track';
+import { User } from '@/dto/User';
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ export enum Mutation {
     Unmute = 'unmute',
     Shuffle = 'shuffle',
     NoShuffle = 'noShuffle',
+    SetUser = 'setUser',
 }
 
 export class Entry {
@@ -30,6 +32,7 @@ export class State {
     volume: number; // [0, 1]
     muted: boolean;
     shuffle: boolean;
+    user: User;
 }
 
 export class ReplaceCommand {
@@ -49,6 +52,7 @@ export default new Vuex.Store<State>({
         volume: 0.5,
         muted: false,
         shuffle: false,
+        user: undefined,
     },
     mutations: {
         [Mutation.Replace](state: State, command: ReplaceCommand): void {
@@ -114,6 +118,9 @@ export default new Vuex.Store<State>({
         },
         [Mutation.NoShuffle](state: State): void {
             state.shuffle = false;
+        },
+        [Mutation.SetUser](state: State, user: User): void {
+            state.user = user;
         },
     },
     getters: {

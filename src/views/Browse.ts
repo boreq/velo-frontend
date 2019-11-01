@@ -6,7 +6,9 @@ import Albums from '@/components/Albums.vue';
 import Tracks from '@/components/Tracks.vue';
 import Thumbnail from '@/components/Thumbnail.vue';
 import NowPlaying from '@/components/NowPlaying.vue';
+import FormInput from '@/components/forms/FormInput.vue';
 import Errors from '@/components/Errors';
+import LoginButton from '@/components/LoginButton.vue';
 
 
 @Component({
@@ -16,6 +18,8 @@ import Errors from '@/components/Errors';
         Tracks,
         Thumbnail,
         NowPlaying,
+        FormInput,
+        LoginButton,
     },
 })
 export default class Browse extends Vue {
@@ -24,7 +28,7 @@ export default class Browse extends Vue {
 
     private timeoutId: number;
 
-    private apiService = new ApiService();
+    private readonly apiService = new ApiService(this);
 
     @Watch('$route')
     onRouteChanged(): void {
@@ -71,7 +75,7 @@ export default class Browse extends Vue {
                     }
                 },
                 () => {
-                    Errors.sendError(this, `Network error.`);
+                    Errors.sendError(this, 'Could not list the tracks and albums.');
                 });
     }
 

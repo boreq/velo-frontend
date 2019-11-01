@@ -21,7 +21,7 @@ export default class Thumbnail extends Vue {
 
     private timeoutId: number;
 
-    private readonly apiService = new ApiService();
+    private readonly apiService = new ApiService(this);
 
     get thumbnailUrl(): string {
         if (this.album) {

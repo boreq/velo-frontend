@@ -1,5 +1,6 @@
 export class Stats {
     conversion: ConversionStats;
+    users: number;
 }
 
 export class ConversionStats {

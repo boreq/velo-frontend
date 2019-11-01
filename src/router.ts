@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Browse from './views/Browse.vue';
+import Browse from '@/views/Browse.vue';
+import Setup from '@/views/Setup.vue';
+import Login from '@/views/Login.vue';
 
 Vue.use(Router);
 
@@ -17,6 +19,16 @@ export default new Router({
             path: '/browse',
             name: 'browse',
             component: Browse,
+        },
+        {
+            path: '/setup',
+            name: 'setup',
+            component: Setup,
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login,
         },
         {
             path: '*',

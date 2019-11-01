@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "js-cookie": "^2.2.1",
     "v-tooltip": "^2.0.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.1.0",
