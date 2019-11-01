@@ -22,4 +22,8 @@ export default class LoginButton extends Vue {
         this.$router.push({name: 'login'});
     }
 
+    settings(): void {
+        this.$router.push({name: 'settings'});
+    }
+
 }

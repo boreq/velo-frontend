@@ -101,6 +101,23 @@ export class ApiService {
         });
     }
 
+    logout(): Promise<void> {
+        const url = `user/logout`;
+        return new Promise((resolve, reject) => {
+            this.axios.post<void>(process.env.VUE_APP_API_PREFIX + url)
+                .then(
+                    () => {
+                        this.authService.clearToken();
+                        this.vue.$store.commit(Mutation.SetUser, null);
+                        resolve();
+                    },
+                    error => {
+                        reject(error);
+                    },
+                );
+        });
+    }
+
     refreshCurrentUser(): Promise<User> {
         const url = `user`;
         return new Promise((resolve, reject) => {

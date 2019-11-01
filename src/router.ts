@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Browse from '@/views/Browse.vue';
 import Setup from '@/views/Setup.vue';
 import Login from '@/views/Login.vue';
+import Settings from '@/views/Settings.vue';
 
 Vue.use(Router);
 
@@ -24,6 +25,11 @@ export default new Router({
             path: '/setup',
             name: 'setup',
             component: Setup,
+        },
+        {
+            path: '/settings',
+            name: 'settings',
+            component: Settings,
         },
         {
             path: '/login',

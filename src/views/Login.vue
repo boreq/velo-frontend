@@ -1,11 +1,14 @@
 <template>
     <div class="initialize">
-        <main-header text="Login"></main-header>
+        <action-bar>
+            <action-bar-button text="Go back to the music" icon="fas fa-arrow-left" @click="goToBrowse"></action-bar-button>
+        </action-bar>
+        <main-header text="Sign in"></main-header>
 
         <form>
             <form-input type="text" placeholder="Username" v-model="cmd.username"></form-input>
             <form-input type="password" placeholder="Password" v-model="cmd.password"></form-input>
-            <app-button text="Proceed" @click="submit" :disabled="!formValid"></app-button>
+            <app-button text="Proceed" @click="submit" :disabled="!formValid" :working="working"></app-button>
         </form>
     </div>
 </template>

@@ -3,7 +3,7 @@
         <div class="button" v-if="loading">
             <spinner></spinner>
         </div>
-        <a class="button" v-if="!loading && user" v-tooltip="'You are logged in as '+ user.username + '.'">
+        <a class="button" v-if="!loading && user" v-tooltip="'You are logged in as '+ user.username + '.'" @click="settings">
             <i class="fas fa-user-check"></i>
         </a>
         <a class="button" v-if="!loading && !user" v-tooltip="'You are not logged in.'" @click="login">

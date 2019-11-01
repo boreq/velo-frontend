@@ -1,76 +1,58 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import MainHeader from '@/components/MainHeader.vue';
+import SubHeader from '@/components/SubHeader.vue';
 import FormInput from '@/components/forms/FormInput.vue';
 import AppButton from '@/components/forms/AppButton.vue';
 import ActionBarButton from '@/components/ActionBarButton.vue';
 import ActionBar from '@/components/ActionBar.vue';
-import { CommandLogin } from '@/dto/CommandLogin';
-import { User } from '@/dto/User';
-import { LoginCommand } from '@/dto/LoginCommand';
-import Errors from '@/components/Errors';
 import { ApiService } from '@/services/ApiService';
+import Errors from '@/components/Errors';
+import { User } from '@/dto/User';
 
 
 @Component({
     components: {
         MainHeader,
+        SubHeader,
         FormInput,
         AppButton,
         ActionBar,
         ActionBarButton,
     },
 })
-export default class Login extends Vue {
+export default class Settings extends Vue {
 
-    cmd = new CommandLogin();
-    working = false;
-
+    logoutInProgress = false;
     private readonly apiService = new ApiService(this);
 
     @Watch('user', {immediate: true})
     onUserChanged(user: User): void {
-        if (user) {
+        if (user === null) {
             this.goToBrowse();
         }
-    }
-
-    submit(): void {
-        this.working = true;
-        this.apiService.login(this.cmd)
-            .then(
-                () => {
-                    this.goToBrowse();
-                },
-                () => {
-                    Errors.sendError(this, 'Sign in process could not be completed.');
-                },
-            );
     }
 
     goToBrowse(): void {
         this.$router.push({name: 'browse'});
     }
 
-    get formValid(): boolean {
-        return !this.formErrors || this.formErrors.length === 0;
-    }
-
-    get formErrors(): string[] {
-        const errors = [];
-
-        if (!this.cmd.username) {
-            errors.push('Username can not be empty.');
-        }
-
-        if (!this.cmd.password) {
-            errors.push('Password can not be empty.');
-        }
-
-        return errors;
+    logout(): void {
+        this.logoutInProgress = true;
+        this.apiService.logout()
+            .then(
+                () => {
+                    this.goToBrowse();
+                },
+                () => {
+                    Errors.sendError(this, 'There was an error during the sign out process.');
+                },
+            )
+            .finally(
+                () => this.logoutInProgress = false,
+            );
     }
 
     get user(): User {
         return this.$store.state.user;
     }
-
 }

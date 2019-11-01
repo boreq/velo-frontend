@@ -1,0 +1,13 @@
+.action-bar-button {
+    color: $box-normal-text-dimmed-color;
+    text-align: center;
+
+    a {
+        display: block;
+        cursor: pointer;
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+}
