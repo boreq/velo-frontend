@@ -1,8 +1,13 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { User } from '@/dto/User';
+import Spinner from '@/components/Spinner.vue';
 
 
-@Component
+@Component({
+    components: {
+        Spinner,
+    },
+})
 export default class LoginButton extends Vue {
 
     get loading(): boolean {

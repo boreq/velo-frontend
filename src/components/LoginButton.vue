@@ -1,7 +1,7 @@
 <template>
     <div class="login-button">
         <div class="button" v-if="loading">
-            <i class="fas fa-circle-notch fa-spin"></i>
+            <spinner></spinner>
         </div>
         <a class="button" v-if="!loading && user" v-tooltip="'You are logged in as '+ user.username + '.'">
             <i class="fas fa-user-check"></i>
