@@ -30,8 +30,6 @@ a {
         padding: 100px;
         overflow: hidden;
         transition: padding 1s;
-        max-width: 1200px;
-        margin: 0 auto;
 
         > .sidebar {
             width: 50px;
@@ -51,6 +49,8 @@ a {
             overflow: hidden;
             height: 100%;
             flex: 1 1 0;
+            max-width: 1200px;
+            margin: 0 auto;
 
             > .container {
                 overflow: hidden;
