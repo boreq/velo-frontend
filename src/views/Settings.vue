@@ -6,6 +6,13 @@
             <action-bar-button text="Go back to the music" icon="fas fa-arrow-left" @click="goToBrowse"></action-bar-button>
         </action-bar>
         <main-header text="Settings"></main-header>
+
+        <sub-header text="Users"></sub-header>
+        <Users v-if="user.administrator"></Users>
+
+        <sub-header text="Invitations"></sub-header>
+
+        <sub-header text="Connected instances"></sub-header>
     </div>
 </template>
 <script lang="ts" src="./Settings.ts"></script>

@@ -8,6 +8,7 @@ import ActionBar from '@/components/ActionBar.vue';
 import { ApiService } from '@/services/ApiService';
 import Errors from '@/components/Errors';
 import { User } from '@/dto/User';
+import Users from '@/components/Users.vue';
 
 
 @Component({
@@ -18,6 +19,7 @@ import { User } from '@/dto/User';
         AppButton,
         ActionBar,
         ActionBarButton,
+        Users,
     },
 })
 export default class Settings extends Vue {

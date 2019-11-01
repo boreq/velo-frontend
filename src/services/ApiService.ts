@@ -73,12 +73,12 @@ export class ApiService {
     }
 
     initialize(cmd: CommandInitialize): Promise<AxiosResponse<void>> {
-        const url = `user/register-initial`;
+        const url = `auth/register-initial`;
         return this.axios.post<void>(process.env.VUE_APP_API_PREFIX + url, cmd);
     }
 
     login(cmd: LoginCommand): Promise<void> {
-        const url = `user/login`;
+        const url = `auth/login`;
         return new Promise((resolve, reject) => {
             this.axios.post<LoginResponse>(process.env.VUE_APP_API_PREFIX + url, cmd)
                 .then(
@@ -102,7 +102,7 @@ export class ApiService {
     }
 
     logout(): Promise<void> {
-        const url = `user/logout`;
+        const url = `auth/logout`;
         return new Promise((resolve, reject) => {
             this.axios.post<void>(process.env.VUE_APP_API_PREFIX + url)
                 .then(
@@ -119,7 +119,7 @@ export class ApiService {
     }
 
     refreshCurrentUser(): Promise<User> {
-        const url = `user`;
+        const url = `auth`;
         return new Promise((resolve, reject) => {
             this.axios.get<User>(process.env.VUE_APP_API_PREFIX + url)
                 .then(
@@ -138,5 +138,9 @@ export class ApiService {
         });
     }
 
+    list(): Promise<AxiosResponse<User[]>> {
+        const url = `auth/users`;
+        return this.axios.get<User[]>(process.env.VUE_APP_API_PREFIX + url);
+    }
 
 }
