@@ -37,14 +37,17 @@ export default class Setup extends Vue {
                     this.apiService.login(loginCommand)
                         .then(
                             () => {
+                                this.working = false;
                                 this.$router.push({name: 'browse'});
                             },
                             () => {
+                                this.working = false;
                                 Errors.sendError(this, 'Initial setup succeeded but the automatic login failed.');
                             },
                         );
                 },
                 () => {
+                    this.working = false;
                     Errors.sendError(this, 'Error performing the initial setup.');
                 },
             );

@@ -3,9 +3,9 @@
         <main-header text="Create an administrator account"></main-header>
 
         <form>
-            <form-input type="text" placeholder="Username" v-model="cmd.username"></form-input>
-            <form-input type="password" placeholder="Password" v-model="cmd.password"></form-input>
-            <app-button text="Proceed" @click="submit" :disabled="!formValid"></app-button>
+            <form-input type="text" placeholder="Username" icon="fas fa-user" v-model="cmd.username"></form-input>
+            <form-input type="password" placeholder="Password" icon="fas fa-key" v-model="cmd.password"></form-input>
+            <app-button text="Proceed" @click="submit" :disabled="!formValid" :working="working"></app-button>
         </form>
     </div>
 </template>

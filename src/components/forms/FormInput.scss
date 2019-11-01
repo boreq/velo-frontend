@@ -1,9 +1,21 @@
 .form-input {
-    padding: .8em;
     margin: .5em 0;
     border: $box-normal-border;
-    font-size: inherit;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
+    padding: .8em;
+    display: flex;
+    align-items: center;
+    color: $box-normal-text-dimmed-color;
+
+    .icon+input{
+        padding-left: 1em;
+    }
+
+    input {
+        margin: 0;
+        border: 0;
+        font-size: inherit;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
 }

@@ -2,7 +2,8 @@
     <div class="browse">
         <div class="wrapper">
             <div class="topbar">
-                <form-input placeholder="Search"></form-input>
+                <form-input placeholder="Search" icon="fas fa-search"></form-input>
+
                 <ul class="buttons">
                     <li class="button">
                         <login-button></login-button>

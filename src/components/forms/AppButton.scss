@@ -9,16 +9,16 @@ $disabled-color: #ddd;
     display: block;
     text-align: center;
     font-weight: $font-weight-bold;
+    transition: 200ms all;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 
     &.disabled, &.working {
         border: $box-normal-border-width $box-normal-border-style $disabled-color;
         background-color: $disabled-color;
         cursor: not-allowed;
-    }
-
-    transition: 200ms all;
-
-    &:hover {
-        transform: scale(1.05);
+        transform: none;
     }
 }

@@ -12,4 +12,7 @@ export default class FormInput extends Vue {
     @Prop()
     value: any;
 
+    @Prop()
+    icon: string;
+
 }
