@@ -30,6 +30,7 @@ export default class Register extends Vue {
 
     submit(): void {
         this.working = true;
+        this.cmd.token = this.$route.params.token;
         this.apiService.register(this.cmd)
             .then(
                 () => {

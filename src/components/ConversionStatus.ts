@@ -99,15 +99,15 @@ export default class ConversionStatus extends Vue {
     }
 
     private getThumbnailStats(): StoreStats {
-        if (this.stats && this.stats.conversion) {
-            return this.stats.conversion.thumbnails;
+        if (this.stats) {
+            return this.stats.thumbnails;
         }
         return null;
     }
 
     private getTrackStats(): StoreStats {
-        if (this.stats && this.stats.conversion) {
-            return this.stats.conversion.tracks;
+        if (this.stats) {
+            return this.stats.tracks;
         }
         return null;
     }
