@@ -1,5 +1,5 @@
 <template>
-    <div class="browse">
+    <div class="browse" :class="{forbidden: forbidden}">
         <div class="wrapper">
             <div class="topbar">
                 <form-input placeholder="Search" icon="fas fa-search"></form-input>
@@ -47,6 +47,16 @@
                 <div v-if="album && album.albums">
                     <SubHeader text="Albums"></SubHeader>
                     <Albums :albums="album.albums" @select-album="selectAlbum"></Albums>
+                </div>
+
+            </div>
+
+            <div class="forbidden-message">
+                <div class="message">
+                    <div class="icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    Access denied, please confirm that you are signed in.
                 </div>
             </div>
         </div>

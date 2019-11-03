@@ -7,18 +7,12 @@ $topbar-height: 45px;
     height: 100%;
 
     .wrapper {
-        //display: flex;
-        //align-items: stretch;
         height: 100%;
 
         display: grid;
         grid-template-columns: 400px 1fr;
         grid-template-rows: $topbar-height 1fr;
-        //grid-column-gap: $spacing;
-        //grid-row-gap: $spacing;
-        grid-template-areas:
-                "topbar topbar"
-                "sidebar content";
+        grid-template-areas: "topbar topbar" "sidebar content";
 
         .topbar {
             grid-area: topbar;
@@ -124,12 +118,43 @@ $topbar-height: 45px;
 
         .content {
             padding: $padding;
-            //flex: 1;
             overflow-y: auto;
             grid-area: content;
 
             .tracks {
                 margin: 0 (-($padding));
+            }
+        }
+
+        .forbidden-message {
+            display: none;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            .message {
+                padding: 1em;
+
+                .icon {
+                    padding-bottom: 1em;
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+
+    &.forbidden {
+        .wrapper {
+            grid-template-areas: "topbar topbar" "forbidden forbidden";
+
+            .content, .sidebar {
+                display: none;
+            }
+
+            .forbidden-message {
+                display: flex;
+                grid-area: forbidden;
             }
         }
     }

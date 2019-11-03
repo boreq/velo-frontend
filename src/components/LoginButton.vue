@@ -3,10 +3,10 @@
         <div class="button" v-if="loading">
             <spinner></spinner>
         </div>
-        <a class="button" v-if="!loading && user" v-tooltip="'You are logged in as '+ user.username + '.'" @click="settings">
+        <a class="button" v-if="!loading && user" v-tooltip="'You are signed in as '+ user.username + '.'" @click="settings">
             <i class="fas fa-user-check"></i>
         </a>
-        <a class="button" v-if="!loading && !user" v-tooltip="'You are not logged in.'" @click="login">
+        <a class="button" v-if="!loading && !user" v-tooltip="'You are not signed in, some content may not be visible.'" @click="login">
             <i class="fas fa-user-times"></i>
         </a>
     </div>

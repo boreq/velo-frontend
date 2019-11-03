@@ -19,7 +19,7 @@ export default class LoginButton extends Vue {
     }
 
     login(): void {
-        this.$router.push({name: 'login'});
+        this.$router.push({name: 'login', query: {next: window.location.pathname}});
     }
 
     settings(): void {

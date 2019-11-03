@@ -26,6 +26,8 @@ export default class Browse extends Vue {
 
     album: Album = null;
 
+    forbidden = false;
+
     private timeoutId: number;
 
     private readonly apiService = new ApiService(this);
@@ -59,6 +61,22 @@ export default class Browse extends Vue {
         this.$router.push({path: `/browse/${path}`});
     }
 
+    get noContent(): boolean {
+        if (!this.album) {
+            return false;
+        }
+
+        if (this.album.tracks && this.album.tracks.length > 0) {
+            return false;
+        }
+
+        if (this.album.albums && this.album.albums.length > 0) {
+            return false;
+        }
+
+        return true;
+    }
+
     private load(): void {
         this.clearTimeout();
         const ids = this.getIdsFromRoute();
@@ -74,7 +92,10 @@ export default class Browse extends Vue {
                         }
                     }
                 },
-                () => {
+                error => {
+                    if (error.response.status === 403) {
+                        this.forbidden = true;
+                    }
                     Notifications.pushError(this, 'Could not list the tracks and albums.');
                 });
     }

@@ -35,10 +35,15 @@ export default class Login extends Vue {
 
     submit(): void {
         this.working = true;
+        const next = this.getNext(); // moving this into the promise breaks it for some reason
         this.apiService.login(this.cmd)
             .then(
                 () => {
-                    this.goToBrowse();
+                    if (next) {
+                        this.$router.push({path: next});
+                    } else {
+                        this.goToBrowse();
+                    }
                 },
                 error => {
                     if (error.response && error.response.status === 403) {
@@ -77,6 +82,14 @@ export default class Login extends Vue {
 
     get user(): User {
         return this.$store.state.user;
+    }
+
+    private getNext(): string {
+        const next = this.$route.query.next;
+        if (Array.isArray(next)) {
+            return next.length > 0 ? next[0] : null;
+        }
+        return next;
     }
 
 }
