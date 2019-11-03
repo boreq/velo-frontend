@@ -39,8 +39,11 @@ $topbar-height: 45px;
 
                     line-height: $topbar-height;
                     text-align: center;
-                    color: $box-normal-text-dimmed-color;
                     font-size: 12px;
+
+                    &:last-child {
+                        border-right: none;
+                    }
                 }
             }
         }
