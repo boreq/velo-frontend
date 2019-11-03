@@ -51,14 +51,13 @@ a {
     > .controls {
     }
 
-    .conversion-status {
+    > .conversion-status {
         position: absolute;
         top: 10px;
         left: 10px;
     }
 
-
-    > .errors {
+    > .notifications {
         position: absolute;
         bottom: 0;
         right: 0;

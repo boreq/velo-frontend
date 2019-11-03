@@ -1,12 +1,11 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Controls from '@/components/Controls.vue';
 import Player from '@/components/Player.vue';
-import Errors from '@/components/Errors.vue';
+import Notifications from '@/components/Notifications.vue';
 import ConversionStatus from '@/components/ConversionStatus.vue';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { Mutation } from '@/store';
 import { ApiService } from '@/services/ApiService';
-import ErrorsClass from '@/components/Errors';
 
 
 @Component({
@@ -14,13 +13,15 @@ import ErrorsClass from '@/components/Errors';
         Controls,
         Player,
         ConversionStatus,
-        Errors,
+        Notifications,
     },
 })
 export default class App extends Vue {
 
     playbackData: PlaybackData = null;
 
+    private readonly errCheckSetup = `Could not confirm whether this instance's setup process was completed.`;
+    private readonly errCheckUser = `Could not retrieve the current user.`;
     private readonly apiService = new ApiService(this);
 
     created() {
@@ -56,14 +57,14 @@ export default class App extends Vue {
                     }
                 },
                 () => {
-                    ErrorsClass.sendError(this, `Could not confirm whether this instance's setup process was completed.`);
+                    Notifications.pushError(this, this.errCheckSetup);
                 });
     }
 
     private loadCurrentUser() {
         this.apiService.refreshCurrentUser()
             .catch(() => {
-                ErrorsClass.sendError(this, `Could not retrieve the current user.`);
+                Notifications.pushError(this, this.errCheckUser);
             });
     }
 }

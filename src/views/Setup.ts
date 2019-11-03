@@ -5,7 +5,7 @@ import FormInput from '@/components/forms/FormInput.vue';
 import AppButton from '@/components/forms/AppButton.vue';
 import { CommandInitialize } from '@/dto/CommandInitialize';
 import { ApiService } from '@/services/ApiService';
-import Errors from '@/components/Errors';
+import Notifications from '@/components/Notifications';
 import { LoginCommand } from '@/dto/LoginCommand';
 
 
@@ -22,6 +22,9 @@ export default class Setup extends Vue {
     cmd = new CommandInitialize();
     working = false;
 
+    private readonly errLogin = 'Initial setup succeeded but the automatic login failed.';
+    private readonly errSetup = 'Error performing the initial setup.';
+    private readonly errCheckSetup = `Could not confirm whether this instance's setup process was completed.`;
     private readonly apiService = new ApiService(this);
 
     mounted(): void {
@@ -42,13 +45,13 @@ export default class Setup extends Vue {
                             },
                             () => {
                                 this.working = false;
-                                Errors.sendError(this, 'Initial setup succeeded but the automatic login failed.');
+                                Notifications.pushError(this, this.errLogin);
                             },
                         );
                 },
                 () => {
                     this.working = false;
-                    Errors.sendError(this, 'Error performing the initial setup.');
+                    Notifications.pushError(this, this.errSetup);
                 },
             );
     }
@@ -80,7 +83,7 @@ export default class Setup extends Vue {
                     }
                 },
                 () => {
-                    Errors.sendError(this, `Could not confirm whether this instance's setup process was completed.`);
+                    Notifications.pushError(this, this.errCheckSetup);
                 });
     }
 }

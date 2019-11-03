@@ -1,7 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { ApiService } from '@/services/ApiService';
 import { User } from '@/dto/User';
-import Errors from '@/components/Errors';
+import Notifications from '@/components/Notifications';
 
 
 @Component
@@ -22,7 +22,7 @@ export default class Users extends Vue {
                     this.users = response.data;
                 },
                 () => {
-                    Errors.sendError(this, 'Could not list the user accounts.');
+                    Notifications.pushError(this, 'Could not list the user accounts.');
                 },
             );
     }

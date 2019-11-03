@@ -5,7 +5,7 @@ import AppButton from '@/components/forms/AppButton.vue';
 import ActionBarButton from '@/components/ActionBarButton.vue';
 import ActionBar from '@/components/ActionBar.vue';
 import { User } from '@/dto/User';
-import Errors from '@/components/Errors';
+import Notifications from '@/components/Notifications';
 import { ApiService } from '@/services/ApiService';
 import { LoginCommand } from '@/dto/LoginCommand';
 
@@ -42,9 +42,9 @@ export default class Login extends Vue {
                 },
                 error => {
                     if (error.response && error.response.status === 403) {
-                        Errors.sendError(this, 'Invalid username or password.');
+                        Notifications.pushError(this, 'Invalid username or password.');
                     } else {
-                        Errors.sendError(this, 'Sign in process could not be completed.');
+                        Notifications.pushError(this, 'Sign in process could not be completed.');
                     }
                 },
             ).finally(

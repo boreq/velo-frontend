@@ -1,6 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { ApiService } from '@/services/ApiService';
-import Errors from '@/components/Errors';
+import Notifications from '@/components/Notifications';
 import AppButton from '@/components/forms/AppButton.vue';
 
 
@@ -23,14 +23,14 @@ export default class Invitation extends Vue {
                     this.token = response.data.token;
                 },
                 () => {
-                    Errors.sendError(this, 'Generating an invitation failed.');
+                    Notifications.pushError(this, 'Generating an invitation failed.');
                 },
             ).finally(() => this.working = false);
     }
 
     copy(): void {
         if (!navigator.clipboard) {
-            Errors.sendError(this, `
+            Notifications.pushError(this, `
                 The Clipboard API is not available.
                 Please note that the Clipboard API is only available in secure
                 contexts (websites secured with TLS).
@@ -44,7 +44,7 @@ export default class Invitation extends Vue {
                     console.log('Text copied.');
                 },
                 () => {
-                    Errors.sendError(this, 'Copying to clipboard failed.');
+                    Notifications.pushError(this, 'Copying to clipboard failed.');
                 },
             );
     }

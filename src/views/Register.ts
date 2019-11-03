@@ -4,7 +4,7 @@ import SubHeader from '@/components/SubHeader.vue';
 import FormInput from '@/components/forms/FormInput.vue';
 import AppButton from '@/components/forms/AppButton.vue';
 import { ApiService } from '@/services/ApiService';
-import Errors from '@/components/Errors';
+import Notifications from '@/components/Notifications';
 import { LoginCommand } from '@/dto/LoginCommand';
 import ActionBar from '@/components/ActionBar.vue';
 import ActionBarButton from '@/components/ActionBarButton.vue';
@@ -43,13 +43,13 @@ export default class Register extends Vue {
                             },
                             () => {
                                 this.working = false;
-                                Errors.sendError(this, 'Sign up succeeded but the automatic login failed.');
+                                Notifications.pushError(this, 'Sign up succeeded but the automatic login failed.');
                             },
                         );
                 },
                 () => {
                     this.working = false;
-                    Errors.sendError(this, 'Error during the sign up process.');
+                    Notifications.pushError(this, 'Error during the sign up process.');
                 },
             );
     }

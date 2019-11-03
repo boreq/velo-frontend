@@ -7,7 +7,7 @@ import Tracks from '@/components/Tracks.vue';
 import Thumbnail from '@/components/Thumbnail.vue';
 import NowPlaying from '@/components/NowPlaying.vue';
 import FormInput from '@/components/forms/FormInput.vue';
-import Errors from '@/components/Errors';
+import Notifications from '@/components/Notifications';
 import LoginButton from '@/components/LoginButton.vue';
 
 
@@ -75,7 +75,7 @@ export default class Browse extends Vue {
                     }
                 },
                 () => {
-                    Errors.sendError(this, 'Could not list the tracks and albums.');
+                    Notifications.pushError(this, 'Could not list the tracks and albums.');
                 });
     }
 

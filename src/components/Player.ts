@@ -2,7 +2,7 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
 import { Entry, Mutation } from '@/store';
 import { ApiService } from '@/services/ApiService';
 import { PlaybackData } from '@/dto/PlaybackData';
-import Errors from '@/components/Errors';
+import Notifications from '@/components/Notifications';
 
 export const seekEvent = 'seek';
 
@@ -81,7 +81,7 @@ export default class Player extends Vue {
     }
 
     onError(): void {
-        Errors.sendError(this, `Could not play "${this.nowPlaying.track.title}".`);
+        Notifications.pushError(this, `Could not play "${this.nowPlaying.track.title}".`);
         this.$store.commit(Mutation.Next);
     }
 

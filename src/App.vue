@@ -11,8 +11,8 @@
             <controls :playbackData="playbackData"></controls>
         </div>
         <player @playback-data="onPlaybackData($event)"></player>
-        <errors></errors>
-        <conversion-status></conversion-status>
+        <notifications class="notifications"></notifications>
+        <conversion-status class="conversion-status"></conversion-status>
     </div>
 </template>
 
