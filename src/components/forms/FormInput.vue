@@ -1,6 +1,8 @@
 <template>
     <div class="form-input">
-        <i v-if="icon" class="icon" :class="icon"></i>
+        <div v-if="icon" class="icon">
+            <i :class="icon"></i>
+        </div>
         <input :type="type" :placeholder="placeholder"
                :value="value" @input="$emit('input', $event.target.value)">
     </div>
