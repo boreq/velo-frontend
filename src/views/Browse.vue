@@ -2,7 +2,7 @@
     <div class="browse" :class="{forbidden: forbidden}">
         <div class="wrapper">
             <div class="topbar">
-                <form-input placeholder="Search" icon="fas fa-search"></form-input>
+                <search-input class="search"></search-input>
 
                 <ul class="buttons">
                     <li class="button">

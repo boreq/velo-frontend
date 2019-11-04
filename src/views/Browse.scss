@@ -18,11 +18,14 @@ $topbar-height: 45px;
             grid-area: topbar;
             display: flex;
 
-            .form-input {
+            .search {
                 flex: 1;
                 margin: 0;
                 border-left: 0;
                 border-top: 0;
+                height: $topbar-height;
+                display: flex;
+                border-right: $box-normal-border;
             }
 
             .buttons {
@@ -49,7 +52,6 @@ $topbar-height: 45px;
         }
 
         .sidebar {
-            //width: 400px;
             border-right: $box-normal-border;
             box-sizing: border-box;
             color: $box-normal-text-color;
