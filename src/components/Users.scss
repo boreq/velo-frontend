@@ -1,7 +1,10 @@
+$extra-padding: 3em;
+
 .users {
     table {
         width: 100%;
         border-collapse: collapse;
+        text-align: left;
 
         .user {
             &:nth-child(even) {
@@ -9,19 +12,38 @@
             }
         }
 
-        .role, .username {
+        th, td {
             padding: 1em;
         }
 
+        th {
+            border: 1px solid $box-normal-border-color;
+        }
+
+        thead, tr {
+            > :first-child {
+                padding-left: $extra-padding;
+            }
+
+            > :last-child {
+                padding-right: $extra-padding;
+            }
+        }
+
+
         .username {
-            text-align: left;
-            padding-left: 3em;
         }
 
         .role {
-            width: 100px;
-            text-align: right;
-            padding-right: 3em;
+            width: 150px;
+        }
+
+        .last-seen {
+            width: 150px;
+        }
+
+        .actions {
+            width: 150px;
         }
     }
 }

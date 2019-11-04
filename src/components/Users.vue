@@ -8,6 +8,12 @@
             <th class="role">
                 Role
             </th>
+            <th class="last-seen">
+                Last Seen
+            </th>
+            <th class="actions">
+                Actions
+            </th>
             </thead>
             <tbody>
             <tr class="user" v-for="user in users">
@@ -17,7 +23,15 @@
 
                 <td class="role">
                     <span v-if="user.administrator">Administrator</span>
-                    <span v-if="!user.administrator">Nobody</span>
+                    <span v-if="!user.administrator">User</span>
+                </td>
+
+                <td class="last-seen">
+                    2 days ago
+                </td>
+
+                <td class="actions">
+                    <i class="fas fa-times"></i>
                 </td>
             </tr>
             </tbody>
