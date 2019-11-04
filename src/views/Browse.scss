@@ -164,28 +164,19 @@ $topbar-height: 45px;
         }
     }
 
-    @media (max-width: 1200px) {
-        .wrapper {
-            .sidebar {
-                width: 400px;
-            }
-        }
-    }
-
     @media (max-width: 1000px) {
         .wrapper {
-            .sidebar {
-                width: 300px;
-            }
+            grid-template-columns: 300px 1fr;
         }
     }
 
     @media (max-width: $responsive-threshold-mobile) {
         .wrapper {
-            flex-direction: column;
+            grid-template-columns: 1fr;
+            grid-template-rows: $topbar-height auto 1fr;
+            grid-template-areas: "topbar" "sidebar" "content";
 
             .sidebar {
-                width: auto;
                 text-align: center;
                 border-right: none;
                 border-bottom: $box-normal-border;
