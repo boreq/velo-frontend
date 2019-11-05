@@ -15,6 +15,13 @@ export default class Users extends Vue {
         this.load();
     }
 
+    getRole(user: User): string {
+        if (user.administrator) {
+            return 'Administrator';
+        }
+        return 'User';
+    }
+
     private load(): void {
         this.apiService.list()
             .then(

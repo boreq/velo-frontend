@@ -30,20 +30,12 @@ $extra-padding: 3em;
             }
         }
 
-
-        .username {
-        }
-
-        .role {
-            width: 150px;
-        }
-
-        .last-seen {
+        .role, .created, .last-seen {
             width: 150px;
         }
 
         .actions {
-            width: 150px;
+            width: 50px;
         }
     }
 }

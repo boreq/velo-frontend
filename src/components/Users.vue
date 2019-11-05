@@ -8,6 +8,9 @@
             <th class="role">
                 Role
             </th>
+            <th class="created">
+                Signed Up
+            </th>
             <th class="last-seen">
                 Last Seen
             </th>
@@ -16,18 +19,21 @@
             </th>
             </thead>
             <tbody>
-            <tr class="user" v-for="user in users">
+            <tr class="user" v-for="user in users" :key="user.username">
                 <td class="username">
                     {{ user.username }}
                 </td>
 
                 <td class="role">
-                    <span v-if="user.administrator">Administrator</span>
-                    <span v-if="!user.administrator">User</span>
+                    {{ getRole(user) }}
+                </td>
+
+                <td class="created">
+                    <timeago :datetime="user.created"></timeago>
                 </td>
 
                 <td class="last-seen">
-                    2 days ago
+                    <timeago :datetime="user.lastSeen"></timeago>
                 </td>
 
                 <td class="actions">
