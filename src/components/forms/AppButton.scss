@@ -3,7 +3,7 @@ $disabled-color: #ddd;
 .app-button {
     padding: .8em;
     margin: 2em 0;
-    border: $box-normal-border-width $box-normal-border-style $primary-color;
+    border: $box-normal-border-width-wide $box-normal-border-style $primary-color;
     color: $primary-color;
     display: block;
     text-align: center;
@@ -16,7 +16,7 @@ $disabled-color: #ddd;
     }
 
     &.disabled, &.working {
-        border: $box-normal-border-width $box-normal-border-style $disabled-color;
+        border-color: $disabled-color;
         color: $disabled-color;
         cursor: not-allowed;
         transform: none;

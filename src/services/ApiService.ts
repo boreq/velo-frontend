@@ -154,4 +154,11 @@ export class ApiService {
         const url = `auth/create-invitation`;
         return this.axios.post<Invitation>(process.env.VUE_APP_API_PREFIX + url);
     }
+
+    remove(username: string): Promise<AxiosResponse<void>> {
+        username = encodeURIComponent(username);
+        const url = `auth/users/${username}/remove`;
+        return this.axios.post<void>(process.env.VUE_APP_API_PREFIX + url);
+    }
+
 }

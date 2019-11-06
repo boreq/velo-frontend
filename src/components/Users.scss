@@ -37,5 +37,15 @@ $extra-padding: 3em;
         .actions {
             width: 50px;
         }
+
+        a:hover {
+            color: $primary-color;
+        }
+    }
+
+    .spinner {
+        padding: 1em;
+        font-size: 20px;
+        text-align: center;
     }
 }

@@ -25,7 +25,7 @@
         display: block;
         width: 100%;
         box-sizing: border-box;
-        border-bottom: $box-normal-border;
+        border-bottom: $box-normal-border-width-wide $box-normal-border-style $box-normal-border-color;
         transition: $transition-duration border-color;
         background-color: transparent;
 

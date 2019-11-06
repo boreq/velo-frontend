@@ -37,11 +37,23 @@
                 </td>
 
                 <td class="actions">
-                    <i class="fas fa-times"></i>
+                    <v-popover offset="16">
+                        <a v-tooltip="'Remove this user.'" v-if="canRemove(user)">
+                            <i class="fas fa-times"></i>
+                        </a>
+
+                        <template slot="popover">
+                            <p>
+                                This action can not be undone, do you wish to proceed?
+                            </p>
+                            <app-button text="Confirm" v-close-popover @click="removeUser(user)"></app-button>
+                        </template>
+                    </v-popover>
                 </td>
             </tr>
             </tbody>
         </table>
+        <spinner v-if="!users"></spinner>
     </div>
 </template>
 <script lang="ts" src="./Users.ts"></script>

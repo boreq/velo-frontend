@@ -18,7 +18,8 @@ $box-normal-text-color: #222;
 $box-normal-text-dimmed-color: #aaa;
 $box-normal-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 $box-normal-border-color: #eee;
-$box-normal-border-width: 2px;
+$box-normal-border-width-wide: 2px;
+$box-normal-border-width: 1px;
 $box-normal-border-style: solid;
 $box-normal-border: $box-normal-border-width $box-normal-border-style $box-normal-border-color;
 
