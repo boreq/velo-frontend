@@ -11,6 +11,11 @@
     .artwork {
         box-shadow: $box-normal-box-shadow;
 
+        > * {
+            height: 100%;
+            width: 100%;
+        }
+
         .spinner-container {
             position: absolute;
             top: 0;
@@ -34,5 +39,11 @@
         align-items: center;
         text-shadow: $box-normal-box-shadow;
         color: $primary-color;
+    }
+
+    @media (max-width: $responsive-threshold-mobile) {
+        .icon {
+            font-size: 100px;
+        }
     }
 }
