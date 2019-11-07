@@ -1,47 +1,34 @@
-$spacing: 10px;
-$artwork-size: 45px;
-$font-size: 15px;
-$font-size-small: 12px;
+$spacing: 5px;
 
 .now-playing {
+    color: #fff;
+    overflow: hidden;
     display: flex;
-    height: $artwork-size;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2em 2em;
+    height: 60px;
+    box-sizing: border-box;
+    transition: $transition-duration opacity;
+    opacity: 1;
 
-    .artwork {
-        background-color: $primary-color;
-        width: $artwork-size;
-        height: $artwork-size;
-        margin-right: $spacing;
-        flex: 0 0 auto;
-        box-shadow: $box-normal-box-shadow;
-
-        a {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
+    &.hidden {
+        opacity: 0;
     }
 
-    .title {
-        flex: 1;
+    .trackTitle, .albumTitle {
+        white-space: nowrap;
         overflow: hidden;
-        display: flex;
-        flex-flow: column;
+        text-overflow: ellipsis;
+    }
 
-        .trackTitle, .albumTitle {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+    .trackTitle {
+        margin-bottom: $spacing;
+    }
 
-        .trackTitle {
-            margin-bottom: $spacing;
-        }
-
-        .albumTitle {
-            color: $box-dark-text-dimmed-color;
-            font-size: $font-size-small;
-        }
+    .albumTitle {
+        color: $box-dark-text-dimmed-color;
     }
 
     a {

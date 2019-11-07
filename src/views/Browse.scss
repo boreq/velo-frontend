@@ -10,9 +10,9 @@ $topbar-height: 45px;
         height: 100%;
 
         display: grid;
-        grid-template-columns: 400px 1fr;
+        grid-template-columns: 1fr;
         grid-template-rows: $topbar-height 1fr;
-        grid-template-areas: "topbar topbar" "sidebar content";
+        grid-template-areas: "topbar" "content";
 
         .topbar {
             grid-area: topbar;
@@ -51,80 +51,66 @@ $topbar-height: 45px;
             }
         }
 
-        .sidebar {
-            border-right: $box-normal-border;
-            box-sizing: border-box;
-            color: $box-normal-text-color;
-            text-align: right;
-            display: flex;
-            flex-flow: column;
-            grid-area: sidebar;
-
-            .album, .now-playing {
-                padding: $padding;
-            }
-
-            .album {
-                flex: 1;
-
-                .crumbs {
-                    margin: 0;
-                    padding: 0;
-                    font-size: 10px;
-                    text-transform: uppercase;
-                    color: inherit;
-
-                    li {
-                        display: inline-block;
-                        margin: 0;
-                        padding: 0;
-                        padding-bottom: 5px;
-
-                        &::after {
-                            content: "\f054";
-                            font-family: "Font Awesome 5 Free";
-                            margin: 0 10px;
-                            font-weight: 900;
-                        }
-
-                        &:last-child::after {
-                            display: none;
-                        }
-                    }
-
-                    a {
-                        color: inherit;
-                        text-decoration: none;
-
-                        &:hover {
-                            color: $primary-color;
-                        }
-                    }
-                }
-
-                .title {
-                    font-size: 25px;
-                    font-weight: bold;
-                }
-
-                .artwork {
-                    width: $artwork-size;
-                    height: $artwork-size;
-                    margin: 1em 0em 1em auto;
-                    box-shadow: $box-normal-box-shadow;
-                    background-color: $primary-color;
-                }
-            }
-
-            .now-playing {
-                border-top: $box-normal-border;
-            }
-        }
-
         .content {
             padding: $padding;
             overflow-y: auto;
             grid-area: content;
+
+            .album {
+                display: flex;
+                margin: -2em -2em 0 -2em;
+                padding: 2em;
+
+                .artwork {
+                    width: $artwork-size;
+                    height: $artwork-size;
+                    margin-right: 2em;
+                    box-shadow: $box-normal-box-shadow;
+                    background-color: $primary-color;
+                }
+
+                .info {
+                    .crumbs {
+                        margin: 0;
+                        padding: 0;
+                        font-size: 10px;
+                        text-transform: uppercase;
+                        color: inherit;
+
+                        li {
+                            display: inline-block;
+                            margin: 0;
+                            padding: 0;
+                            padding-bottom: 5px;
+
+                            &::after {
+                                content: "\f054";
+                                font-family: "Font Awesome 5 Free";
+                                margin: 0 10px;
+                                font-weight: 900;
+                            }
+
+                            &:last-child::after {
+                                display: none;
+                            }
+                        }
+
+                        a {
+                            color: inherit;
+                            text-decoration: none;
+
+                            &:hover {
+                                color: $primary-color;
+                            }
+                        }
+                    }
+
+                    .title {
+                        font-size: 25px;
+                        font-weight: $font-weight-bold;
+                    }
+                }
+            }
 
             .tracks {
                 margin: 0 (-($padding));
@@ -164,24 +150,13 @@ $topbar-height: 45px;
         }
     }
 
-    @media (max-width: 1000px) {
-        .wrapper {
-            grid-template-columns: 300px 1fr;
-        }
-    }
-
     @media (max-width: $responsive-threshold-mobile) {
         .wrapper {
-            grid-template-columns: 1fr;
-            grid-template-rows: $topbar-height auto 1fr;
-            grid-template-areas: "topbar" "sidebar" "content";
-
-            .sidebar {
-                text-align: center;
-                border-right: none;
-                border-bottom: $box-normal-border;
-
+            .content {
                 .album {
+                    text-align: center;
+                    justify-content: center;
+
                     .artwork {
                         display: none;
                     }

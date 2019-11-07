@@ -77,6 +77,20 @@ export default class Browse extends Vue {
         return true;
     }
 
+    get numberOfTracks(): number {
+        if (this.album && this.album.tracks) {
+            return this.album.tracks.length;
+        }
+        return 0;
+    }
+
+    get totalDurationMinutes(): number {
+        if (this.album && this.album.tracks) {
+            return Math.ceil(this.album.tracks.reduce((acc, track) => acc + track.duration, 0) / 60);
+        }
+        return 0;
+    }
+
     private load(): void {
         this.clearTimeout();
         const ids = this.getIdsFromRoute();

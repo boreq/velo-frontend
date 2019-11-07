@@ -11,34 +11,36 @@
                 </ul>
             </div>
 
-            <div class="sidebar">
+            <div class="content">
                 <div class="album" v-if="album">
-                    <ul class="crumbs">
-                        <li>
-                            <router-link to="/browse">
-                                Eggplant
-                            </router-link>
-                        </li>
-                        <li v-for="parent in album.parents">
-                            <router-link :to="parentUrl(parent)">
-                                {{ parent.title }}
-                            </router-link>
-                        </li>
-                    </ul>
-
-                    <div class="title">
-                        {{ album.title }}
-                    </div>
-
                     <div class="artwork">
                         <thumbnail :album="album"></thumbnail>
                     </div>
+
+                    <div class="info">
+                        <ul class="crumbs">
+                            <li>
+                                <router-link to="/browse">
+                                    Eggplant
+                                </router-link>
+                            </li>
+                            <li v-for="parent in album.parents">
+                                <router-link :to="parentUrl(parent)">
+                                    {{ parent.title }}
+                                </router-link>
+                            </li>
+                        </ul>
+
+                        <div class="title">
+                            {{ album.title }}
+                        </div>
+
+                        <div class="details" v-if="numberOfTracks > 0">
+                            {{ numberOfTracks }} tracks, {{ totalDurationMinutes }} minutes
+                        </div>
+                    </div>
                 </div>
 
-                <NowPlaying class="now-playing"></NowPlaying>
-            </div>
-
-            <div class="content">
                 <div v-if="album && album.tracks">
                     <SubHeader text="Tracks"></SubHeader>
                     <Tracks :tracks="album.tracks" :album="album"></Tracks>

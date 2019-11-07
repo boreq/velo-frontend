@@ -3,6 +3,7 @@ import Controls from '@/components/Controls.vue';
 import Player from '@/components/Player.vue';
 import Notifications from '@/components/Notifications.vue';
 import ConversionStatus from '@/components/ConversionStatus.vue';
+import NowPlaying from '@/components/NowPlaying.vue';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { Mutation } from '@/store';
 import { ApiService } from '@/services/ApiService';
@@ -14,6 +15,7 @@ import { ApiService } from '@/services/ApiService';
         Player,
         ConversionStatus,
         Notifications,
+        NowPlaying,
     },
 })
 export default class App extends Vue {

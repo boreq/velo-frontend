@@ -7,6 +7,9 @@
                 </div>
             </div>
         </div>
+        <div class="now-playing">
+            <now-playing></now-playing>
+        </div>
         <div class="controls">
             <controls :playbackData="playbackData"></controls>
         </div>

@@ -1,21 +1,14 @@
 <template>
-    <div class="now-playing" v-if="nowPlaying">
-        <div class="artwork">
-            <a @click="goToNowPlayingAlbum()">
-                <thumbnail :album="nowPlaying.album"></thumbnail>
+    <div class="now-playing" :class="{ hidden: !nowPlaying}">
+        <div class="trackTitle" v-if="nowPlaying">
+            <a @click="goToNowPlayingSong()">
+                {{ trackTitle }}
             </a>
         </div>
-        <div class="title">
-            <div class="trackTitle">
-                <a @click="goToNowPlayingSong()">
-                    {{ trackTitle }}
-                </a>
-            </div>
-            <div class="albumTitle">
-                <a @click="goToNowPlayingAlbum()">
-                    {{ albumTitle }}
-                </a>
-            </div>
+        <div class="albumTitle" v-if="nowPlaying">
+            <a @click="goToNowPlayingAlbum()">
+                {{ albumTitle }}
+            </a>
         </div>
     </div>
 </template>

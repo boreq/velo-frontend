@@ -9,7 +9,6 @@ export class NavigationService {
                 .map(v => v.id)
                 .forEach(id => ids.push(id));
         }
-        ids.push(album.id);
         const path = ids.join('/');
         return `/browse/${path}`;
     }
