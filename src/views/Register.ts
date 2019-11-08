@@ -29,6 +29,10 @@ export default class Register extends Vue {
     private readonly apiService = new ApiService(this);
 
     submit(): void {
+        if (!this.formValid) {
+            return;
+        }
+
         this.working = true;
         this.cmd.token = this.$route.params.token;
         this.apiService.register(this.cmd)

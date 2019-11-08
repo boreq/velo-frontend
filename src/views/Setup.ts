@@ -32,6 +32,10 @@ export default class Setup extends Vue {
     }
 
     submit(): void {
+        if (!this.formValid) {
+            return;
+        }
+
         this.working = true;
         this.apiService.initialize(this.cmd)
             .then(

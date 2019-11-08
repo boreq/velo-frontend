@@ -15,4 +15,10 @@ export default class FormInput extends Vue {
     @Prop()
     icon: string;
 
+    onKeyDown(event: KeyboardEvent): void {
+        if (event.key === 'Enter') {
+            this.$emit('submit');
+        }
+    }
+
 }

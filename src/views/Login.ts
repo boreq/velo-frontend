@@ -34,6 +34,10 @@ export default class Login extends Vue {
     }
 
     submit(): void {
+        if (!this.formValid) {
+            return;
+        }
+
         this.working = true;
         const next = this.getNext(); // moving this into the promise breaks it for some reason
         this.apiService.login(this.cmd)
