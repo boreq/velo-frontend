@@ -39,8 +39,8 @@ export default class Users extends Vue {
                 () => {
                     this.load();
                 },
-                () => {
-                    Notifications.pushError(this, `Could not remove the user '${user.username}'.`);
+                error => {
+                    Notifications.pushError(this, `Could not remove the user '${user.username}'.`, error);
                 },
             );
     }
@@ -56,8 +56,8 @@ export default class Users extends Vue {
                 response => {
                     this.users = response.data;
                 },
-                () => {
-                    Notifications.pushError(this, 'Could not list the user accounts.');
+                error => {
+                    Notifications.pushError(this, 'Could not list the user accounts.', error);
                 },
             );
     }

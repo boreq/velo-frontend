@@ -50,6 +50,13 @@ export default class App extends Vue {
         this.playbackData = playbackData;
     }
 
+    get isCsd(): boolean {
+        const now = new Date();
+        const day = now.getDate();
+        const month = now.getMonth() + 1;
+        return day === 28 && month === 6;
+    }
+
     private redirectToSetupIfNeeded(): void {
         this.apiService.stats()
             .then(
@@ -58,15 +65,15 @@ export default class App extends Vue {
                         this.$router.push({name: 'setup'});
                     }
                 },
-                () => {
-                    Notifications.pushError(this, this.errCheckSetup);
+                error => {
+                    Notifications.pushError(this, this.errCheckSetup, error);
                 });
     }
 
     private loadCurrentUser() {
         this.apiService.refreshCurrentUser()
-            .catch(() => {
-                Notifications.pushError(this, this.errCheckUser);
+            .catch(error => {
+                Notifications.pushError(this, this.errCheckUser, error);
             });
     }
 }

@@ -110,7 +110,7 @@ export default class Browse extends Vue {
                     if (error.response.status === 403) {
                         this.forbidden = true;
                     }
-                    Notifications.pushError(this, 'Could not list the tracks and albums.');
+                    Notifications.pushError(this, 'Could not list the tracks and albums.', error);
                 });
     }
 

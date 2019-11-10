@@ -1,7 +1,12 @@
 <template>
     <ul class="notifications">
-        <li class="notification" :class="{ hide: shouldHide(notification) }" v-for="notification of notifications" :key="notification.id">
-            {{ notification.text }}
+        <li class="notification" :class="[notification.class, 'hide' ? shouldHide(notification) : '']" v-for="notification of notifications" :key="notification.id">
+            <div class="text">
+                {{ notification.text }}
+            </div>
+            <div class="extra" v-if="notification.extra">
+                {{ notification.extra }}
+            </div>
         </li>
     </ul>
 </template>

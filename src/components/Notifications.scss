@@ -1,3 +1,6 @@
+$red: #ef6155;
+$green: #2ecc71;
+
 .notifications {
     margin: 0;
     padding: 0;
@@ -7,12 +10,25 @@
         padding: 1em;
         margin: 1em;
         border-radius: $box-border-radius;
-        background-color: #ef6155;
         width: 250px;
         color: $box-dark-text-color;
         box-shadow: $box-normal-box-shadow;
         transition: 0s all;
         overflow: hidden;
+
+        .extra {
+            background-color: rgba(1, 1, 1, 0.2);
+            padding: 1em;
+            margin-top: 1em;
+        }
+
+        &.error {
+            background-color: $red;
+        }
+
+        &.success {
+            background-color: $green;
+        }
 
         &.hide {
             animation: hide 500ms linear 0s 1 normal forwards;

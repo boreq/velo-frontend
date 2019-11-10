@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" :class="{csd: isCsd}">
         <div class="content">
             <div class="wrapper">
                 <div class="container">

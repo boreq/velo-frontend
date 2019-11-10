@@ -5,11 +5,26 @@ export default class Notifications extends Vue {
 
     static readonly notificationEvent = 'eggplant_notification';
 
-    static pushError(vue: Vue, text: string): void {
+    static pushError(vue: Vue, text: string, error?: any): void {
+        const extra = error && error.response && error.response.data && error.response.data.message ? error.response.data.message : null;
+
         const notification: Notification = {
             id: this.notificationId++,
+            class: 'error',
             created: new Date(),
             text: text,
+            extra: extra,
+        };
+        vue.$root.$emit(this.notificationEvent, notification);
+    }
+
+    static pushSuccess(vue: Vue, text: string): void {
+        const notification: Notification = {
+            id: this.notificationId++,
+            class: 'success',
+            created: new Date(),
+            text: text,
+            extra: null,
         };
         vue.$root.$emit(this.notificationEvent, notification);
     }
@@ -52,6 +67,8 @@ export default class Notifications extends Vue {
 
 class Notification {
     id: number;
+    class: string;
     created: Date;
     text: string;
+    extra: string;
 }

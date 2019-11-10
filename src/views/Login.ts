@@ -50,11 +50,7 @@ export default class Login extends Vue {
                     }
                 },
                 error => {
-                    if (error.response && error.response.status === 403) {
-                        Notifications.pushError(this, 'Invalid username or password.');
-                    } else {
-                        Notifications.pushError(this, 'Sign in process could not be completed.');
-                    }
+                    Notifications.pushError(this, 'Sign in process could not be completed.', error);
                 },
             ).finally(
             () => {

@@ -47,15 +47,15 @@ export default class Setup extends Vue {
                                 this.working = false;
                                 this.$router.push({name: 'browse'});
                             },
-                            () => {
+                            error => {
                                 this.working = false;
-                                Notifications.pushError(this, this.errLogin);
+                                Notifications.pushError(this, this.errLogin, error);
                             },
                         );
                 },
-                () => {
+                error => {
                     this.working = false;
-                    Notifications.pushError(this, this.errSetup);
+                    Notifications.pushError(this, this.errSetup, error);
                 },
             );
     }
@@ -86,8 +86,8 @@ export default class Setup extends Vue {
                         this.$router.push({name: 'browse'});
                     }
                 },
-                () => {
-                    Notifications.pushError(this, this.errCheckSetup);
+                error => {
+                    Notifications.pushError(this, this.errCheckSetup, error);
                 });
     }
 }

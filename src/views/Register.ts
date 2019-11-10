@@ -45,15 +45,15 @@ export default class Register extends Vue {
                                 this.working = false;
                                 this.$router.push({name: 'browse'});
                             },
-                            () => {
+                            error => {
                                 this.working = false;
-                                Notifications.pushError(this, 'Sign up succeeded but the automatic login failed.');
+                                Notifications.pushError(this, 'Sign up succeeded but the automatic login failed.', error);
                             },
                         );
                 },
-                () => {
+                error => {
                     this.working = false;
-                    Notifications.pushError(this, 'Error during the sign up process.');
+                    Notifications.pushError(this, 'Error during the sign up process.', error);
                 },
             );
     }

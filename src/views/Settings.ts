@@ -47,8 +47,8 @@ export default class Settings extends Vue {
                 () => {
                     this.goToBrowse();
                 },
-                () => {
-                    Notifications.pushError(this, 'There was an error during the sign out process.');
+                error => {
+                    Notifications.pushError(this, 'There was an error during the sign out process.', error);
                 },
             )
             .finally(

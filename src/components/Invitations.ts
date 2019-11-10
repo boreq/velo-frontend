@@ -22,8 +22,8 @@ export default class Invitation extends Vue {
                 response => {
                     this.token = response.data.token;
                 },
-                () => {
-                    Notifications.pushError(this, 'Generating an invitation failed.');
+                error => {
+                    Notifications.pushError(this, 'Generating an invitation failed.', error);
                 },
             ).finally(() => this.working = false);
     }
@@ -41,7 +41,7 @@ export default class Invitation extends Vue {
         navigator.clipboard.writeText(this.invitationUrl)
             .then(
                 () => {
-                    console.log('Text copied.');
+                    Notifications.pushSuccess(this, 'The invitation link has been copied.');
                 },
                 () => {
                     Notifications.pushError(this, 'Copying to clipboard failed.');
