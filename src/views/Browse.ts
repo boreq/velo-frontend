@@ -113,6 +113,7 @@ export default class Browse extends Vue {
                         this.forbidden = true;
                     }
                     Notifications.pushError(this, 'Could not list the tracks and albums.', error);
+                    this.scheduleTimeout();
                 });
     }
 
