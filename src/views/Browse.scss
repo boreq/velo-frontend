@@ -56,6 +56,12 @@ $topbar-height: 45px;
             overflow-y: auto;
             grid-area: content;
 
+            .spinner {
+                text-align: center;
+                padding: 1em;
+                font-size: 20px;
+            }
+
             .album {
                 display: flex;
                 margin: -2em -2em 0 -2em;

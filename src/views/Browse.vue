@@ -12,6 +12,8 @@
             </div>
 
             <div class="content">
+                <spinner v-if="!album" class="spinner"></spinner>
+
                 <div class="album" v-if="album">
                     <div class="artwork">
                         <thumbnail :album="album"></thumbnail>
@@ -50,7 +52,6 @@
                     <SubHeader text="Albums"></SubHeader>
                     <Albums :albums="album.albums" @select-album="selectAlbum"></Albums>
                 </div>
-
             </div>
 
             <div class="forbidden-message">

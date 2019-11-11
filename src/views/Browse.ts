@@ -9,6 +9,7 @@ import NowPlaying from '@/components/NowPlaying.vue';
 import Notifications from '@/components/Notifications';
 import LoginButton from '@/components/LoginButton.vue';
 import SearchInput from '@/components/forms/SearchInput.vue';
+import Spinner from '@/components/Spinner.vue';
 
 
 @Component({
@@ -20,6 +21,7 @@ import SearchInput from '@/components/forms/SearchInput.vue';
         NowPlaying,
         SearchInput,
         LoginButton,
+        Spinner,
     },
 })
 export default class Browse extends Vue {
