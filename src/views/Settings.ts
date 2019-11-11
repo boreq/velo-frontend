@@ -40,6 +40,10 @@ export default class Settings extends Vue {
         this.$router.push({name: 'browse'});
     }
 
+    goToStats(): void {
+        this.$router.push({name: 'stats'});
+    }
+
     logout(): void {
         this.logoutInProgress = true;
         this.apiService.logout()

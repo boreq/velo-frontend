@@ -7,4 +7,6 @@ export class Stats {
 export class StoreStats {
     allItems: number;
     convertedItems: number;
+    originalSize: number;
+    convertedSize: number;
 }
