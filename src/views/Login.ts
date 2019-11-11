@@ -29,7 +29,7 @@ export default class Login extends Vue {
     @Watch('user', {immediate: true})
     onUserChanged(user: User): void {
         if (user) {
-            this.goToBrowse();
+            this.escapeToBrowse();
         }
     }
 
@@ -44,9 +44,9 @@ export default class Login extends Vue {
             .then(
                 () => {
                     if (next) {
-                        this.$router.push({path: next});
+                        this.$router.replace({path: next});
                     } else {
-                        this.goToBrowse();
+                        this.escapeToBrowse();
                     }
                 },
                 error => {
@@ -60,6 +60,10 @@ export default class Login extends Vue {
 
     goToBrowse(): void {
         this.$router.push({name: 'browse'});
+    }
+
+    escapeToBrowse(): void {
+        this.$router.replace({name: 'browse'});
     }
 
     get formValid(): boolean {

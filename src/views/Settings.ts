@@ -32,8 +32,12 @@ export default class Settings extends Vue {
     @Watch('user', {immediate: true})
     onUserChanged(user: User): void {
         if (user === null) {
-            this.goToBrowse();
+            this.escapeToBrowse();
         }
+    }
+
+    escapeToBrowse(): void {
+        this.$router.replace({name: 'browse'});
     }
 
     goToBrowse(): void {
@@ -49,7 +53,7 @@ export default class Settings extends Vue {
         this.apiService.logout()
             .then(
                 () => {
-                    this.goToBrowse();
+                    this.escapeToBrowse();
                 },
                 error => {
                     Notifications.pushError(this, 'There was an error during the sign out process.', error);

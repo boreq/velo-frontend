@@ -45,7 +45,7 @@ export default class Setup extends Vue {
                         .then(
                             () => {
                                 this.working = false;
-                                this.$router.push({name: 'browse'});
+                                this.$router.replace({name: 'browse'});
                             },
                             error => {
                                 this.working = false;
@@ -83,7 +83,7 @@ export default class Setup extends Vue {
             .then(
                 response => {
                     if (response.data.users !== 0) {
-                        this.$router.push({name: 'browse'});
+                        this.$router.replace({name: 'browse'});
                     }
                 },
                 error => {

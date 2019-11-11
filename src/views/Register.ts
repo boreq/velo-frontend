@@ -1,4 +1,4 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import MainHeader from '@/components/MainHeader.vue';
 import SubHeader from '@/components/SubHeader.vue';
 import FormInput from '@/components/forms/FormInput.vue';
@@ -9,6 +9,7 @@ import { LoginCommand } from '@/dto/LoginCommand';
 import ActionBar from '@/components/ActionBar.vue';
 import ActionBarButton from '@/components/ActionBarButton.vue';
 import { RegisterCommand } from '@/dto/RegisterCommand';
+import { User } from '@/dto/User';
 
 
 @Component({
@@ -28,6 +29,13 @@ export default class Register extends Vue {
 
     private readonly apiService = new ApiService(this);
 
+    @Watch('user', {immediate: true})
+    onUserChanged(user: User): void {
+        if (user) {
+            this.escapeToBrowse();
+        }
+    }
+
     submit(): void {
         if (!this.formValid) {
             return;
@@ -43,7 +51,7 @@ export default class Register extends Vue {
                         .then(
                             () => {
                                 this.working = false;
-                                this.$router.push({name: 'browse'});
+                                this.escapeToBrowse();
                             },
                             error => {
                                 this.working = false;
@@ -56,6 +64,10 @@ export default class Register extends Vue {
                     Notifications.pushError(this, 'Error during the sign up process.', error);
                 },
             );
+    }
+
+    escapeToBrowse(): void {
+        this.$router.replace({name: 'browse'});
     }
 
     goToBrowse(): void {
