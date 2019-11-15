@@ -13,8 +13,8 @@ export default class StoreStats extends Vue {
         if (this.stats.allItems === 0) {
             return '100%';
         }
-        const number = this.stats.convertedItems / this.stats.allItems;
-        return Math.round(number * 100) + '%';
+        const ratio = this.stats.convertedItems / this.stats.allItems;
+        return Math.round(ratio * 100) + '%';
     }
 
     get originalSize(): string {
@@ -29,8 +29,8 @@ export default class StoreStats extends Vue {
         if (this.stats.originalSize === 0) {
             return '100%';
         }
-        const number = this.stats.convertedSize / this.stats.originalSize;
-        return Math.round(number * 100) + '%';
+        const ratio = this.stats.convertedSize / this.stats.originalSize;
+        return Math.round(ratio * 100) + '%';
     }
 
     private humanize(bytes: number): string {

@@ -28,6 +28,8 @@ export default class Register extends Vue {
     working = false;
 
     private readonly apiService = new ApiService(this);
+    private readonly errLogin = `Sign up succeeded but the automatic login failed.`;
+    private readonly errSignUp = `Error during the sign up process.`;
 
     @Watch('user', {immediate: true})
     onUserChanged(user: User): void {
@@ -55,13 +57,13 @@ export default class Register extends Vue {
                             },
                             error => {
                                 this.working = false;
-                                Notifications.pushError(this, 'Sign up succeeded but the automatic login failed.', error);
+                                Notifications.pushError(this, this.errLogin, error);
                             },
                         );
                 },
                 error => {
                     this.working = false;
-                    Notifications.pushError(this, 'Error during the sign up process.', error);
+                    Notifications.pushError(this, this.errSignUp, error);
                 },
             );
     }
