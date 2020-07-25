@@ -7,7 +7,7 @@ import Tracks from '@/components/Tracks.vue';
 import Thumbnail from '@/components/Thumbnail.vue';
 import NowPlaying from '@/components/NowPlaying.vue';
 import Notifications from '@/components/Notifications';
-import LoginButton from '@/components/LoginButton.vue';
+import CurrentUser from '@/components/CurrentUser.vue';
 import SearchInput from '@/components/forms/SearchInput.vue';
 import Spinner from '@/components/Spinner.vue';
 
@@ -20,7 +20,7 @@ import Spinner from '@/components/Spinner.vue';
         Thumbnail,
         NowPlaying,
         SearchInput,
-        LoginButton,
+        CurrentUser,
         Spinner,
     },
 })

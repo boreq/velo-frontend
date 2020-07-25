@@ -8,7 +8,7 @@ import Spinner from '@/components/Spinner.vue';
         Spinner,
     },
 })
-export default class LoginButton extends Vue {
+export default class CurrentUser extends Vue {
 
     get loading(): boolean {
         return this.user === undefined;

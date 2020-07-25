@@ -8,7 +8,6 @@ html {
     font-family: 'Raleway', sans-serif;
     font-size: 12px;
     color: $box-normal-text-color;
-    background: url('./assets/images/background.jpg') no-repeat center bottom fixed;
     background-size: cover;
 }
 
@@ -18,15 +17,35 @@ a {
 }
 
 #app {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-flow: column;
 
-    &.csd {
-        background: linear-gradient(to bottom, #e2453c 0, #e2453c 16.66%, #e07e39 16.66%, #e07e39 33.33%, #e5d667 33.33%, #e5d667 50%, #51b95b 50%, #51b95b 66.66%, #1e72b7 66.66%, #1e72b7 83.33%, #6f5ba7 83.33%) no-repeat;
+    > .container {
+        max-width: 1000px;
+        margin: 0 auto;
+
+        > .wrapper {
+            padding: 0 1em;
+            display: grid;
+
+            grid-template-columns: 200px auto;
+            grid-template-rows: auto 1fr;
+            grid-template-areas:
+                "header content"
+                "menu content";
+
+            > .header {
+                grid-area: header;
+            }
+
+            > .menu {
+                grid-area: menu;
+            }
+
+            > .content {
+                grid-area: content;
+            }
+        }
     }
+
 
     > .content {
         flex: 1;
@@ -52,12 +71,6 @@ a {
                 height: 100%;
             }
         }
-    }
-
-    > .conversion-status {
-        position: absolute;
-        top: 10px;
-        left: 10px;
     }
 
     > .notifications {

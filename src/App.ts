@@ -1,21 +1,17 @@
 import { Component, Vue } from 'vue-property-decorator';
-import Controls from '@/components/Controls.vue';
-import Player from '@/components/Player.vue';
 import Notifications from '@/components/Notifications.vue';
-import ConversionStatus from '@/components/ConversionStatus.vue';
-import NowPlaying from '@/components/NowPlaying.vue';
+import SiteHeader from '@/components/SiteHeader.vue';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { Mutation } from '@/store';
 import { ApiService } from '@/services/ApiService';
+import CurrentUser from '@/components/CurrentUser.vue';
 
 
 @Component({
     components: {
-        Controls,
-        Player,
-        ConversionStatus,
         Notifications,
-        NowPlaying,
+        SiteHeader,
+        CurrentUser,
     },
 })
 export default class App extends Vue {
@@ -48,13 +44,6 @@ export default class App extends Vue {
 
     onPlaybackData(playbackData: PlaybackData): void {
         this.playbackData = playbackData;
-    }
-
-    get isCsd(): boolean {
-        const now = new Date();
-        const day = now.getDate();
-        const month = now.getMonth() + 1;
-        return day === 28 && month === 6;
     }
 
     private redirectToSetupIfNeeded(): void {
