@@ -1,7 +1,6 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 html {
@@ -16,16 +15,20 @@ a {
     transition: color $transition-duration, background-color 200ms;
 }
 
+a:hover {
+    color: $primary-color;
+}
+
 #app {
 
     > .container {
-        max-width: 1000px;
+        max-width: 800px;
         margin: 0 auto;
 
         > .wrapper {
             padding: 0 1em;
-            display: grid;
 
+            display: grid;
             grid-template-columns: 200px auto;
             grid-template-rows: auto 1fr;
             grid-template-areas:
@@ -47,31 +50,31 @@ a {
     }
 
 
-    > .content {
-        flex: 1;
-        display: flex;
-        padding: 50px;
-        overflow: hidden;
-        transition: padding 1s, width 1s, height 1s, max-width 1s, max-height 1s;
-        align-items: center;
-
-        > .wrapper {
-            background-color: $box-normal-background-color;
-            box-shadow: $box-normal-box-shadow;
-            border-radius: $box-border-radius;
-            overflow: hidden;
-            height: 100%;
-            flex: 1 1 0;
-            max-width: 1000px;
-            max-height: 700px;
-            margin: 0 auto;
-
-            > .container {
-                overflow: hidden;
-                height: 100%;
-            }
-        }
-    }
+    //> .content {
+    //    flex: 1;
+    //    display: flex;
+    //    padding: 50px;
+    //    overflow: hidden;
+    //    transition: padding 1s, width 1s, height 1s, max-width 1s, max-height 1s;
+    //    align-items: center;
+    //
+    //    > .wrapper {
+    //        background-color: $box-normal-background-color;
+    //        box-shadow: $box-normal-box-shadow;
+    //        border-radius: $box-border-radius;
+    //        overflow: hidden;
+    //        height: 100%;
+    //        flex: 1 1 0;
+    //        max-width: 1000px;
+    //        max-height: 700px;
+    //        margin: 0 auto;
+    //
+    //        > .container {
+    //            overflow: hidden;
+    //            height: 100%;
+    //        }
+    //    }
+    //}
 
     > .notifications {
         position: absolute;

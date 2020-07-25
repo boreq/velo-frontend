@@ -6,6 +6,7 @@ import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
 import Settings from '@/views/Settings.vue';
 import Stats from '@/views/Stats.vue';
+import Profile from '@/views/Profile.vue';
 
 Vue.use(Router);
 
@@ -47,6 +48,11 @@ export default new Router({
             path: '/register/:token',
             name: 'register',
             component: Register,
+        },
+        {
+            path: '/u/:username',
+            name: 'profile',
+            component: Profile,
         },
         {
             path: '*',
