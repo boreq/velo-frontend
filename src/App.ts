@@ -58,10 +58,10 @@ export default class App extends Vue {
     }
 
     private redirectToSetupIfNeeded(): void {
-        this.apiService.stats()
+        this.apiService.setup()
             .then(
                 response => {
-                    if (response.data.users === 0) {
+                    if (!response.data.completed) {
                         this.$router.push({name: 'setup'});
                     }
                 },

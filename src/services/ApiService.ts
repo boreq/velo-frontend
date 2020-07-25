@@ -10,6 +10,7 @@ import { AuthService } from '@/services/AuthService';
 import { User } from '@/dto/User';
 import { Invitation } from '@/dto/Invitation';
 import { RegisterCommand } from '@/dto/RegisterCommand';
+import { SetupResponse } from '@/dto/SetupResponse';
 
 /*
 declare module 'vue-property-decorator' {
@@ -51,6 +52,11 @@ export class ApiService {
                 }
                 return Promise.reject(error);
             });
+    }
+
+    setup(): Promise<AxiosResponse<SetupResponse>> {
+        const url = `setup`;
+        return this.axios.get<SetupResponse>(process.env.VUE_APP_API_PREFIX + url);
     }
 
     browse(ids: string[]): Promise<AxiosResponse<Album>> {
