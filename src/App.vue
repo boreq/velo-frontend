@@ -7,7 +7,7 @@
                 </div>
 
                 <div class="menu">
-                    <current-user></current-user>
+                    <main-menu></main-menu>
                 </div>
 
                 <div class="content">

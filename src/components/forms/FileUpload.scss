@@ -1,0 +1,38 @@
+.file-upload {
+    padding: 4em 1em;
+    text-align: center;
+    border: 2px solid $border-color;
+    border-radius: $border-radius;
+    position: relative;
+
+    .call-to-action {
+        color: $text-color-dimmed;
+    }
+
+    &.dragging {
+        color: $primary-color;
+        border-color: $primary-color;
+    }
+
+    .selected-file {
+        color: $text-color;
+    }
+
+    &:hover {
+        cursor: pointer;
+        border-color: $primary-color;
+    }
+
+    .drop-zone {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+
+    input {
+        display: none;
+    }
+}

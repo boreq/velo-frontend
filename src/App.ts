@@ -4,14 +4,14 @@ import SiteHeader from '@/components/SiteHeader.vue';
 import { PlaybackData } from '@/dto/PlaybackData';
 import { Mutation } from '@/store';
 import { ApiService } from '@/services/ApiService';
-import CurrentUser from '@/components/CurrentUser.vue';
+import MainMenu from '@/components/MainMenu.vue';
 
 
 @Component({
     components: {
         Notifications,
         SiteHeader,
-        CurrentUser,
+        MainMenu,
     },
 })
 export default class App extends Vue {

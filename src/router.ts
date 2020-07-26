@@ -7,6 +7,7 @@ import Register from '@/views/Register.vue';
 import Settings from '@/views/Settings.vue';
 import Stats from '@/views/Stats.vue';
 import Profile from '@/views/Profile.vue';
+import NewActivity from '@/views/NewActivity.vue';
 
 Vue.use(Router);
 
@@ -53,6 +54,11 @@ export default new Router({
             path: '/u/:username',
             name: 'profile',
             component: Profile,
+        },
+        {
+            path: '/new-activity',
+            name: 'new-activity',
+            component: NewActivity,
         },
         {
             path: '*',

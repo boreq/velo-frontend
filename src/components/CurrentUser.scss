@@ -1,5 +1,4 @@
 .current-user {
-    text-align: center;
 
     a {
         display: block;
@@ -9,5 +8,13 @@
         &:hover {
             color: $primary-color;
         }
+    }
+
+    .avatar {
+        font-size: 20px;
+    }
+
+    .username {
+        font-size: 20px;
     }
 }

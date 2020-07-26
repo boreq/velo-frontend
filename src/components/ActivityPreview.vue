@@ -13,9 +13,11 @@
         </div>
 
         <div class="date">
-            <time v-tooltip="'2020-07-25 12:13:45 UTC'">
-                3 hours ago
-            </time>
+            <a>
+                <time v-tooltip="'2020-07-25 12:13:45 UTC'">
+                    3 hours ago
+                </time>
+            </a>
         </div>
 
         <ul class="details">
