@@ -13,6 +13,7 @@ import { RegisterCommand } from '@/dto/RegisterCommand';
 import { SetupResponse } from '@/dto/SetupResponse';
 import { NewActivityRequest } from '@/dto/NewActivityRequest';
 import { NewActivityResponse } from '@/dto/NewActivityResponse';
+import { Activity } from '@/dto/Activity';
 
 /*
 declare module 'vue-property-decorator' {
@@ -65,6 +66,11 @@ export class ApiService {
         const path = ids.join('/');
         const url = `browse/${path}`;
         return this.axios.get<Album>(process.env.VUE_APP_API_PREFIX + url);
+    }
+
+    getActivity(activityUUID: string): Promise<AxiosResponse<Activity>> {
+        const url = `activities/${activityUUID}`;
+        return this.axios.get<Activity>(process.env.VUE_APP_API_PREFIX + url);
     }
 
     stats(): Promise<AxiosResponse<Stats>> {

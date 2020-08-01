@@ -11,7 +11,7 @@ import { NavigationService } from '@/services/NavigationService';
 })
 export default class NowPlaying extends Vue {
 
-    private readonly navigationService = new NavigationService();
+    private readonly navigationService = new NavigationService(this);
 
     get nowPlaying(): Entry {
         return this.$store.getters.nowPlaying;

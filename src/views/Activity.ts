@@ -1,17 +1,24 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import Spinner from '@/components/Spinner.vue';
+import { ApiService } from '@/services/ApiService';
+import { Activity as ActivityDto } from '@/dto/Activity';
+import Notifications from '@/components/Notifications';
+import MainHeader from '@/components/MainHeader.vue';
+import RouteMap from '@/components/RouteMap.vue';
 
 
 @Component({
     components: {
         Spinner,
+        MainHeader,
+        RouteMap,
     },
 })
 export default class Activity extends Vue {
 
-    forbidden = false;
+    activity: ActivityDto = null;
 
-    // private readonly apiService = new ApiService(this);
+    private readonly apiService = new ApiService(this);
 
     @Watch('$route')
     onRouteChanged(): void {
@@ -24,25 +31,14 @@ export default class Activity extends Vue {
 
     private load(): void {
         const activityUUID = this.getActivityUUIDFromRoute();
-        // this.apiService.browse(ids)
-        //     .then(
-        //         response => {
-        //             this.album = response.data;
-        //
-        //             if (this.album.tracks) {
-        //                 const trackAwaitingConversion = this.album.tracks.find(track => !track.duration);
-        //                 if (trackAwaitingConversion) {
-        //                     this.scheduleTimeout();
-        //                 }
-        //             }
-        //         },
-        //         error => {
-        //             if (error.response.status === 403) {
-        //                 this.forbidden = true;
-        //             }
-        //             Notifications.pushError(this, 'Could not list the tracks and albums.', error);
-        //             this.scheduleTimeout();
-        //         });
+        this.apiService.getActivity(activityUUID)
+            .then(
+                response => {
+                    this.activity = response.data;
+                },
+                error => {
+                    Notifications.pushError(this, 'Could not retrieve the activity.', error);
+                });
     }
 
     private getActivityUUIDFromRoute(): string {
