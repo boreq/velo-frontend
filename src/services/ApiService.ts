@@ -11,6 +11,8 @@ import { User } from '@/dto/User';
 import { Invitation } from '@/dto/Invitation';
 import { RegisterCommand } from '@/dto/RegisterCommand';
 import { SetupResponse } from '@/dto/SetupResponse';
+import { NewActivityRequest } from '@/dto/NewActivityRequest';
+import { NewActivityResponse } from '@/dto/NewActivityResponse';
 
 /*
 declare module 'vue-property-decorator' {
@@ -107,6 +109,16 @@ export class ApiService {
                     },
                 );
         });
+    }
+
+    newActivity(cmd: NewActivityRequest): Promise<AxiosResponse<NewActivityResponse>> {
+        const form = new FormData();
+        form.set('routeFile', cmd.routeFile);
+        form.set('title', cmd.title);
+
+        const url = 'activities';
+
+        return this.axios.post<NewActivityResponse>(process.env.VUE_APP_API_PREFIX + url, form);
     }
 
     logout(): Promise<void> {

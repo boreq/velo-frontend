@@ -3,14 +3,14 @@
         <current-user></current-user>
         <ul>
             <li>
-                <a>
+                <router-link :to="{name: 'new-activity'}">
                     <span class="icon">
                         <i class="fas fa-plus-circle"></i>
                     </span>
                     <span class="label">
                         New activity
                     </span>
-                </a>
+                </router-link>
             </li>
         </ul>
     </div>

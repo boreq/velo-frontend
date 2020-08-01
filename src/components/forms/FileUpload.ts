@@ -45,9 +45,7 @@ export default class FileUpload extends Vue {
 
     private handleFiles(files: FileList): void {
         for (const file of files) {
-            console.log('Emitting a file', file);
             this.selectedFile = file;
-            console.log(this.selectedFile);
             this.$emit('file', file);
         }
     }

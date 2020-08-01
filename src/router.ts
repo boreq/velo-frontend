@@ -8,6 +8,7 @@ import Settings from '@/views/Settings.vue';
 import Stats from '@/views/Stats.vue';
 import Profile from '@/views/Profile.vue';
 import NewActivity from '@/views/NewActivity.vue';
+import Activity from '@/views/Activity.vue';
 
 Vue.use(Router);
 
@@ -51,7 +52,7 @@ export default new Router({
             component: Register,
         },
         {
-            path: '/u/:username',
+            path: '/user/:username',
             name: 'profile',
             component: Profile,
         },
@@ -59,6 +60,11 @@ export default new Router({
             path: '/new-activity',
             name: 'new-activity',
             component: NewActivity,
+        },
+        {
+            path: '/activity/:activityUUID',
+            name: 'activity',
+            component: Activity,
         },
         {
             path: '*',
