@@ -15,7 +15,7 @@ import VectorSource from 'ol/source/Vector';
 import { Color } from '@/models/Color';
 import Attribution from 'ol/control/Attribution';
 import { Icon } from '@/models/Icon';
-
+import 'ol/ol.css';
 
 @Component
 export default class RouteMap extends Vue {
@@ -47,6 +47,7 @@ export default class RouteMap extends Vue {
             layers: [
                 new TileLayer({
                     source: new XYZ({
+                        attributions: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                         // url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png', // std
                         // url: 'https://tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png', // hike and bike
                         // url: 'http://tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png ', // hills
