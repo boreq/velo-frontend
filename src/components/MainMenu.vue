@@ -12,6 +12,17 @@
                     </span>
                 </router-link>
             </li>
+
+            <li v-if="user">
+                <router-link :to="{name: 'profile', params: {username: user.username}}">
+                    <span class="icon">
+                        <i class="fas fa-user-circle"></i>
+                    </span>
+                    <span class="label">
+                        Profile
+                    </span>
+                </router-link>
+            </li>
         </ul>
     </div>
 </template>
