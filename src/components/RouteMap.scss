@@ -1,5 +1,10 @@
 .route-map {
+    $border-width: 1px;
+
+    border: $border-width solid $border-color;
+
     #map {
+        margin: -$border-width; // makes the border visible only when the tiles in this area are still loading
         height: 600px;
     }
 }
