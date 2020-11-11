@@ -1,12 +1,26 @@
 <template>
     <div class="profile">
-        <div class="picture">
-            <i class="far fa-user-circle"></i>
-        </div>
-        <h1>John Smith</h1>
-        <h2>@user@0x46.net</h2>
+        <div class="loading" v-if="!user">
+            <div class="fake-content">
+                <div class="picture">
+                    <i class="far fa-user-circle"></i>
+                </div>
+                <h1>John Smith</h1>
+                <h2>@user</h2>
+            </div>
 
-        <activity-previews></activity-previews>
+            <spinner></spinner>
+        </div>
+
+        <div v-else>
+            <div class="picture">
+                <i class="far fa-user-circle"></i>
+            </div>
+            <h1>{{user.displayName}}</h1>
+            <h2>@{{user.username}}</h2>
+
+            <activity-previews></activity-previews>
+        </div>
     </div>
 </template>
 <script lang="ts" src="./Profile.ts"></script>

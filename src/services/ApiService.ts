@@ -14,6 +14,7 @@ import { SetupResponse } from '@/dto/SetupResponse';
 import { NewActivityRequest } from '@/dto/NewActivityRequest';
 import { NewActivityResponse } from '@/dto/NewActivityResponse';
 import { Activity } from '@/dto/Activity';
+import { UserProfile } from '@/dto/UserProfile';
 
 /*
 declare module 'vue-property-decorator' {
@@ -71,6 +72,16 @@ export class ApiService {
     getActivity(activityUUID: string): Promise<AxiosResponse<Activity>> {
         const url = `activities/${activityUUID}`;
         return this.axios.get<Activity>(process.env.VUE_APP_API_PREFIX + url);
+    }
+
+    getUser(username: string): Promise<AxiosResponse<UserProfile>> {
+        const url = `users/${username}`;
+        return this.axios.get<UserProfile>(process.env.VUE_APP_API_PREFIX + url);
+    }
+
+    getUserActivities(username: string): Promise<AxiosResponse<UserActivities>> {
+        const url = `users/${username}/activities`;
+        return this.axios.get<UserActivities>(process.env.VUE_APP_API_PREFIX + url);
     }
 
     stats(): Promise<AxiosResponse<Stats>> {
