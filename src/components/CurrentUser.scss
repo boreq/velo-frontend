@@ -1,4 +1,5 @@
 .current-user {
+    font-size: $top-bar-font-size;
 
     a {
         display: block;
@@ -8,13 +9,5 @@
         &:hover {
             color: $primary-color;
         }
-    }
-
-    .avatar {
-        font-size: 20px;
-    }
-
-    .username {
-        font-size: 20px;
     }
 }

@@ -1,7 +1,8 @@
 $padding: 5px;
 
 .site-header {
-    font-size: 30px;
+    font-size: $top-bar-height;
+    line-height: $top-bar-height;
+    height: $top-bar-height;
     text-align: center;
-    margin: 10px 0;
 }

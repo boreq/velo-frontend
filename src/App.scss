@@ -29,11 +29,11 @@ a:hover {
             padding: 0 1em;
 
             display: grid;
-            grid-template-columns: 200px auto;
+            grid-template-columns: auto 1fr;
             grid-template-rows: auto 1fr;
             grid-template-areas:
-                "header content"
-                "menu content";
+                "header menu"
+                "content content";
 
             > .header {
                 grid-area: header;

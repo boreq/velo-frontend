@@ -1,13 +1,52 @@
 .main-menu {
+    font-size: $top-bar-font-size;
+    line-height: $top-bar-height;
+    height: $top-bar-height;
+
+    $element-spacing: .5em;
 
     ul {
-        margin: 1em 0 0;
+        margin: 0 0 0 (2 * $element-spacing);
         padding: 0;
+        display: flex;
 
         li {
             list-style-type: none;
-            font-size: 20px;
-            margin-bottom: .2em;
+            margin: 0 $element-spacing;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &.element-nav {
+                flex: 1;
+            }
+
+            &.element-user {
+            }
+
+            .nav {
+                margin: 0;
+                padding: 0;
+                display: flex;
+
+                li {
+                    list-style-type: none;
+                    margin: 0 $element-spacing;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
         }
     }
 
