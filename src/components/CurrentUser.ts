@@ -22,6 +22,10 @@ export default class CurrentUser extends Vue {
         this.$router.push({name: 'login', query: {next: window.location.pathname}});
     }
 
+    register(): void {
+        this.$router.push({name: 'register', query: {next: window.location.pathname}});
+    }
+
     settings(): void {
         this.$router.push({name: 'settings'});
     }

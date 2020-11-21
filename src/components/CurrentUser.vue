@@ -11,9 +11,11 @@
                 {{ user.username }}
             </span>
         </a>
-        <a class="button" v-if="!loading && !user" v-tooltip="'You are not signed in.'" @click="login">
-            Click here to login.
-            <i class="fas fa-user-times"></i>
+        <a class="button" v-if="!loading && !user" @click="login">
+            Sign in
+        </a>
+        <a class="button" v-if="!loading && !user" @click="register">
+            Sign up
         </a>
     </div>
 </template>
