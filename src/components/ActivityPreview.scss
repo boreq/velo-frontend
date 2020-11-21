@@ -39,12 +39,15 @@
         padding-right: 8px;
     }
 
-    .map {
+    .map-link {
+        display: block;
         grid-area: map;
-        margin-top: .5em;
 
-        height: 300px;
-        background-color: $primary-color;
-        overflow: hidden;
+        .map {
+            margin-top: .5em;
+            height: 300px;
+            background-color: $primary-color;
+            overflow: hidden;
+        }
     }
 }

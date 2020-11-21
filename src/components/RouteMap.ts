@@ -1,7 +1,6 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import { Point as PointDto, Route } from '@/dto/Route';
 import Map from 'ol/Map';
-import {defaults} from 'ol/interaction';
 import { Fill, Stroke, Style } from 'ol/style';
 import Point from 'ol/geom/Point';
 import CircleStyle from 'ol/style/Circle';

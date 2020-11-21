@@ -29,9 +29,11 @@
             </li>
         </ul>
 
-        <div class="map">
-            <route-map :route="activity.route" :lock="true"></route-map>
-        </div>
+        <router-link :to="{ name: 'activity', params: { activityUUID: activity.uuid }}" class="map-link">
+            <div class="map">
+                <route-map :route="activity.route" :lock="true"></route-map>
+            </div>
+        </router-link>
     </div>
 </template>
 <script lang="ts" src="./ActivityPreview.ts"></script>
