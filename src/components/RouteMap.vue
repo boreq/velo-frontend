@@ -1,6 +1,6 @@
 <template>
     <div class="route-map">
-        <div id="map"></div>
+        <div class="map" :id="route.uuid"></div>
     </div>
 </template>
 <script lang="ts" src="./RouteMap.ts"></script>

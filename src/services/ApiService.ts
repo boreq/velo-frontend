@@ -15,6 +15,7 @@ import { NewActivityRequest } from '@/dto/NewActivityRequest';
 import { NewActivityResponse } from '@/dto/NewActivityResponse';
 import { Activity } from '@/dto/Activity';
 import { UserProfile } from '@/dto/UserProfile';
+import { UserActivities } from '@/dto/UserActivities';
 
 /*
 declare module 'vue-property-decorator' {

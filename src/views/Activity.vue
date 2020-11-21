@@ -3,7 +3,7 @@
         <main-header text="Activity"></main-header>
 
         <div v-if="activity">
-            <route-map :route="activity.route"></route-map>
+            <route-map class="map" :route="activity.route"></route-map>
         </div>
     </div>
 </template>

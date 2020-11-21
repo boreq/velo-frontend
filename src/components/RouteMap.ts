@@ -1,6 +1,7 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import { Point as PointDto, Route } from '@/dto/Route';
 import Map from 'ol/Map';
+import {defaults} from 'ol/interaction';
 import { Fill, Stroke, Style } from 'ol/style';
 import Point from 'ol/geom/Point';
 import CircleStyle from 'ol/style/Circle';
@@ -21,6 +22,9 @@ import 'ol/ol.css';
 export default class RouteMap extends Vue {
 
     @Prop()
+    lock: boolean;
+
+    @Prop()
     route: Route;
 
     private routeSource: VectorSource = new VectorSource({});
@@ -37,28 +41,27 @@ export default class RouteMap extends Vue {
         this.routeSource.clear();
 
         if (this.route) {
+            this.recreateMap();
             this.setPoints(this.route.points);
         }
     }
 
     mounted(): void {
+        this.recreateMap();
+    }
+
+    private recreateMap(): void {
+        if (this.map) {
+            this.map.setTarget(null);
+        }
+
         this.map = new Map({
-            target: 'map',
+            target: this.route.uuid,
             layers: [
                 new TileLayer({
                     source: new XYZ({
                         attributions: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                        // url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png', // std
-                        // url: 'https://tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png', // hike and bike
-                        // url: 'http://tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png ', // hills
-                        // url: 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', // mapnik greyscale
-                        // url: 'http://tile.thunderforest.com/landscape/{z}/{x}/{y}.png', // thunderforest landscape
-                        // url: 'http://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png', // thunderforest outdoors
-
-                        // url: 'https://a.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png', // positron
-                        // url: 'https://a.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png', // dark matter
-                        url: 'https://a.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png', // voyager
-                        // url: 'https://cartocdn_a.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png', // base eco
+                        url: 'https://a.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png',
                     }),
                 }),
                 new VectorLayer({
@@ -87,6 +90,7 @@ export default class RouteMap extends Vue {
             controls: [
                 new Attribution(),
             ],
+            interactions: this.lock ? [] : undefined,
         });
 
         this.fitMapToRoute();

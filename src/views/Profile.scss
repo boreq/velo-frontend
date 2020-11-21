@@ -4,13 +4,6 @@
         .fake-content {
             filter: blur(5px);
         }
-
-        .spinner {
-            font-size: 30px;
-            margin: 1em auto;
-            text-align: center;
-            filter: none;
-        }
     }
 
     .picture {
@@ -34,4 +27,10 @@
         margin-top: 0;
     }
 
+    .spinner {
+        font-size: 30px;
+        margin: 1em auto;
+        text-align: center;
+        filter: none;
+    }
 }

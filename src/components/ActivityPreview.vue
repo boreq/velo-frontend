@@ -8,7 +8,7 @@
 
         <div class="author">
             <a>
-                John Smith
+                {{ activity.user.displayName }}
             </a>
         </div>
 
@@ -30,7 +30,7 @@
         </ul>
 
         <div class="map">
-
+            <route-map :route="activity.route" :lock="true"></route-map>
         </div>
     </div>
 </template>

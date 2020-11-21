@@ -3,6 +3,7 @@ import ActivityPreviews from '@/components/ActivityPreviews.vue';
 import { ApiService } from '@/services/ApiService';
 import Notifications from '@/components/Notifications';
 import { UserProfile } from '@/dto/UserProfile';
+import { UserActivities } from '@/dto/UserActivities';
 import Spinner from '@/components/Spinner.vue';
 
 
@@ -15,6 +16,7 @@ import Spinner from '@/components/Spinner.vue';
 export default class Profile extends Vue {
 
     user: UserProfile = null;
+    activities: UserActivities = null;
 
     private readonly apiService = new ApiService(this);
 
@@ -37,6 +39,15 @@ export default class Profile extends Vue {
                 },
                 error => {
                     Notifications.pushError(this, 'Could not retrieve the user.', error);
+                });
+
+        this.apiService.getUserActivities(username)
+            .then(
+                response => {
+                    this.activities = response.data;
+                },
+                error => {
+                    Notifications.pushError(this, 'Could not retrieve the activities.', error);
                 });
     }
 

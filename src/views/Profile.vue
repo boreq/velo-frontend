@@ -8,8 +8,6 @@
                 <h1>John Smith</h1>
                 <h2>@user</h2>
             </div>
-
-            <spinner></spinner>
         </div>
 
         <div v-else>
@@ -19,7 +17,14 @@
             <h1>{{user.displayName}}</h1>
             <h2>@{{user.username}}</h2>
 
-            <activity-previews></activity-previews>
+        </div>
+
+        <div v-if="!activities">
+            <spinner></spinner>
+        </div>
+
+        <div v-else>
+            <activity-previews :activities="activities.activities"></activity-previews>
         </div>
     </div>
 </template>
