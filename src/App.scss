@@ -21,33 +21,72 @@ a:hover {
 
 #app {
 
-    > .container {
+    .container {
         max-width: 800px;
         margin: 0 auto;
 
         > .wrapper {
             padding: 0 1em;
+        }
+    }
 
-            display: grid;
-            grid-template-columns: auto 1fr;
-            grid-template-rows: auto 1fr;
-            grid-template-areas:
-                "header menu"
-                "content content";
+    > .header {
+        border-bottom: 1px solid $border-color;
+        padding: 1em 0;
+        margin-bottom: 1em;
 
-            > .header {
-                grid-area: header;
-            }
+        > .container {
+             > .wrapper {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                grid-template-rows: auto;
+                grid-template-areas:
+                    "header menu";
 
-            > .menu {
-                grid-area: menu;
-            }
+                > .header {
+                    grid-area: header;
+                }
 
-            > .content {
-                grid-area: content;
+                > .menu {
+                    grid-area: menu;
+                }
             }
         }
     }
+
+    > .content {
+        > .container {
+             > .wrapper {
+                padding: 0 1em;
+             }
+         }
+    }
+
+        //> .header-wrapper {
+        //}
+
+        //> .wrapper {
+        //    padding: 0 1em;
+
+        //    //display: grid;
+        //    //grid-template-columns: auto 1fr;
+        //    //grid-template-rows: auto;
+        //    //grid-template-areas:
+        //    //    "content content";
+
+        //    //> .header {
+        //    //    grid-area: header;
+        //    //}
+
+        //    //> .menu {
+        //    //    grid-area: menu;
+        //    //}
+
+        //    //> .content {
+        //    //    grid-area: content;
+        //    //}
+        //}
+    //}
 
     > .notifications {
         position: absolute;
