@@ -14,8 +14,8 @@
 
         <div class="date">
             <a>
-                <time v-tooltip="'2020-07-25 12:13:45 UTC'">
-                    3 hours ago
+                <time v-tooltip="'Activity started on ' + activity.timeStarted + ' and ended on ' +  activity.timeEnded + '.'">
+                    <timeago :datetime="activity.timeStarted"></timeago>
                 </time>
             </a>
         </div>
