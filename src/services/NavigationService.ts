@@ -1,4 +1,5 @@
 import { Album } from '@/dto/Album';
+import { Location } from 'vue-router';
 
 export class NavigationService {
 
@@ -30,12 +31,35 @@ export class NavigationService {
     }
 
     escapeHome(): void {
-        console.log('escapehome');
         this.vue.$router.replace(
             {
                 name: 'browse',
             },
         );
+    }
+
+    getProfileWithBefore(username: string, before: string): Location {
+        return {
+            name: 'profile',
+            params: {
+                username: username,
+            },
+            query: {
+                before: before,
+            },
+        };
+    }
+
+    getProfileWithAfter(username: string, after: string): Location {
+        return {
+            name: 'profile',
+            params: {
+                username: username,
+            },
+            query: {
+                after: after,
+            },
+        };
     }
 
 }

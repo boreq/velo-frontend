@@ -1,8 +1,10 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { ApiService } from '@/services/ApiService';
+import { NavigationService } from '@/services/NavigationService';
 import Notifications from '@/components/Notifications';
 import { UserProfile } from '@/dto/UserProfile';
 import { UserActivities } from '@/dto/UserActivities';
+import { Location } from 'vue-router';
 
 import ActivityPreviews from '@/components/ActivityPreviews.vue';
 import Pagination from '@/components/Pagination.vue';
@@ -22,6 +24,7 @@ export default class Profile extends Vue {
     activities: UserActivities = null;
 
     private readonly apiService = new ApiService(this);
+    private readonly navigationService = new NavigationService(this);
 
     @Watch('$route')
     onRouteChanged(): void {
@@ -30,6 +33,28 @@ export default class Profile extends Vue {
 
     created(): void {
         this.load();
+    }
+
+    get previous(): Location {
+        if (!this.activities || !this.activities.hasPrevious) {
+            return null;
+        }
+
+        return this.navigationService.getProfileWithBefore(
+            this.getUsernameFromRoute(),
+            this.activities.activities[0].uuid,
+        );
+    }
+
+    get next(): Location {
+        if (!this.activities || !this.activities.hasNext) {
+            return null;
+        }
+
+        return this.navigationService.getProfileWithAfter(
+            this.getUsernameFromRoute(),
+            this.activities.activities[this.activities.activities.length - 1].uuid,
+        );
     }
 
     private load(): void {

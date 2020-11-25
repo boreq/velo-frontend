@@ -13,6 +13,7 @@ html {
 a {
     cursor: pointer;
     transition: color $transition-duration, background-color 200ms;
+    color: $box-normal-text-color;
 }
 
 a:hover {

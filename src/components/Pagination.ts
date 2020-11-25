@@ -1,13 +1,14 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Location } from 'vue-router';
 
 
 @Component
 export default class Pagination extends Vue {
 
-    @Prop({default: false})
-    hasPrevious: boolean;
+    @Prop()
+    previous: Location;
 
-    @Prop({default: false})
-    hasNext: boolean;
+    @Prop()
+    next: Location;
 
 }

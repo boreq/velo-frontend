@@ -24,8 +24,7 @@
         </div>
         <div v-else>
             <activity-previews :activities="activities.activities"></activity-previews>
-            <pagination :hasPrevious="activities.hasPrevious"
-                        :hasNext="activities.hasNext"></pagination>
+            <pagination :previous="previous" :next="next"></pagination>
         </div>
     </div>
 </template>
