@@ -29,7 +29,7 @@
             </li>
         </ul>
 
-        <router-link :to="{ name: 'activity', params: { activityUUID: activity.uuid }}" class="map-link">
+        <router-link :to="location" class="map-link">
             <div class="map">
                 <route-map :route="activity.route" :lock="true"></route-map>
             </div>

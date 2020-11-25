@@ -56,7 +56,9 @@ export default class NewActivity extends Vue {
         this.apiService.newActivity(this.request)
             .then(
                 response => {
-                    this.navigationService.goToActivity(response.data.activityUUID);
+                    this.$router.push(
+                        this.navigationService.getActivity(response.data.activityUUID),
+                    );
                 },
                 error => {
                     Notifications.pushError(this, 'Failed to create a new activity.', error);

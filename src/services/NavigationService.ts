@@ -6,6 +6,7 @@ export class NavigationService {
     constructor(private vue: any) {
     }
 
+    // todo remove
     getBrowseUrl(album: Album): string {
         const ids: string[] = [];
         if (album.parents) {
@@ -15,19 +16,6 @@ export class NavigationService {
         }
         const path = ids.join('/');
         return `/browse/${path}`;
-    }
-
-    goToActivity(activityUUID: string): void {
-        console.log('going to activity', activityUUID);
-
-        this.vue.$router.replace(
-            {
-                name: 'activity',
-                params: {
-                    activityUUID: activityUUID,
-                },
-            },
-        );
     }
 
     escapeHome(): void {
@@ -58,6 +46,15 @@ export class NavigationService {
             },
             query: {
                 after: after,
+            },
+        };
+    }
+
+    getActivity(activityUUID: string): Location {
+        return {
+            name: 'activity',
+            params: {
+                activityUUID: activityUUID,
             },
         };
     }

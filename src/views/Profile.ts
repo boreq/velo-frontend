@@ -28,6 +28,7 @@ export default class Profile extends Vue {
 
     @Watch('$route')
     onRouteChanged(): void {
+        console.log(this.$route);
         this.load();
     }
 

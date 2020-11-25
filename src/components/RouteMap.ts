@@ -35,8 +35,6 @@ export default class RouteMap extends Vue {
 
     @Watch('route', {immediate: true})
     onRouteChanged(): void {
-        console.log('route', this.route);
-
         this.routeSource.clear();
 
         if (this.route) {
