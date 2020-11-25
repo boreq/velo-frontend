@@ -22,9 +22,9 @@
         <div v-if="!activities">
             <spinner></spinner>
         </div>
-
         <div v-else>
             <activity-previews :activities="activities.activities"></activity-previews>
+            <pagination></pagination>
         </div>
     </div>
 </template>

@@ -1,0 +1,32 @@
+.pagination {
+    margin: 1em 0;
+    display: flex;
+
+    .filler {
+        flex: 1;
+    }
+
+    .previous {
+         i {
+             padding-right: .5em;
+         }
+    }
+
+    .next {
+         i {
+             padding-left: .5em;
+         }
+    }
+
+    .button {
+        padding: .5em;
+        border: 1px solid transparent;
+        border-radius: $border-radius;
+
+        transition: border $transition-duration, color $transition-duration;
+
+        &:hover {
+            border-color: $primary-color;
+        }
+    }
+}
