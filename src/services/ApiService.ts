@@ -80,9 +80,34 @@ export class ApiService {
         return this.axios.get<UserProfile>(process.env.VUE_APP_API_PREFIX + url);
     }
 
-    getUserActivities(username: string): Promise<AxiosResponse<UserActivities>> {
+    getUserActivities(username: string, before: string, after: string): Promise<AxiosResponse<UserActivities>> {
         const url = `users/${username}/activities`;
-        return this.axios.get<UserActivities>(process.env.VUE_APP_API_PREFIX + url);
+        return this.axios.get<UserActivities>(
+            process.env.VUE_APP_API_PREFIX + url,
+            {
+                params: this.getUserActivitiesParams(before, after),
+            },
+        );
+    }
+    
+    private getUserActivitiesParams(before: string, after: string): any {
+        if (before && after) {
+            throw new Error('defined both before and after');
+        }
+
+        if (before) {
+            return {
+                before: before,
+            }
+        }
+
+        if (after) {
+            return {
+                after: after,
+            }
+        }
+
+        return null;
     }
 
     stats(): Promise<AxiosResponse<Stats>> {

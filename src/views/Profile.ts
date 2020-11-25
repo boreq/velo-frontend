@@ -26,14 +26,14 @@ export default class Profile extends Vue {
     private readonly apiService = new ApiService(this);
     private readonly navigationService = new NavigationService(this);
 
-    @Watch('$route')
+    @Watch('$route', {immediate: true})
     onRouteChanged(): void {
-        console.log(this.$route);
-        this.load();
-    }
+        const username = this.getUsernameFromRoute();
+        const before = this.$route.query.before;
+        const after = this.$route.query.after;
 
-    created(): void {
-        this.load();
+        this.loadUser(username);
+        this.loadActivities(username, before, after);
     }
 
     get previous(): Location {
@@ -58,8 +58,10 @@ export default class Profile extends Vue {
         );
     }
 
-    private load(): void {
-        const username = this.getUsernameFromRoute();
+    private loadUser(username: string): void {
+        if (this.user && this.user.username === username) {
+            return;
+        }
 
         this.apiService.getUser(username)
             .then(
@@ -69,8 +71,10 @@ export default class Profile extends Vue {
                 error => {
                     Notifications.pushError(this, 'Could not retrieve the user.', error);
                 });
+    }
 
-        this.apiService.getUserActivities(username)
+    private loadActivities(username: string, before: string, after: string): void {
+        this.apiService.getUserActivities(username, before, after)
             .then(
                 response => {
                     this.activities = response.data;
