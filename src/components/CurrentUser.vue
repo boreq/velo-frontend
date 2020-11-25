@@ -11,12 +11,19 @@
                 {{ user.username }}
             </span>
         </a>
-        <a class="button" v-if="!loading && !user" @click="login">
-            Sign in
-        </a>
-        <a class="button" v-if="!loading && !user" @click="register">
-            Sign up
-        </a>
+
+        <ul v-if="!loading && !user">
+            <li>
+                <a @click="login">
+                    Sign in
+                </a>
+            </li>
+            <li>
+                <a @click="register">
+                    Sign up
+                </a>
+            </li>
+        </ul>
     </div>
 </template>
 <script lang="ts" src="./CurrentUser.ts"></script>
