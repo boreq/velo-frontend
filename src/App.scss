@@ -22,11 +22,11 @@ a:hover {
 #app {
 
     .container {
-        max-width: 800px;
-        margin: 0 auto;
+        padding: 0 1em;
 
         > .wrapper {
-            padding: 0 1em;
+            max-width: 800px;
+            margin: 0 auto;
         }
     }
 
@@ -52,14 +52,6 @@ a:hover {
                 }
             }
         }
-    }
-
-    > .content {
-        > .container {
-             > .wrapper {
-                padding: 0 1em;
-             }
-         }
     }
 
     > .notifications {
