@@ -5,7 +5,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class Pagination extends Vue {
 
     @Prop({default: false})
-    hasPrev: boolean;
+    hasPrevious: boolean;
 
     @Prop({default: false})
     hasNext: boolean;
