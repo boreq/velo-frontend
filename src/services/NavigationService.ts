@@ -29,4 +29,13 @@ export class NavigationService {
         );
     }
 
+    escapeHome(): void {
+        console.log('escapehome');
+        this.vue.$router.replace(
+            {
+                name: 'browse',
+            },
+        );
+    }
+
 }

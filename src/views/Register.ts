@@ -1,25 +1,21 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import MainHeader from '@/components/MainHeader.vue';
-import SubHeader from '@/components/SubHeader.vue';
-import FormInput from '@/components/forms/FormInput.vue';
-import AppButton from '@/components/forms/AppButton.vue';
 import { ApiService } from '@/services/ApiService';
+import { NavigationService } from '@/services/NavigationService';
 import Notifications from '@/components/Notifications';
 import { LoginCommand } from '@/dto/LoginCommand';
-import ActionBar from '@/components/ActionBar.vue';
-import ActionBarButton from '@/components/ActionBarButton.vue';
 import { RegisterCommand } from '@/dto/RegisterCommand';
 import { User } from '@/dto/User';
+
+import MainHeader from '@/components/MainHeader.vue';
+import FormInput from '@/components/forms/FormInput.vue';
+import AppButton from '@/components/forms/AppButton.vue';
 
 
 @Component({
     components: {
         MainHeader,
-        SubHeader,
         FormInput,
         AppButton,
-        ActionBar,
-        ActionBarButton,
     },
 })
 export default class Register extends Vue {
@@ -28,13 +24,15 @@ export default class Register extends Vue {
     working = false;
 
     private readonly apiService = new ApiService(this);
+    private readonly navigationService = new NavigationService(this);
+
     private readonly errLogin = `Sign up succeeded but the automatic login failed.`;
     private readonly errSignUp = `Error during the sign up process.`;
 
     @Watch('user', {immediate: true})
     onUserChanged(user: User): void {
         if (user) {
-            this.escapeToBrowse();
+            this.navigationService.escapeHome();
         }
     }
 
@@ -48,12 +46,15 @@ export default class Register extends Vue {
         this.apiService.register(this.cmd)
             .then(
                 () => {
-                    const loginCommand: LoginCommand = {username: this.cmd.username, password: this.cmd.password};
+                    const loginCommand: LoginCommand = {
+                        username: this.cmd.username,
+                        password: this.cmd.password,
+                    };
                     this.apiService.login(loginCommand)
                         .then(
                             () => {
                                 this.working = false;
-                                this.escapeToBrowse();
+                                this.navigationService.escapeHome();
                             },
                             error => {
                                 this.working = false;
@@ -66,14 +67,6 @@ export default class Register extends Vue {
                     Notifications.pushError(this, this.errSignUp, error);
                 },
             );
-    }
-
-    escapeToBrowse(): void {
-        this.$router.replace({name: 'browse'});
-    }
-
-    goToBrowse(): void {
-        this.$router.push({name: 'browse'});
     }
 
     get formValid(): boolean {
@@ -93,4 +86,9 @@ export default class Register extends Vue {
 
         return errors;
     }
+
+    get user(): User {
+        return this.$store.state.user;
+    }
+
 }
