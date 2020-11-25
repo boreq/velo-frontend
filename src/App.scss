@@ -67,17 +67,6 @@ a:hover {
         bottom: 0;
         right: 0;
     }
-
-    @media (max-width: $responsive-threshold-mobile), (max-height: 600px) {
-        > .content {
-            padding: 20px;
-
-            .wrapper {
-                max-width: none;
-                max-height: none;
-            }
-        }
-    }
 }
 
 .tooltip {
