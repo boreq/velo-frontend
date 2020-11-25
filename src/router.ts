@@ -47,8 +47,13 @@ export default new Router({
             component: Login,
         },
         {
-            path: '/register/:token',
+            path: '/register',
             name: 'register',
+            component: Register,
+        },
+        {
+            path: '/register/:token',
+            name: 'register-using-invitation',
             component: Register,
         },
         {

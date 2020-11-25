@@ -6,7 +6,7 @@
 
                 <ul class="buttons">
                     <li class="button">
-                        <current-user></current-user>
+                        button
                     </li>
                 </ul>
             </div>
