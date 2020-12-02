@@ -60,6 +60,17 @@ a:hover {
         bottom: 0;
         right: 0;
     }
+
+    .ol-attribution {
+        &, &:hover {
+            background-color: #fff;
+        }
+
+        button {
+            background-color: $primary-color;
+            cursor: pointer;
+        }
+    }
 }
 
 .tooltip {
@@ -172,3 +183,4 @@ a:hover {
         transition: opacity .15s;
     }
 }
+
