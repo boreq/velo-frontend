@@ -13,6 +13,21 @@ export class NavigationService {
         );
     }
 
+    getSettings(): Location {
+        return {
+            name: 'settings',
+        };
+    }
+
+    getProfile(username: string): Location {
+        return {
+            name: 'profile',
+            params: {
+                username: username,
+            },
+        };
+    }
+
     getProfileWithBefore(username: string, before: string): Location {
         return {
             name: 'profile',

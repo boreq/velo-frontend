@@ -25,4 +25,19 @@
             }
         }
     }
+
+    .dropdown {
+        .menu-element {
+            display: block;
+            padding: .2em .5em;
+            text-decoration: none;
+        }
+
+        .highlight {
+            &:hover {
+                background-color: $primary-color;
+                color: #fff;
+            }
+        }
+    }
 }

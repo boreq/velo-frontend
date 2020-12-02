@@ -1,17 +1,40 @@
 <template>
     <div class="current-user">
-        <div class="button" v-if="loading">
+        <div v-if="loading">
             <spinner></spinner>
         </div>
-        <a class="button" v-if="!loading && user" v-tooltip="'You are signed in as '+ user.username + '.'" @click="settings">
-            <span>
-                <i class="far fa-user-circle"></i>
-            </span>
-            <span>
-                {{ user.username }}
-            </span>
-            <i class="fas fa-caret-down"></i>
-        </a>
+
+        <dropdown v-if="!loading && user" @click="settings" ref="dropdown">
+            <template v-slot:trigger>
+                <span>
+                    <i class="far fa-user-circle"></i>
+                </span>
+                <span>
+                    {{ user.username }}
+                </span>
+                <i class="fas fa-caret-down"></i>
+            </template>
+            <template v-slot:content>
+                <dropdown-element>
+                    <router-link class="menu-element" :to="toProfile" @click.native="dropdown.close">
+                        You are signed in as {{ user.username }}.
+                    </router-link>
+                </dropdown-element>
+
+                <dropdown-divider></dropdown-divider>
+
+                <dropdown-element>
+                    <router-link class="menu-element highlight" :to="toSettings" @click.native="dropdown.close">
+                        Settings
+                    </router-link>
+                </dropdown-element>
+                <dropdown-element>
+                    <a class="menu-element highlight">
+                        Sign out
+                    </a>
+                </dropdown-element>
+            </template>
+        </dropdown>
 
         <ul v-if="!loading && !user">
             <li>
