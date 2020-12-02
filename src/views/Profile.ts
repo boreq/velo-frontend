@@ -33,7 +33,7 @@ export default class Profile extends Vue {
         const after = this.$route.query.after;
 
         this.loadUser(username);
-        this.loadActivities(username, before, after);
+        this.loadActivities(username, this.asString(before), this.asString(after));
     }
 
     get previous(): Location {
@@ -86,6 +86,18 @@ export default class Profile extends Vue {
 
     private getUsernameFromRoute(): string {
         return this.$route.params.username;
+    }
+
+    private asString(s: string | string[]): string {
+        if (typeof s === 'string') {
+            return s as string;
+        }
+
+        if (Array.isArray(s) && s.length > 0) {
+            return s[0];
+        }
+
+        return null;
     }
 
 }

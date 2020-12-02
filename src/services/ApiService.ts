@@ -89,26 +89,6 @@ export class ApiService {
             },
         );
     }
-    
-    private getUserActivitiesParams(before: string, after: string): any {
-        if (before && after) {
-            throw new Error('defined both before and after');
-        }
-
-        if (before) {
-            return {
-                before: before,
-            }
-        }
-
-        if (after) {
-            return {
-                after: after,
-            }
-        }
-
-        return null;
-    }
 
     stats(): Promise<AxiosResponse<Stats>> {
         const url = `stats`;
@@ -220,6 +200,26 @@ export class ApiService {
         username = encodeURIComponent(username);
         const url = `auth/users/${username}/remove`;
         return this.axios.post<void>(process.env.VUE_APP_API_PREFIX + url);
+    }
+
+    private getUserActivitiesParams(before: string, after: string): any {
+        if (before && after) {
+            throw new Error('defined both before and after');
+        }
+
+        if (before) {
+            return {
+                before: before,
+            };
+        }
+
+        if (after) {
+            return {
+                after: after,
+            };
+        }
+
+        return null;
     }
 
 }
