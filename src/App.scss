@@ -6,14 +6,14 @@ html, body {
 html {
     font-family: 'Raleway', sans-serif;
     font-size: 12px;
-    color: $box-normal-text-color;
+    color: $text-color;
     background-size: cover;
 }
 
 a {
     cursor: pointer;
     transition: color $transition-duration, background-color 200ms;
-    color: $box-normal-text-color;
+    color: $text-color;
 }
 
 a:hover {
@@ -145,17 +145,17 @@ a:hover {
 
     &.popover {
         .popover-inner {
-            background: $box-normal-background-color;
-            color: $box-normal-text-color;
+            background: $background-color;
+            color: $text-color;
             padding: 24px;
             border-radius: 5px;
-            box-shadow: $box-normal-box-shadow;
-            border: $box-normal-border;
+            box-shadow: $box-shadow;
+            border: $border;
             border-color: $primary-color;
         }
 
         .popover-arrow {
-            border-color: $box-normal-border-color;
+            border-color: $border-color;
             border-color: $primary-color;
         }
     }

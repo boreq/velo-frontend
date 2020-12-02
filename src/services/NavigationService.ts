@@ -5,12 +5,19 @@ export class NavigationService {
     constructor(private vue: any) {
     }
 
+    // todo remove
     escapeHome(): void {
         this.vue.$router.replace(
             {
                 name: 'browse',
             },
         );
+    }
+
+    getBrowse(): Location {
+        return {
+            name: 'browse',
+        };
     }
 
     getSettings(): Location {

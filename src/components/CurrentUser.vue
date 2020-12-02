@@ -29,7 +29,7 @@
                     </router-link>
                 </dropdown-element>
                 <dropdown-element>
-                    <a class="menu-element highlight">
+                    <a class="menu-element highlight" @click="logout">
                         Sign out
                     </a>
                 </dropdown-element>

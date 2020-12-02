@@ -2,6 +2,7 @@ import { Component, Vue, Ref } from 'vue-property-decorator';
 import { User } from '@/dto/User';
 import { Location } from 'vue-router';
 import { NavigationService } from '@/services/NavigationService';
+import { ApiService } from '@/services/ApiService';
 
 import Spinner from '@/components/Spinner.vue';
 import Dropdown from '@/components/Dropdown.vue';
@@ -19,10 +20,13 @@ import DropdownDivider from '@/components/DropdownDivider.vue';
 })
 export default class CurrentUser extends Vue {
 
+    logoutInProgress = false;
+
     @Ref('dropdown')
     readonly dropdown: Dropdown;
 
     private readonly navigationService = new NavigationService(this);
+    private readonly apiService = new ApiService(this);
 
     get loading(): boolean {
         return this.user === undefined;
@@ -51,5 +55,22 @@ export default class CurrentUser extends Vue {
     settings(): void {
         this.$router.push({name: 'settings'});
     }
+
+    logout(): void {
+        this.logoutInProgress = true;
+        this.apiService.logout()
+            .then(
+                () => {
+                    this.dropdown.close();
+                },
+                error => {
+                    Notifications.pushError(this, 'There was an error during the sign out process.', error);
+                },
+            )
+            .finally(
+                () => this.logoutInProgress = false,
+            );
+    }
+
 
 }
