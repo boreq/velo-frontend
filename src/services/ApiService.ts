@@ -1,6 +1,4 @@
-import { Album } from '@/dto/Album';
 import axios, { AxiosResponse } from 'axios'; // do not add { }, some webshit bs?
-import { Track } from '@/dto/Track';
 import { Stats } from '@/dto/Stats';
 import { CommandInitialize } from '@/dto/CommandInitialize';
 import { LoginCommand } from '@/dto/LoginCommand';
@@ -64,12 +62,6 @@ export class ApiService {
         return this.axios.get<SetupResponse>(process.env.VUE_APP_API_PREFIX + url);
     }
 
-    browse(ids: string[]): Promise<AxiosResponse<Album>> {
-        const path = ids.join('/');
-        const url = `browse/${path}`;
-        return this.axios.get<Album>(process.env.VUE_APP_API_PREFIX + url);
-    }
-
     getActivity(activityUUID: string): Promise<AxiosResponse<Activity>> {
         const url = `activities/${activityUUID}`;
         return this.axios.get<Activity>(process.env.VUE_APP_API_PREFIX + url);
@@ -93,16 +85,6 @@ export class ApiService {
     stats(): Promise<AxiosResponse<Stats>> {
         const url = `stats`;
         return this.axios.get<Stats>(process.env.VUE_APP_API_PREFIX + url);
-    }
-
-    trackUrl(track: Track): string {
-        const url = `track/${track.fileId}`;
-        return process.env.VUE_APP_API_PREFIX + url;
-    }
-
-    thumbnailUrl(album: Album): string {
-        const url = `thumbnail/${album.thumbnail.fileId}`;
-        return process.env.VUE_APP_API_PREFIX + url;
     }
 
     initialize(cmd: CommandInitialize): Promise<AxiosResponse<void>> {
