@@ -17,16 +17,6 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [
         {
-            path: '/browse/*',
-            name: 'browse-children',
-            component: Browse,
-        },
-        {
-            path: '/browse',
-            name: 'browse',
-            component: Browse,
-        },
-        {
             path: '/setup',
             name: 'setup',
             component: Setup,
@@ -70,6 +60,11 @@ export default new Router({
             path: '/activity/:activityUUID',
             name: 'activity',
             component: Activity,
+        },
+        {
+            path: '/',
+            name: 'browse',
+            component: Browse,
         },
         {
             path: '*',

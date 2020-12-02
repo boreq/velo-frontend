@@ -4,12 +4,13 @@
             <spinner></spinner>
         </div>
         <a class="button" v-if="!loading && user" v-tooltip="'You are signed in as '+ user.username + '.'" @click="settings">
-            <span class="avatar">
+            <span>
                 <i class="far fa-user-circle"></i>
             </span>
-            <span class="username">
+            <span>
                 {{ user.username }}
             </span>
+            <i class="fas fa-caret-down"></i>
         </a>
 
         <ul v-if="!loading && !user">
