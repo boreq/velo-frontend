@@ -3,7 +3,7 @@
         <ul>
             <li class="element-nav">
                 <ul class="nav">
-                    <li>
+                    <li v-if="user">
                         <router-link :to="{name: 'new-activity'}">
                             New activity
                         </router-link>

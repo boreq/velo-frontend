@@ -1,12 +1,13 @@
-import { Component, Vue } from 'vue-property-decorator';
-import MainHeader from '@/components/MainHeader.vue';
-import FormInput from '@/components/forms/FormInput.vue';
-import AppButton from '@/components/forms/AppButton.vue';
-import FileUpload from '@/components/forms/FileUpload.vue';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import Notifications from '@/components/Notifications';
 import { ApiService } from '@/services/ApiService';
 import { NewActivityRequest } from '@/dto/NewActivityRequest';
 import { NavigationService } from '@/services/NavigationService';
+
+import MainHeader from '@/components/MainHeader.vue';
+import FormInput from '@/components/forms/FormInput.vue';
+import AppButton from '@/components/forms/AppButton.vue';
+import FileUpload from '@/components/forms/FileUpload.vue';
 
 
 @Component({
@@ -25,6 +26,13 @@ export default class NewActivity extends Vue {
     private readonly apiService = new ApiService(this);
     private readonly navigationService = new NavigationService(this);
 
+    @Watch('user', {immediate: true})
+    onUserChanged(user: User): void {
+        if (user === null) {
+            this.$router.replace(this.navigationService.getBrowse());
+        }
+    }
+
     get formValid(): boolean {
         return !this.formErrors || this.formErrors.length === 0;
     }
@@ -37,6 +45,10 @@ export default class NewActivity extends Vue {
         }
 
         return errors;
+    }
+
+    get user(): User {
+        return this.$store.state.user;
     }
 
     onFile(event: File): void {
