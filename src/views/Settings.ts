@@ -4,7 +4,6 @@ import SubHeader from '@/components/SubHeader.vue';
 import FormInput from '@/components/forms/FormInput.vue';
 import AppButton from '@/components/forms/AppButton.vue';
 import { NavigationService } from '@/services/NavigationService';
-import Notifications from '@/components/Notifications';
 import { User } from '@/dto/User';
 import Users from '@/components/Users.vue';
 import Invitations from '@/components/Invitations.vue';

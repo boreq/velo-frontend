@@ -3,6 +3,7 @@ import Notifications from '@/components/Notifications';
 import { ApiService } from '@/services/ApiService';
 import { NewActivityRequest } from '@/dto/NewActivityRequest';
 import { NavigationService } from '@/services/NavigationService';
+import { User } from '@/dto/User';
 
 import MainHeader from '@/components/MainHeader.vue';
 import FormInput from '@/components/forms/FormInput.vue';

@@ -3,6 +3,7 @@ import { User } from '@/dto/User';
 import { Location } from 'vue-router';
 import { NavigationService } from '@/services/NavigationService';
 import { ApiService } from '@/services/ApiService';
+import Notifications from '@/components/Notifications';
 
 import Spinner from '@/components/Spinner.vue';
 import Dropdown from '@/components/Dropdown.vue';
