@@ -1,13 +1,7 @@
 .initialize {
-    padding: 2em;
-    height: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-
-    .main-header {
-        margin-top: -2rem;
-    }
 
     .center {
         flex: 1;

@@ -4,7 +4,10 @@
 
         <div class="center">
             <form>
-                <form-input type="text" placeholder="Title" icon="fas fa-pen"></form-input>
+                <div class="title-row">
+                    <form-input type="text" placeholder="Title" icon="fas fa-pen"></form-input>
+                    <form-radio :values="visibilityValues" v-model="request.visibility"></form-radio>
+                </div>
                 <file-upload @file="onFile"></file-upload>
                 <app-button text="Save" @click="submit" :disabled="!formValid" :working="working"></app-button>
             </form>

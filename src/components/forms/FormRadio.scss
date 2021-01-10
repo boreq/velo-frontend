@@ -1,0 +1,17 @@
+.form-radio {
+    .trigger {
+        padding: 1em;
+        font-size: 16px;
+    }
+
+    .dropdown-option {
+        padding: .5em;
+        display: block;
+
+        &:hover {
+            background-color: $primary-color;
+            color: #fff;
+        }
+    }
+
+}

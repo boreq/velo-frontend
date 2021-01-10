@@ -120,6 +120,7 @@ export class ApiService {
         const form = new FormData();
         form.set('routeFile', cmd.routeFile);
         form.set('title', cmd.title);
+        form.set('visibility', cmd.visibility);
 
         const url = 'activities';
 

@@ -4,11 +4,14 @@ import { ApiService } from '@/services/ApiService';
 import { NewActivityRequest } from '@/dto/NewActivityRequest';
 import { NavigationService } from '@/services/NavigationService';
 import { User } from '@/dto/User';
+import { FormRadioValue } from '@/components/forms/FormRadio';
+import { ActivityVisibility, ActivityVisibilityIcon } from '@/dto/Activity';
 
 import MainHeader from '@/components/MainHeader.vue';
 import FormInput from '@/components/forms/FormInput.vue';
 import AppButton from '@/components/forms/AppButton.vue';
 import FileUpload from '@/components/forms/FileUpload.vue';
+import FormRadio from '@/components/forms/FormRadio.vue';
 
 
 @Component({
@@ -17,12 +20,38 @@ import FileUpload from '@/components/forms/FileUpload.vue';
         FormInput,
         AppButton,
         FileUpload,
+        FormRadio,
     },
 })
 export default class NewActivity extends Vue {
 
-    request = new NewActivityRequest();
+    request: NewActivityRequest = {
+        title: '',
+        routeFile: null,
+        visibility: ActivityVisibility.Private,
+    };
     working = false;
+
+    visibilityValues: FormRadioValue[] = [
+        {
+            value: ActivityVisibility.Public,
+            icon: ActivityVisibilityIcon.Public,
+            label: 'Public',
+            tooltip: 'This activity will be publicly visible.',
+        },
+        {
+            value: ActivityVisibility.Unlisted,
+            icon: ActivityVisibilityIcon.Unlisted,
+            label: 'Unlisted',
+            tooltip: 'This activity will not be hidden but accessible via a direct link.',
+        },
+        {
+            value: ActivityVisibility.Private,
+            icon: ActivityVisibilityIcon.Private,
+            label: 'Private',
+            tooltip: 'This activity will be visible only to you.',
+        },
+    ];
 
     private readonly apiService = new ApiService(this);
     private readonly navigationService = new NavigationService(this);
@@ -55,6 +84,7 @@ export default class NewActivity extends Vue {
     onFile(event: File): void {
         this.request = {
             title: this.request.title,
+            visibility: this.request.visibility,
             routeFile: event,
         };
     }
