@@ -1,13 +1,16 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Activity } from '@/dto/Activity';
 import { NavigationService } from '@/services/NavigationService';
-import RouteMap from '@/components/RouteMap.vue';
 import { Location } from 'vue-router';
+
+import RouteMap from '@/components/RouteMap.vue';
+import ActivityHeader from '@/components/ActivityHeader.vue';
 
 
 @Component({
     components: {
         RouteMap,
+        ActivityHeader,
     },
 })
 export default class ActivityPreview extends Vue {

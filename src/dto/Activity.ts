@@ -7,6 +7,7 @@ export class Activity {
     timeEnded: string;
     route: Route;
     user: User;
+    visibility: ActivityVisibility;
 }
 
 export enum ActivityVisibility {
@@ -21,6 +22,12 @@ export enum ActivityVisibilityIcon {
     Private = 'fas fa-lock',
 }
 
+export enum ActivityVisibilityLabel {
+    Public = 'Public',
+    Unlisted = 'Unlisted',
+    Private = 'Private',
+}
+
 export function getActivityVisibilityIcon(visibility: ActivityVisibility): string {
     switch (visibility) {
         case ActivityVisibility.Public:
@@ -29,6 +36,19 @@ export function getActivityVisibilityIcon(visibility: ActivityVisibility): strin
             return ActivityVisibilityIcon.Unlisted;
         case ActivityVisibility.Private:
             return ActivityVisibilityIcon.Private;
+        default:
+            return '';
+    }
+}
+
+export function getActivityVisibilityLabel(visibility: ActivityVisibility): string {
+    switch (visibility) {
+        case ActivityVisibility.Public:
+            return ActivityVisibilityLabel.Public;
+        case ActivityVisibility.Unlisted:
+            return ActivityVisibilityLabel.Unlisted;
+        case ActivityVisibility.Private:
+            return ActivityVisibilityLabel.Private;
         default:
             return '';
     }

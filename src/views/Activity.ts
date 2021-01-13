@@ -3,8 +3,10 @@ import Spinner from '@/components/Spinner.vue';
 import { ApiService } from '@/services/ApiService';
 import { Activity as ActivityDto } from '@/dto/Activity';
 import Notifications from '@/components/Notifications';
+
 import MainHeader from '@/components/MainHeader.vue';
 import RouteMap from '@/components/RouteMap.vue';
+import ActivityHeader from '@/components/ActivityHeader.vue';
 
 
 @Component({
@@ -12,6 +14,7 @@ import RouteMap from '@/components/RouteMap.vue';
         Spinner,
         MainHeader,
         RouteMap,
+        ActivityHeader,
     },
 })
 export default class Activity extends Vue {

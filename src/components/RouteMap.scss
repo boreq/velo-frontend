@@ -5,7 +5,6 @@
     height: 100%;
 
     .map {
-        margin: -$border-width; // makes the border visible only when the tiles in this area are still loading
         height: 100%;
     }
 }
