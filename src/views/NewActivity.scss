@@ -9,5 +9,9 @@
             margin: 0;
             flex: 1;
         }
+
+        .form-radio {
+            margin-right: -.5em; // based on the margin-right in form-radio
+        }
     }
 }
