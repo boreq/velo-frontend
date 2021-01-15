@@ -10,8 +10,8 @@
                 </li>
             </ul>
         </main-header>
-        <activity-header :activity="activity"></activity-header>
-        <route-map class="map" :route="activity.route"></route-map>
+        <activity-header :activity="activity" v-if="activity"></activity-header>
+        <route-map class="map" :route="activity.route" v-if="activity"></route-map>
     </div>
 </template>
 <script lang="ts" src="./Activity.ts"></script>

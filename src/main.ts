@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import VTooltip from 'v-tooltip';
 import VueTimeago from 'vue-timeago';
+import { distanceFilter, durationFilter } from './filters';
 
 Vue.use(VTooltip);
 
@@ -15,4 +16,8 @@ new Vue({
     router,
     store,
     render: (h) => h(App),
+    filters: {
+        distanceFilter,
+        durationFilter,
+    },
 }).$mount('#app');

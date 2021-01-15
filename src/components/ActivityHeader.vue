@@ -26,10 +26,10 @@
 
         <ul class="details">
             <li v-tooltip="'Distance.'">
-                12.1 km
+                {{ activity.route.distance | distance }}
             </li>
             <li v-tooltip="'Time moving.'">
-                2.3 h
+                {{ activity.route.timeMoving | duration }}
             </li>
         </ul>
     </div>

@@ -1,6 +1,8 @@
 export class Route {
     uuid: string;
     points: Point[];
+    timeMoving: number;
+    distance: number;
 }
 
 export class Point {
