@@ -2,11 +2,14 @@ $padding: 5px;
 
 .main-header {
     margin: 1em 0;
+    display: flex;
+    font-weight: normal;
+    align-items: center;
 
     .text {
         font-size: 20px;
-        font-weight: normal;
         border-left: 3px solid $primary-color;
         padding-left: .5em;
+        flex: 1;
     }
 }

@@ -4,4 +4,23 @@
         grid-area: map;
         margin-top: 0.5em;
     }
+
+    .header-actions {
+        font-size: 14px;
+        list-style-type: none;
+
+        li {
+            display: inline-block;
+
+            &:after {
+                content: "\2022";
+                padding: 0 .2em;
+            }
+
+            &:last-child:after {
+                display: none;
+            }
+        }
+
+    }
 }
