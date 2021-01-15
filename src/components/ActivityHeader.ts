@@ -28,4 +28,12 @@ export default class ActivityHeader extends Vue {
         return getActivityVisibilityLabel(this.activity.visibility) + '.';
     }
 
+    get profileLink(): Location {
+        return this.navigationService.getProfile(this.activity.user.username);
+    }
+
+    get activityLink(): Location {
+        return this.navigationService.getActivity(this.activity.uuid);
+    }
+
 }

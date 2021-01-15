@@ -1,26 +1,22 @@
 <template>
     <div class="activity-header">
-        <div class="avatar">
-            <a>
-                <i class="far fa-user-circle"></i>
-            </a>
-        </div>
+        <router-link :to="profileLink" class="avatar">
+            <i class="far fa-user-circle"></i>
+        </router-link>
 
-        <div class="author">
-            <a>
-                {{ activity.user.displayName }}
-            </a>
-        </div>
+        <router-link :to="profileLink" class="author">
+            {{ activity.user.displayName }}
+        </router-link>
 
         <div class="visibility">
             <i :class="visibilityIcon" v-tooltip="visibilityLabel"></i>
         </div>
 
-        <a class="date">
+        <router-link :to="activityLink" class="date">
             <time v-tooltip="'Activity started on ' + activity.timeStarted + ' and ended on ' +  activity.timeEnded + '.'">
                 <timeago :datetime="activity.timeStarted"></timeago>
             </time>
-        </a>
+        </router-link>
 
         <ul class="details">
             <li v-tooltip="'Distance.'">

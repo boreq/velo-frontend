@@ -6,6 +6,10 @@
                 "avatar author author details"
                 "avatar date visibility details";
 
+    .author, .date {
+        text-decoration: none;
+    }
+
     .author {
         grid-area: author;
         font-size: 14px;
