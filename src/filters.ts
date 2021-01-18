@@ -13,7 +13,7 @@ export const durationFilter = Vue.filter('duration', (value: number): string => 
         const nextValue = value / multipliers[i];
         results.splice(0, 0, [value % multipliers[i], units[i]]);
         if (i === multipliers.length - 1) {
-            results.splice(0, 0, [nextValue, units[i+1]]);
+            results.splice(0, 0, [nextValue, units[i + 1]]);
         }
         value = nextValue;
     }
@@ -26,6 +26,6 @@ export const durationFilter = Vue.filter('duration', (value: number): string => 
 });
 
 function round(value, precision) {
-    var multiplier = Math.pow(10, precision || 0);
+    const multiplier = Math.pow(10, precision || 0);
     return Math.round(value * multiplier) / multiplier;
 }

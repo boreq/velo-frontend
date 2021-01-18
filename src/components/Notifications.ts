@@ -6,7 +6,8 @@ export default class Notifications extends Vue {
     static readonly notificationEvent = 'eggplant_notification';
 
     static pushError(vue: Vue, text: string, error?: any): void {
-        const extra = error && error.response && error.response.data && error.response.data.message ? error.response.data.message : null;
+        const extra = error && error.response && error.response.data
+            && error.response.data.message ? error.response.data.message : null;
 
         const notification: Notification = {
             id: this.notificationId++,
