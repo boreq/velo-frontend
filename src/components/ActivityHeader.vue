@@ -26,9 +26,11 @@
 
         <ul class="details">
             <li v-tooltip="'Distance.'">
+                <i class="fas fa-route"></i>
                 {{ activity.route.distance | distance }}
             </li>
             <li v-tooltip="'Time moving.'">
+                <i class="fas fa-stopwatch"></i>
                 {{ activity.route.timeMoving | duration }}
             </li>
         </ul>

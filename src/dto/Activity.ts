@@ -8,6 +8,7 @@ export class Activity {
     route: Route;
     user: User;
     visibility: ActivityVisibility;
+    title: string;
 }
 
 export enum ActivityVisibility {

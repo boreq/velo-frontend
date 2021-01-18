@@ -23,6 +23,19 @@ export default class Activity extends Vue {
 
     private readonly apiService = new ApiService(this);
 
+    get title(): string {
+        if (!this.activity) {
+            return '';
+        }
+
+        if (!this.activity.title) {
+            return `${this.activity.user.displayName}'s activity`;
+        }
+
+        return this.activity.title;
+    }
+
+
     @Watch('$route')
     onRouteChanged(): void {
         this.load();

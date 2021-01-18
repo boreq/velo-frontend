@@ -1,6 +1,6 @@
 <template>
     <div class="activity">
-        <main-header text="Activity">
+        <main-header :text="title">
             <ul class="header-actions">
                 <li>
                     <a>Edit</a>

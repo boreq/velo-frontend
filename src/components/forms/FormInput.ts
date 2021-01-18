@@ -13,6 +13,9 @@ export default class FormInput extends Vue {
     value: any;
 
     @Prop()
+    maxlength: any;
+
+    @Prop()
     icon: string;
 
     onKeyDown(event: KeyboardEvent): void {

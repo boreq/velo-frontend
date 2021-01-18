@@ -74,6 +74,12 @@ export default class NewActivity extends Vue {
             errors.push('Route file is missing.');
         }
 
+        const maxTitleLength = 50;
+
+        if (this.request.title.length > maxTitleLength) {
+            errors.push(`Title can not be longer than ${maxTitleLength} characters.`);
+        }
+
         return errors;
     }
 

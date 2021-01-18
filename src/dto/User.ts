@@ -3,4 +3,5 @@ export class User {
     administrator: boolean;
     created: string;
     lastSeen: string;
+    displayName: string;
 }

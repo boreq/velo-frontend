@@ -34,11 +34,21 @@
 
         li {
             display: inline-block;
-            padding: 0 .5em;
+            padding: 0 .2em;
+
+            &:first-child {
+                padding-left: 0;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
         }
 
-        li:first-child {
-            padding-left: 0;
+        i {
+            color: $text-color-dimmed;
+            font-size: 15px;
+            vertical-align: middle;
         }
     }
 
