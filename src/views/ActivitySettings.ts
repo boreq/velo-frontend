@@ -6,6 +6,7 @@ import { NavigationService } from '@/services/NavigationService';
 import { Activity as ActivityDto } from '@/dto/Activity';
 import Notifications from '@/components/Notifications';
 import { ActivityVisibility, ActivityVisibilityIcon } from '@/dto/Activity';
+import { FormRadioValue } from '@/components/forms/FormRadio';
 
 import MainHeader from '@/components/MainHeader.vue';
 import SubHeader from '@/components/SubHeader.vue';
