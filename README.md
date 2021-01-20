@@ -1,4 +1,10 @@
-# Eggplant frontend
+# Velo frontend
+
+A frontend for a self-hosted alternative to activity tracking websites.
+
+## Where is the main repository?
+
+The core project lives [here][backend-repository]. 
 
 ## Project setup
 ```
@@ -27,3 +33,5 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+[backend-repository]: https://github.com/boreq/velo
