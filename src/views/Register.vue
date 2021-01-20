@@ -3,7 +3,11 @@
         <main-header text="Sign up"></main-header>
 
         <div class="center">
-            <form>
+            <span v-if="!canAttemptToRegister">
+                Registration is operating in invitation-only mode. Contact the
+                owner of this instance to register.
+            </span>
+            <form v-if="canAttemptToRegister">
                 <form-input type="text" placeholder="Username" icon="fas fa-user"
                             v-model="cmd.username" @submit="submit"></form-input>
                 <form-input type="password" placeholder="Password" icon="fas fa-key"

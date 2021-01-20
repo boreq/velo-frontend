@@ -36,6 +36,10 @@ export default class Register extends Vue {
         }
     }
 
+    get canAttemptToRegister(): boolean {
+        return !!this.$route.params.token;
+    }
+
     submit(): void {
         if (!this.formValid) {
             return;
