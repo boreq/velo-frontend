@@ -25,13 +25,14 @@ import ActivityHeader from '@/components/ActivityHeader.vue';
 })
 export default class ActivitySettings extends Vue {
 
+    activityUUID: string = null;
     activity: ActivityDto = null;
 
     private readonly navigationService = new NavigationService(this);
     private readonly apiService = new ApiService(this);
 
     get activityLocation(): Location {
-        return this.navigationService.getActivity(this.activity.uuid);
+        return this.navigationService.getActivity(this.activityUUID);
     }
 
     @Watch('$route')
@@ -44,8 +45,8 @@ export default class ActivitySettings extends Vue {
     }
 
     private load(): void {
-        const activityUUID = this.getActivityUUIDFromRoute();
-        this.apiService.getActivity(activityUUID)
+        this.activityUUID = this.getActivityUUIDFromRoute();
+        this.apiService.getActivity(this.activityUUID)
             .then(
                 response => {
                     this.activity = response.data;

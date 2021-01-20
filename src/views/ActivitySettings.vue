@@ -1,7 +1,7 @@
 <template>
     <div class="activity-settings">
         <main-header text="Activity settings">
-            <main-header-actions v-if="activity">
+            <main-header-actions v-if="activityUUID">
                 <main-header-action>
                     <router-link :to="activityLocation">
                         Back
