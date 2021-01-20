@@ -9,6 +9,7 @@ import Stats from '@/views/Stats.vue';
 import Profile from '@/views/Profile.vue';
 import NewActivity from '@/views/NewActivity.vue';
 import Activity from '@/views/Activity.vue';
+import ActivitySettings from '@/views/ActivitySettings.vue';
 
 Vue.use(Router);
 
@@ -60,6 +61,11 @@ export default new Router({
             path: '/activity/:activityUUID',
             name: 'activity',
             component: Activity,
+        },
+        {
+            path: '/activity/:activityUUID/settings',
+            name: 'activity-settings',
+            component: ActivitySettings,
         },
         {
             path: '/',

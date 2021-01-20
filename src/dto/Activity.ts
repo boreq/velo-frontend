@@ -54,3 +54,15 @@ export function getActivityVisibilityLabel(visibility: ActivityVisibility): stri
             return '';
     }
 }
+
+export function getActivityTitle(activity: Activity): string {
+    if (!activity) {
+        return '';
+    }
+
+    if (!activity.title) {
+        return `${activity.user.displayName}'s activity`;
+    }
+
+    return activity.title;
+}

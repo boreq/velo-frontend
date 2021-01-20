@@ -3,7 +3,7 @@ import { Location } from 'vue-router';
 import Spinner from '@/components/Spinner.vue';
 import { ApiService } from '@/services/ApiService';
 import { NavigationService } from '@/services/NavigationService';
-import { Activity as ActivityDto, getActivityTitle } from '@/dto/Activity';
+import { Activity as ActivityDto } from '@/dto/Activity';
 import Notifications from '@/components/Notifications';
 
 import MainHeader from '@/components/MainHeader.vue';
@@ -23,19 +23,15 @@ import ActivityHeader from '@/components/ActivityHeader.vue';
         ActivityHeader,
     },
 })
-export default class Activity extends Vue {
+export default class ActivitySettings extends Vue {
 
     activity: ActivityDto = null;
 
     private readonly navigationService = new NavigationService(this);
     private readonly apiService = new ApiService(this);
 
-    get title(): string {
-        return getActivityTitle(this.activity);
-    }
-
-    get activitySettingsLocation(): Location {
-        return this.navigationService.getActivitySettings(this.activity.uuid);
+    get activityLocation(): Location {
+        return this.navigationService.getActivity(this.activity.uuid);
     }
 
     @Watch('$route')

@@ -68,4 +68,13 @@ export class NavigationService {
         };
     }
 
+    getActivitySettings(activityUUID: string): Location {
+        return {
+            name: 'activity-settings',
+            params: {
+                activityUUID: activityUUID,
+            },
+        };
+    }
+
 }

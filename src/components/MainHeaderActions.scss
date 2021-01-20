@@ -1,0 +1,19 @@
+.main-header-actions {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    list-style-type: none;
+
+    .main-header-action {
+        display: inline-block;
+
+        &:after {
+            content: "\2022";
+            padding: 0 .2em;
+        }
+
+        &:last-child:after {
+            display: none;
+        }
+    }
+}
