@@ -17,6 +17,9 @@ export default class AppButton extends Vue {
     @Prop()
     working: boolean;
 
+    @Prop()
+    type: string;
+
     onClick(event: MouseEvent): void {
         if (!this.disabled && !this.working) {
             this.$emit('click', event);

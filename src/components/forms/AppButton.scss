@@ -2,7 +2,6 @@ $disabled-color: #ddd;
 
 .app-button {
     padding: .8em;
-    margin: 2em 0;
     border: $box-normal-border-width-wide $box-normal-border-style $primary-color;
     color: $primary-color;
     display: block;
@@ -12,13 +11,25 @@ $disabled-color: #ddd;
     border-radius: $box-border-radius;
 
     &:hover {
-        transform: scale(1.05);
+        background-color: $primary-color;
+        color: #fff;
     }
 
-    &.disabled, &.working {
+    &.disabled, &.working, &.disabled:hover, &.working:hover {
         border-color: $disabled-color;
         color: $disabled-color;
         cursor: not-allowed;
         transform: none;
+        background-color: transparent;
+    }
+
+    &.danger {
+        border-color: $color-danger;
+        color: $color-danger;
+
+        &:hover {
+            background-color: $color-danger;
+            color: #fff;
+        }
     }
 }

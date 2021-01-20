@@ -1,2 +1,52 @@
 .activity-settings {
+    .form-input {
+        min-width: 400px;
+    }
+
+    .area {
+        margin: 0;
+        padding: 0;
+        border: $border;
+        border-radius: $border-radius;
+
+        padding: 1em;
+
+        li {
+            list-style-type: none;
+            margin: 0;
+            padding-bottom: 1em;
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+
+        &.danger {
+            border-color: $color-danger;
+        }
+
+        &.actions {
+            li {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-rows: auto;
+                grid-template-areas:
+                            "primary action"
+                            "secondary action";
+
+                .primary {
+                    grid-area: primary;
+                    font-weight: bold;
+                }
+
+                .secondary {
+                    grid-area: secondary;
+                }
+
+                .action {
+                    grid-area: action;
+                }
+            }
+        }
+    }
 }
