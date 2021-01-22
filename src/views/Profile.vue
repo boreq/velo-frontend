@@ -23,6 +23,9 @@
             <spinner></spinner>
         </div>
         <div v-else>
+            <div v-if="!activities.activities" class="no-activities-message">
+                This user doesn't have any activities.
+            </div>
             <activity-previews :activities="activities.activities"></activity-previews>
             <pagination :previous="previous" :next="next"></pagination>
         </div>

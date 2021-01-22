@@ -21,6 +21,10 @@
             }
         }
 
+        .app-button {
+            margin: 0;
+        }
+
         &.danger {
             border-color: $color-danger;
         }
