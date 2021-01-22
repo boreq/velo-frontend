@@ -1,12 +1,12 @@
 import { Route } from '@/dto/Route';
-import { User } from '@/dto/User';
+import { UserProfile } from '@/dto/UserProfile';
 
 export class Activity {
     uuid: string;
     timeStarted: string;
     timeEnded: string;
     route: Route;
-    user: User;
+    user: UserProfile;
     visibility: ActivityVisibility;
     title: string;
 }

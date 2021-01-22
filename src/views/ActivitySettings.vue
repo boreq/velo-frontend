@@ -4,7 +4,7 @@
             <main-header-actions v-if="activityUUID">
                 <main-header-action>
                     <router-link :to="activityLocation">
-                        Cancel
+                        Back
                     </router-link>
                 </main-header-action>
             </main-header-actions>
@@ -19,7 +19,10 @@
                     <div class="secondary">
                         Name your activity.
                     </div>
-                    <form-input id="title-input" placeholder="Title" v-model="activity.title" class="action"></form-input>
+                    <form-input id="title-input" placeholder="Title"
+                        :maxlength="maxTitleLength" v-model="request.title"
+                        class="action">
+                    </form-input>
                 </li>
                 <li>
                     <label for="title-input" class="primary">
@@ -29,10 +32,12 @@
                         Specify who can see your activity.
                     </div>
 
-                    <form-radio :values="visibilityValues" v-model="activity.visibility" class="action"></form-radio>
+                    <form-radio :values="visibilityValues"
+                        v-model="request.visibility" class="action">
+                    </form-radio>
                 </li>
                 <li>
-                    <app-button text="Save" ></app-button>
+                    <app-button text="Save" @click="submit" :working="working"></app-button>
                 </li>
             </ul>
         </form>

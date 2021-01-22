@@ -1,6 +1,7 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { Location } from 'vue-router';
 import Spinner from '@/components/Spinner.vue';
+import { User } from '@/dto/User';
 import { ApiService } from '@/services/ApiService';
 import { NavigationService } from '@/services/NavigationService';
 import { Activity as ActivityDto, getActivityTitle } from '@/dto/Activity';
@@ -35,8 +36,16 @@ export default class Activity extends Vue {
         return getActivityTitle(this.activity);
     }
 
+    get user(): User {
+        return this.$store.state.user;
+    }
+
     get activitySettingsLocation(): Location {
         return this.navigationService.getActivitySettings(this.activityUUID);
+    }
+
+    get canEditActivity(): boolean {
+        return this.user && this.user.username && this.user.username === this.activity.user.username;
     }
 
     @Watch('$route')

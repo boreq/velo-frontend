@@ -10,6 +10,7 @@ import { Invitation } from '@/dto/Invitation';
 import { RegisterCommand } from '@/dto/RegisterCommand';
 import { SetupResponse } from '@/dto/SetupResponse';
 import { NewActivityRequest } from '@/dto/NewActivityRequest';
+import { EditActivityRequest } from '@/dto/EditActivityRequest';
 import { NewActivityResponse } from '@/dto/NewActivityResponse';
 import { Activity } from '@/dto/Activity';
 import { UserProfile } from '@/dto/UserProfile';
@@ -125,6 +126,12 @@ export class ApiService {
         const url = 'activities';
 
         return this.axios.post<NewActivityResponse>(process.env.VUE_APP_API_PREFIX + url, form);
+    }
+
+    editActivity(activityUUID: string, cmd: EditActivityRequest): Promise<AxiosResponse<null>> {
+        const url = `activities/${activityUUID}`;
+
+        return this.axios.put<null>(process.env.VUE_APP_API_PREFIX + url, cmd);
     }
 
     logout(): Promise<void> {

@@ -2,7 +2,7 @@
     <div class="activity">
         <main-header :text="title">
             <main-header-actions v-if="activityUUID">
-                <main-header-action>
+                <main-header-action v-if="canEditActivity">
                     <router-link :to="activitySettingsLocation">
                         Settings
                     </router-link>
