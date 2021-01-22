@@ -1,5 +1,11 @@
 import Vue from 'vue';
 
+export const dateFilter = Vue.filter('date', (value: string): string => {
+    value = value.replace('T', ' ', 0);
+    value = value.replace('Z', ' UTC', 0);
+    return value;
+});
+
 export const distanceFilter = Vue.filter('distance', (value: number): string => {
     return round(value / 1000, 1) + 'km';
 });

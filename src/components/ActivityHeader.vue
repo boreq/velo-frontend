@@ -18,7 +18,7 @@
 
         <a class="date">
             <router-link :to="profileLink">
-                <time v-tooltip="'Activity started on ' + activity.timeStarted + ' and ended on ' +  activity.timeEnded + '.'">
+                <time v-tooltip="dateLabel">
                     <timeago :datetime="activity.timeStarted"></timeago>
                 </time>
             </router-link>

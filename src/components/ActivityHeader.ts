@@ -2,6 +2,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Activity, getActivityVisibilityIcon, getActivityVisibilityLabel } from '@/dto/Activity';
 import { NavigationService } from '@/services/NavigationService';
 import { Location } from 'vue-router';
+import { dateFilter } from '@/filters.ts'
 
 
 @Component
@@ -26,6 +27,10 @@ export default class ActivityHeader extends Vue {
         }
 
         return getActivityVisibilityLabel(this.activity.visibility) + '.';
+    }
+
+    get dateLabel(): string {
+        return `Activity started on ${dateFilter(this.activity.timeStarted)} and ended on ${dateFilter(this.activity.timeEnded)}.`;
     }
 
     get profileLink(): Location {
