@@ -1,8 +1,8 @@
 import Vue from 'vue';
 
 export const dateFilter = Vue.filter('date', (value: string): string => {
-    value = value.replace('T', ' ', 0);
-    value = value.replace('Z', ' UTC', 0);
+    value = value.replace('T', ' ');
+    value = value.replace('Z', ' UTC');
     return value;
 });
 
