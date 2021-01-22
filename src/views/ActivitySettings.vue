@@ -4,13 +4,11 @@
             <main-header-actions v-if="activityUUID">
                 <main-header-action>
                     <router-link :to="activityLocation">
-                        Back
+                        Cancel
                     </router-link>
                 </main-header-action>
             </main-header-actions>
         </main-header>
-
-        <sub-header text="Settings"></sub-header>
 
         <form>
             <ul class="area actions">
