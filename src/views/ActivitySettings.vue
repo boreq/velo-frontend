@@ -37,7 +37,7 @@
                     </form-radio>
                 </li>
                 <li>
-                    <app-button text="Save" @click="submit" :working="working"></app-button>
+                    <app-button text="Save" @click="submitEdit" :working="workingEdit"></app-button>
                 </li>
             </ul>
         </form>
@@ -53,10 +53,22 @@
                     Deleting an activity can not be undone.
                 </div>
                 <div class="action">
-                    <app-button text="Delete this activity" class="danger"></app-button>
+                    <app-button text="Delete this activity" class="danger"
+                        @click="initiateDeletion"></app-button>
+                </div>
+                <div class="below confirm-deletion" v-if="deletionInitiated">
+                    <div class="message">
+                        Are you sure? You will not be able to recover this activity.
+                    </div>
+                    <div class="buttons">
+                        <app-button text="Confirm" class="danger"
+                            :working="workingDelete" @click="submitDelete"></app-button>
+                        <app-button text="Cancel" @click="cancelDeletion"></app-button>
+                    </div>
                 </div>
             </li>
         </ul>
+
     </div>
 </template>
 <script lang="ts" src="./ActivitySettings.ts"></script>

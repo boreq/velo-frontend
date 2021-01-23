@@ -4,7 +4,7 @@
     }
 
     .area {
-        margin: 0;
+        margin: 1em 0;
         padding: 0;
         border: $border;
         border-radius: $border-radius;
@@ -36,7 +36,8 @@
                 grid-template-rows: auto;
                 grid-template-areas:
                             "primary action"
-                            "secondary action";
+                            "secondary action"
+                            "below below";
 
                 .primary {
                     grid-area: primary;
@@ -49,6 +50,34 @@
 
                 .action {
                     grid-area: action;
+                }
+
+                .below {
+                    grid-area: below;
+                }
+            }
+        }
+
+        .confirm-deletion {
+            .message {
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .buttons {
+                display: flex;
+
+                .app-button {
+                    flex: 1;
+                    margin: 1em .5em 0;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
                 }
             }
         }

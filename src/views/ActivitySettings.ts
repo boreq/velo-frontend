@@ -39,7 +39,9 @@ export default class ActivitySettings extends Vue {
     activityUUID: string = null;
     activity: ActivityDto = null;
     request: EditActivityRequest = new EditActivityRequest();
-    working = false;
+    workingEdit = false;
+    workingDelete = false;
+    deletionInitiated = false;
 
     readonly maxTitleLength = 50;
 
@@ -94,12 +96,12 @@ export default class ActivitySettings extends Vue {
         this.load();
     }
 
-    submit(): void {
+    submitEdit(): void {
         if (!this.formValid) {
             return;
         }
 
-        this.working = true;
+        this.workingEdit = true;
 
         this.apiService.editActivity(this.activityUUID, this.request)
             .then(
@@ -107,12 +109,38 @@ export default class ActivitySettings extends Vue {
                     Notifications.pushSuccess(this, 'Activity saved.');
                 },
                 error => {
-                    Notifications.pushError(this, 'Failed to create a new activity.', error);
+                    Notifications.pushError(this, 'Failed to update the activity.', error);
                 },
             ).finally(
             () => {
-                this.working = false;
+                this.workingEdit = false;
             });
+    }
+
+    submitDelete(): void {
+        this.workingDelete = true;
+
+        this.apiService.deleteActivity(this.activityUUID)
+            .then(
+                () => {
+                    Notifications.pushSuccess(this, 'Activity deleted.');
+                    this.$router.replace(this.navigationService.getBrowse());
+                },
+                error => {
+                    Notifications.pushError(this, 'Failed to delete the activity.', error);
+                },
+            ).finally(
+            () => {
+                this.workingDelete = false;
+            });
+    }
+
+    cancelDeletion(): void {
+        this.deletionInitiated = false;
+    }
+
+    initiateDeletion(): void {
+        this.deletionInitiated = true;
     }
 
     private load(): void {

@@ -130,8 +130,12 @@ export class ApiService {
 
     editActivity(activityUUID: string, cmd: EditActivityRequest): Promise<AxiosResponse<null>> {
         const url = `activities/${activityUUID}`;
-
         return this.axios.put<null>(process.env.VUE_APP_API_PREFIX + url, cmd);
+    }
+
+    deleteActivity(activityUUID: string): Promise<AxiosResponse<null>> {
+        const url = `activities/${activityUUID}`;
+        return this.axios.delete<null>(process.env.VUE_APP_API_PREFIX + url);
     }
 
     logout(): Promise<void> {
