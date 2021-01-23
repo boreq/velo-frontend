@@ -5,7 +5,6 @@ import Setup from '@/views/Setup.vue';
 import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
 import Settings from '@/views/Settings.vue';
-import Stats from '@/views/Stats.vue';
 import Profile from '@/views/Profile.vue';
 import NewActivity from '@/views/NewActivity.vue';
 import Activity from '@/views/Activity.vue';
@@ -26,11 +25,6 @@ export default new Router({
             path: '/settings',
             name: 'settings',
             component: Settings,
-        },
-        {
-            path: '/stats',
-            name: 'stats',
-            component: Stats,
         },
         {
             path: '/login',

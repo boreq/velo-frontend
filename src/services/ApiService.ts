@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from 'axios'; // do not add { }, some webshit bs?
-import { Stats } from '@/dto/Stats';
 import { CommandInitialize } from '@/dto/CommandInitialize';
 import { LoginCommand } from '@/dto/LoginCommand';
 import { LoginResponse } from '@/dto/LoginResponse';
@@ -81,11 +80,6 @@ export class ApiService {
                 params: this.getUserActivitiesParams(before, after),
             },
         );
-    }
-
-    stats(): Promise<AxiosResponse<Stats>> {
-        const url = `stats`;
-        return this.axios.get<Stats>(process.env.VUE_APP_API_PREFIX + url);
     }
 
     initialize(cmd: CommandInitialize): Promise<AxiosResponse<void>> {
