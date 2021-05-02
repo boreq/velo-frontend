@@ -1,0 +1,46 @@
+.settings-page {
+    .wrapper {
+        display: flex;
+
+        >.nav {
+            width: 200px;
+
+            ul {
+                list-style-type: none;
+                display: block;
+                margin: 0;
+                padding: 0;
+
+                border: 1px solid $border-color;
+                border-radius: $border-radius;
+                overflow: hidden;
+
+                li {
+                    &:not(:last-child) {
+                        border-bottom: 1px solid $border-color;
+                    }
+
+                    a {
+                        display: block;
+                        padding: 1em;
+                        text-decoration: none;
+                    }
+                }
+
+                li a:hover, li.active a {
+                    background-color: $primary-color;
+                    color: #fff;
+                }
+            }
+        }
+
+        >.content {
+            flex: 1;
+            padding-left: 1em;
+
+            .subheader:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+}

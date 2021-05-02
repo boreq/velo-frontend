@@ -12,6 +12,7 @@ import SettingsAvatar from '@/components/SettingsAvatar.vue';
 import WarningAlert from '@/components/alerts/WarningAlert.vue';
 import PrivacyZoneMap from '@/components/PrivacyZoneMap.vue';
 import Spinner from '@/components/Spinner.vue';
+import SettingsPage from '@/components/SettingsPage.vue';
 
 
 @Component({
@@ -23,6 +24,7 @@ import Spinner from '@/components/Spinner.vue';
         WarningAlert,
         PrivacyZoneMap,
         Spinner,
+        SettingsPage,
     },
 })
 export default class SettingsPrivacyZones extends Vue {

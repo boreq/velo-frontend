@@ -28,6 +28,24 @@ export class NavigationService {
         };
     }
 
+    getSettingsProfile(): Location {
+        return {
+            name: 'settings-profile',
+        };
+    }
+
+    getSettingsPrivacyZones(): Location {
+        return {
+            name: 'settings-privacy-zones',
+        };
+    }
+
+    getSettingsInstance(): Location {
+        return {
+            name: 'settings-instance',
+        };
+    }
+
     getProfile(username: string): Location {
         return {
             name: 'profile',

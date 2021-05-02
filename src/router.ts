@@ -1,10 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
 import Browse from '@/views/Browse.vue';
 import Setup from '@/views/Setup.vue';
 import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
-import Settings from '@/views/Settings.vue';
+import SettingsProfile from '@/views/SettingsProfile.vue';
+import SettingsPrivacyZones from '@/views/SettingsPrivacyZones.vue';
+import SettingsInstance from '@/views/SettingsInstance.vue';
 import Profile from '@/views/Profile.vue';
 import NewActivity from '@/views/NewActivity.vue';
 import Activity from '@/views/Activity.vue';
@@ -23,9 +26,26 @@ export default new Router({
             component: Setup,
         },
         {
+            path: '/settings/profile',
+            name: 'settings-profile',
+            component: SettingsProfile,
+        },
+        {
+            path: '/settings/privacy-zones',
+            name: 'settings-privacy-zones',
+            component: SettingsPrivacyZones,
+        },
+        {
+            path: '/settings/instance',
+            name: 'settings-instance',
+            component: SettingsInstance,
+        },
+        {
             path: '/settings',
             name: 'settings',
-            component: Settings,
+            redirect: {
+                name: 'settings-profile',
+            }
         },
         {
             path: '/login',
@@ -74,7 +94,9 @@ export default new Router({
         },
         {
             path: '*',
-            redirect: 'browse',
+            redirect: {
+                name: 'browse',
+            }
         },
     ],
 });
