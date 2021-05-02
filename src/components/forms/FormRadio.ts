@@ -20,7 +20,17 @@ export default class FormRadio extends Vue {
     @Ref('dropdown')
     readonly dropdown: Dropdown;
 
-    select(value: any) {
+    get currentSelection(): FormRadioValue {
+        for (const possibleValue of this.values) {
+            if (this.value === possibleValue.value) {
+                return possibleValue;
+            }
+        }
+
+        return null
+    }
+
+    select(value: any): void {
         this.$emit('input', value);
         this.dropdown.close();
     }
