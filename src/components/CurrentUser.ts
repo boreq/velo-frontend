@@ -41,7 +41,11 @@ export default class CurrentUser extends Vue {
         return this.navigationService.getProfile(this.user.username);
     }
 
-    get toSettings(): Location {
+    get profileLink(): Location {
+        return this.navigationService.getProfile(this.user.username);
+    }
+
+    get settingsLink(): Location {
         return this.navigationService.getSettings();
     }
 

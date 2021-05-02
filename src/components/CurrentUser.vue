@@ -24,7 +24,12 @@
                 <dropdown-divider></dropdown-divider>
 
                 <dropdown-element>
-                    <router-link class="menu-element highlight" :to="toSettings" @click.native="dropdown.close">
+                    <router-link class="menu-element highlight" :to="profileLink" @click.native="dropdown.close">
+                        Profile
+                    </router-link>
+                </dropdown-element>
+                <dropdown-element>
+                    <router-link class="menu-element highlight" :to="settingsLink" @click.native="dropdown.close">
                         Settings
                     </router-link>
                 </dropdown-element>

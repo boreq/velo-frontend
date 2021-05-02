@@ -1,8 +1,10 @@
+import { Vue } from 'vue-property-decorator';
 import { Location } from 'vue-router';
 
 export class NavigationService {
 
-    constructor(private vue: any) {
+    // todo remove
+    constructor(private vue: Vue) {
     }
 
     // todo remove
@@ -74,6 +76,18 @@ export class NavigationService {
             params: {
                 activityUUID: activityUUID,
             },
+        };
+    }
+
+    getNewPrivacyZone(): Location {
+        return {
+            name: 'new-privacy-zone',
+        };
+    }
+
+    getNewActivity(): Location {
+        return {
+            name: 'new-activity',
         };
     }
 

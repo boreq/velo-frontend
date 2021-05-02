@@ -1,0 +1,10 @@
+.privacy-zone-map {
+    $border-width: 1px;
+
+    border: $border-width solid $border-color;
+    height: 100%;
+
+    .map {
+        height: 100%;
+    }
+}

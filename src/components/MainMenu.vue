@@ -4,13 +4,13 @@
             <li class="element-nav">
                 <ul class="nav">
                     <li v-if="user">
-                        <router-link :to="{name: 'new-activity'}">
+                        <router-link :to="newActivityLink">
                             New activity
                         </router-link>
                     </li>
 
                     <li v-if="user">
-                        <router-link :to="{name: 'profile', params: {username: user.username}}">
+                        <router-link :to="profileLink">
                             Profile
                         </router-link>
                     </li>

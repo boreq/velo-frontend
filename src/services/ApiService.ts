@@ -1,3 +1,4 @@
+import { Vue } from 'vue-property-decorator';
 import axios, { AxiosResponse } from 'axios'; // do not add { }, some webshit bs?
 import { CommandInitialize } from '@/dto/CommandInitialize';
 import { LoginCommand } from '@/dto/LoginCommand';
@@ -14,6 +15,8 @@ import { NewActivityResponse } from '@/dto/NewActivityResponse';
 import { Activity } from '@/dto/Activity';
 import { UserProfile } from '@/dto/UserProfile';
 import { UserActivities } from '@/dto/UserActivities';
+import { NewPrivacyZoneRequest } from '@/dto/NewPrivacyZoneRequest';
+import { PrivacyZone } from '@/dto/PrivacyZone';
 
 /*
 declare module 'vue-property-decorator' {
@@ -30,7 +33,7 @@ export class ApiService {
     private readonly axios = axios.create();
     private readonly authService = new AuthService();
 
-    constructor(private vue: any) {
+    constructor(private vue: Vue) {
         this.axios.interceptors.request.use(
             config => {
                 const token = this.authService.getToken();
@@ -132,6 +135,16 @@ export class ApiService {
         return this.axios.delete<null>(process.env.VUE_APP_API_PREFIX + url);
     }
 
+    newPrivacyZone(cmd: NewPrivacyZoneRequest): Promise<AxiosResponse<NewActivityResponse>> {
+        const url = 'privacy-zones'; 
+        return this.axios.post<NewActivityResponse>(process.env.VUE_APP_API_PREFIX + url, cmd);
+    }
+
+    getUserPrivacyZones(username: string): Promise<AxiosResponse<PrivacyZone[]>> {
+        const url = `users/${username}/privacy-zones`;
+        return this.axios.get<PrivacyZone[]>(process.env.VUE_APP_API_PREFIX + url);
+    }
+
     logout(): Promise<void> {
         const url = `auth/logout`;
         return new Promise((resolve, reject) => {
@@ -190,7 +203,7 @@ export class ApiService {
         return this.axios.post<void>(process.env.VUE_APP_API_PREFIX + url);
     }
 
-    private getUserActivitiesParams(before: string, after: string): any {
+    private getUserActivitiesParams(before: string, after: string): { before: string } | { after: string } | null {
         if (before && after) {
             throw new Error('defined both before and after');
         }

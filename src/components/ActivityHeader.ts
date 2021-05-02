@@ -2,7 +2,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Activity, getActivityVisibilityIcon, getActivityVisibilityLabel } from '@/dto/Activity';
 import { NavigationService } from '@/services/NavigationService';
 import { Location } from 'vue-router';
-import { dateFilter } from '@/filters.ts';
+import { dateFilter } from '@/filters';
 
 
 @Component
