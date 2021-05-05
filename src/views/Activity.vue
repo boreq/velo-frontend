@@ -9,7 +9,7 @@
                 </main-header-action>
             </main-header-actions>
         </main-header>
-        <activity-header :activity="activity" v-if="activity"></activity-header>
+        <activity-header :activity="activity" v-if="activity" :hideTitle="true"></activity-header>
         <route-map class="map" :route="activity.route" v-if="activity"></route-map>
     </div>
 </template>

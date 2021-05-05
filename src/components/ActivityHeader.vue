@@ -16,6 +16,10 @@
             <i :class="visibilityIcon" v-tooltip="visibilityLabel"></i>
         </div>
 
+        <div class="title" v-tooltip="title" v-if="!hideTitle">
+            {{ title }}
+        </div>
+
         <a class="date">
             <router-link :to="profileLink">
                 <time v-tooltip="dateLabel">

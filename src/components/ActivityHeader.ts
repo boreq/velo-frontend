@@ -1,5 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Activity, getActivityVisibilityIcon, getActivityVisibilityLabel } from '@/dto/Activity';
+import { Activity, getActivityVisibilityIcon, getActivityVisibilityLabel, getActivityTitle } from '@/dto/Activity';
 import { NavigationService } from '@/services/NavigationService';
 import { Location } from 'vue-router';
 import { dateFilter } from '@/filters';
@@ -10,6 +10,9 @@ export default class ActivityHeader extends Vue {
 
     @Prop()
     activity: Activity;
+
+    @Prop()
+    hideTitle: boolean;
 
     private readonly navigationService = new NavigationService(this);
 
@@ -27,6 +30,10 @@ export default class ActivityHeader extends Vue {
         }
 
         return getActivityVisibilityLabel(this.activity.visibility) + '.';
+    }
+
+    get title(): string {
+        return getActivityTitle(this.activity);
     }
 
     get dateLabel(): string {
