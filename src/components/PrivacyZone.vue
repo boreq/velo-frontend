@@ -6,6 +6,9 @@
         <div class="name" v-else>
             Unnamed privacy zone
         </div>
+        <div class="actions">
+            <slot></slot>
+        </div>
         <div class="map">
             <privacy-zone-map :zone="zone" :lock="true"></privacy-zone-map>
         </div>

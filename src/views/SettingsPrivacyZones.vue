@@ -13,7 +13,11 @@
 
             <ul class="privacy-zones" v-if="!noPrivacyZones">
                 <li v-for="zone in privacyZones" :key="zone.uuid">
-                    <privacy-zone :zone="zone"></privacy-zone>
+                    <privacy-zone :zone="zone">
+                        <router-link :to="zoneSettingsLink(zone)">
+                            Settings
+                        </router-link>
+                    </privacy-zone>
                 </li>
             </ul>
         </settings-page>

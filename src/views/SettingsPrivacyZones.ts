@@ -1,4 +1,5 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Location } from 'vue-router';
 import { NavigationService } from '@/services/NavigationService';
 import { PrivacyZone as PrivacyZoneDto } from '@/dto/PrivacyZone';
 import { User } from '@/dto/User';
@@ -55,6 +56,10 @@ export default class SettingsPrivacyZones extends Vue {
 
     get user(): User {
         return this.$store.state.user;
+    }
+
+    zoneSettingsLink(zone: PrivacyZoneDto): Location {
+        return this.navigationService.getPrivacyZoneSettings(zone.uuid);
     }
 
     goToNewPrivacyZone(): void {

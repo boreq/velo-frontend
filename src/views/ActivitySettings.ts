@@ -1,6 +1,5 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { Location } from 'vue-router';
-import Spinner from '@/components/Spinner.vue';
 import { ApiService } from '@/services/ApiService';
 import { NavigationService } from '@/services/NavigationService';
 import { Activity as ActivityDto } from '@/dto/Activity';
@@ -18,6 +17,7 @@ import ActivityHeader from '@/components/ActivityHeader.vue';
 import FormInput from '@/components/forms/FormInput.vue';
 import AppButton from '@/components/forms/AppButton.vue';
 import FormRadio from '@/components/forms/FormRadio.vue';
+import Spinner from '@/components/Spinner.vue';
 
 
 @Component({

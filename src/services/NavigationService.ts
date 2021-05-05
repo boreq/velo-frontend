@@ -103,6 +103,15 @@ export class NavigationService {
         };
     }
 
+    getPrivacyZoneSettings(privacyZoneUUID: string): Location {
+        return {
+            name: 'privacy-zone-settings',
+            params: {
+                privacyZoneUUID: privacyZoneUUID,
+            },
+        };
+    }
+
     getNewActivity(): Location {
         return {
             name: 'new-activity',

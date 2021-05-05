@@ -140,6 +140,11 @@ export class ApiService {
         return this.axios.post<NewActivityResponse>(process.env.VUE_APP_API_PREFIX + url, cmd);
     }
 
+    deletePrivacyZone(privacyZoneUUID: string): Promise<AxiosResponse<null>> {
+        const url = `privacy-zones/${privacyZoneUUID}`;
+        return this.axios.delete<null>(process.env.VUE_APP_API_PREFIX + url);
+    }
+
     getUserPrivacyZones(username: string): Promise<AxiosResponse<PrivacyZone[]>> {
         const url = `users/${username}/privacy-zones`;
         return this.axios.get<PrivacyZone[]>(process.env.VUE_APP_API_PREFIX + url);

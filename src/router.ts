@@ -13,6 +13,7 @@ import NewActivity from '@/views/NewActivity.vue';
 import Activity from '@/views/Activity.vue';
 import ActivitySettings from '@/views/ActivitySettings.vue';
 import NewPrivacyZone from '@/views/NewPrivacyZone.vue';
+import PrivacyZoneSettings from '@/views/PrivacyZoneSettings.vue';
 
 Vue.use(Router);
 
@@ -86,6 +87,11 @@ export default new Router({
             path: '/new-privacy-zone',
             name: 'new-privacy-zone',
             component: NewPrivacyZone,
+        },
+        {
+            path: '/privacy-zone/:privacyZoneUUID/settings',
+            name: 'privacy-zone-settings',
+            component: PrivacyZoneSettings,
         },
         {
             path: '/',
