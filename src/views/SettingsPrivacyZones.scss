@@ -10,15 +10,6 @@
         list-style-type: none;
 
         >li {
-            >.map {
-                height: 200px;
-            }
-
-            >.name {
-                padding: 1em 0;
-                font-size: 14px;
-            }
-
             &:not(:first-child) {
                 margin-top: 1em;
             }

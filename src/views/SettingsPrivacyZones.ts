@@ -1,6 +1,6 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { NavigationService } from '@/services/NavigationService';
-import { PrivacyZone } from '@/dto/PrivacyZone';
+import { PrivacyZone as PrivacyZoneDto } from '@/dto/PrivacyZone';
 import { User } from '@/dto/User';
 import { ApiService } from '@/services/ApiService';
 import Notifications from '@/components/Notifications';
@@ -10,7 +10,7 @@ import FormInput from '@/components/forms/FormInput.vue';
 import AppButton from '@/components/forms/AppButton.vue';
 import SettingsAvatar from '@/components/SettingsAvatar.vue';
 import WarningAlert from '@/components/alerts/WarningAlert.vue';
-import PrivacyZoneMap from '@/components/PrivacyZoneMap.vue';
+import PrivacyZone from '@/components/PrivacyZone.vue';
 import Spinner from '@/components/Spinner.vue';
 import SettingsPage from '@/components/SettingsPage.vue';
 
@@ -22,14 +22,14 @@ import SettingsPage from '@/components/SettingsPage.vue';
         AppButton,
         SettingsAvatar,
         WarningAlert,
-        PrivacyZoneMap,
+        PrivacyZone,
         Spinner,
         SettingsPage,
     },
 })
 export default class SettingsPrivacyZones extends Vue {
 
-    privacyZones: PrivacyZone[] = null;
+    privacyZones: PrivacyZoneDto[] = null;
 
     private readonly navigationService = new NavigationService(this);
     private readonly apiService = new ApiService(this);
@@ -71,7 +71,8 @@ export default class SettingsPrivacyZones extends Vue {
                 },
                 error => {
                     Notifications.pushError(this, 'Could not retrieve the privacy zones.', error);
-                });
+                },
+            );
     }
 
 

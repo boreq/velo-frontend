@@ -13,15 +13,7 @@
 
             <ul class="privacy-zones" v-if="!noPrivacyZones">
                 <li v-for="zone in privacyZones" :key="zone.uuid">
-                    <div class="name" v-if="zone.name">
-                        {{ zone.name }}
-                    </div>
-                    <div class="name" v-else>
-                        Unnamed privacy zone
-                    </div>
-                    <div class="map">
-                        <privacy-zone-map :zone="zone" :lock="true"></privacy-zone-map>
-                    </div>
+                    <privacy-zone :zone="zone"></privacy-zone>
                 </li>
             </ul>
         </settings-page>
