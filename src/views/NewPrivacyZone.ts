@@ -89,7 +89,7 @@ export default class NewPrivacyZone extends Vue {
         ).then(
             () => {
                 this.$router.push(
-                    this.navigationService.getSettings(),
+                    this.navigationService.getSettingsPrivacyZones(),
                 );
             },
             error => {
