@@ -1,5 +1,6 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { ApiService } from '@/services/ApiService';
+import { ScrollService } from '@/services/ScrollService';
 import { NavigationService } from '@/services/NavigationService';
 import Notifications from '@/components/Notifications';
 import { UserProfile } from '@/dto/UserProfile';
@@ -25,6 +26,7 @@ export default class Profile extends Vue {
 
     private readonly apiService = new ApiService(this);
     private readonly navigationService = new NavigationService(this);
+    private readonly scrollService = new ScrollService();
 
     @Watch('$route', {immediate: true})
     onRouteChanged(): void {
@@ -34,6 +36,7 @@ export default class Profile extends Vue {
 
         this.loadUser(username);
         this.loadActivities(username, this.asString(before), this.asString(after));
+        this.scrollService.scrollToTop();
     }
 
     get previous(): Location {
@@ -74,6 +77,8 @@ export default class Profile extends Vue {
     }
 
     private loadActivities(username: string, before: string, after: string): void {
+        this.activities = null;
+
         this.apiService.getUserActivities(username, before, after)
             .then(
                 response => {
