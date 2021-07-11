@@ -86,6 +86,10 @@ export default class SettingsProfile extends Vue {
     get formErrors(): string[] {
         const errors = [];
 
+        if (!this.cmd.displayName) {
+            errors.push('Display name can not be empty.');
+        }
+
         if (this.cmd.displayName.length > 100) {
             errors.push('Display name is too long.');
         }
