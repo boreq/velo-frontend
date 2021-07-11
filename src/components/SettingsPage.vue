@@ -15,6 +15,11 @@
                             Privacy zones
                         </router-link>
                     </li>
+                    <li :class="{ active: name === 'import' }">
+                        <router-link :to="linkImport">
+                            Import
+                        </router-link>
+                    </li>
                     <li :class="{ active: name === 'instance' }">
                         <router-link :to="linkInstance">
                             Instance

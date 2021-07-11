@@ -40,6 +40,12 @@ export class NavigationService {
         };
     }
 
+    getSettingsImport(): Location {
+        return {
+            name: 'settings-import',
+        };
+    }
+
     getSettingsInstance(): Location {
         return {
             name: 'settings-instance',

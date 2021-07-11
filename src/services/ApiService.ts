@@ -12,6 +12,7 @@ import { SetupResponse } from '@/dto/SetupResponse';
 import { NewActivityRequest } from '@/dto/NewActivityRequest';
 import { EditActivityRequest } from '@/dto/EditActivityRequest';
 import { NewActivityResponse } from '@/dto/NewActivityResponse';
+import { ImportStravaRequest } from '@/dto/ImportStravaRequest';
 import { Activity } from '@/dto/Activity';
 import { UserProfile } from '@/dto/UserProfile';
 import { UserActivities } from '@/dto/UserActivities';
@@ -206,6 +207,15 @@ export class ApiService {
         username = encodeURIComponent(username);
         const url = `auth/users/${username}/remove`;
         return this.axios.post<void>(process.env.VUE_APP_API_PREFIX + url);
+    }
+
+    importStrava(cmd: ImportStravaRequest): Promise<AxiosResponse<void>> {
+        const form = new FormData();
+        form.set('archive', cmd.archive);
+
+        const url = 'import/strava';
+
+        return this.axios.post<void>(process.env.VUE_APP_API_PREFIX + url, form);
     }
 
     private getUserActivitiesParams(before: string, after: string): { before: string } | { after: string } | null {

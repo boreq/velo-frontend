@@ -7,6 +7,7 @@ import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
 import SettingsProfile from '@/views/SettingsProfile.vue';
 import SettingsPrivacyZones from '@/views/SettingsPrivacyZones.vue';
+import SettingsImport from '@/views/SettingsImport.vue';
 import SettingsInstance from '@/views/SettingsInstance.vue';
 import Profile from '@/views/Profile.vue';
 import NewActivity from '@/views/NewActivity.vue';
@@ -35,6 +36,11 @@ export default new Router({
             path: '/settings/privacy-zones',
             name: 'settings-privacy-zones',
             component: SettingsPrivacyZones,
+        },
+        {
+            path: '/settings/import',
+            name: 'settings-import',
+            component: SettingsImport,
         },
         {
             path: '/settings/instance',

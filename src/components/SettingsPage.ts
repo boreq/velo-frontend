@@ -25,6 +25,10 @@ export default class SettingsPage extends Vue {
         return this.navigationService.getSettingsPrivacyZones();
     }
 
+    get linkImport(): Location {
+        return this.navigationService.getSettingsImport();
+    }
+
     get linkInstance(): Location {
         return this.navigationService.getSettingsInstance();
     }
