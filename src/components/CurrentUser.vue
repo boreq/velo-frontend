@@ -10,14 +10,14 @@
                     <i class="far fa-user-circle"></i>
                 </span>
                 <span>
-                    {{ user.username }}
+                    {{ user.displayName }}
                 </span>
                 <i class="fas fa-caret-down"></i>
             </template>
             <template v-slot:content>
                 <dropdown-element>
                     <router-link class="menu-element" :to="toProfile" @click.native="dropdown.close">
-                        You are signed in as {{ user.username }}.
+                        You are signed in as @{{ user.username }}.
                     </router-link>
                 </dropdown-element>
 

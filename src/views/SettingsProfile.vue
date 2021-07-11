@@ -3,8 +3,12 @@
         <settings-page name="profile">
             <sub-header text="Profile"></sub-header>
 
-            Profile settings.
-            <settings-avatar></settings-avatar>
+            <form class="profile-form" v-if="cmd">
+                <form-input type="text" placeholder="Display name" icon="fas fa-pen"
+                    maxlength="100" v-model="cmd.displayName"></form-input>
+                <app-button text="Save profile" @click="submit" :disabled="!formValid"
+                    :working="working"></app-button>
+            </form>
         </settings-page>
     </div>
 </template>

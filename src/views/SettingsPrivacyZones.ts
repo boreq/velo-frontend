@@ -9,7 +9,6 @@ import Notifications from '@/components/Notifications';
 import SubHeader from '@/components/SubHeader.vue';
 import FormInput from '@/components/forms/FormInput.vue';
 import AppButton from '@/components/forms/AppButton.vue';
-import SettingsAvatar from '@/components/SettingsAvatar.vue';
 import WarningAlert from '@/components/alerts/WarningAlert.vue';
 import PrivacyZone from '@/components/PrivacyZone.vue';
 import Spinner from '@/components/Spinner.vue';
@@ -21,7 +20,6 @@ import SettingsPage from '@/components/SettingsPage.vue';
         SubHeader,
         FormInput,
         AppButton,
-        SettingsAvatar,
         WarningAlert,
         PrivacyZone,
         Spinner,

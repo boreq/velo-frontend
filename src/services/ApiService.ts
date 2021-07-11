@@ -18,6 +18,7 @@ import { UserProfile } from '@/dto/UserProfile';
 import { UserActivities } from '@/dto/UserActivities';
 import { NewPrivacyZoneRequest } from '@/dto/NewPrivacyZoneRequest';
 import { PrivacyZone } from '@/dto/PrivacyZone';
+import { UpdateProfileRequest } from '@/dto/UpdateProfileRequest';
 
 /*
 declare module 'vue-property-decorator' {
@@ -205,8 +206,14 @@ export class ApiService {
 
     remove(username: string): Promise<AxiosResponse<void>> {
         username = encodeURIComponent(username);
-        const url = `auth/users/${username}/remove`;
-        return this.axios.post<void>(process.env.VUE_APP_API_PREFIX + url);
+        const url = `auth/users/${username}`;
+        return this.axios.delete<void>(process.env.VUE_APP_API_PREFIX + url);
+    }
+
+    updateProfile(username: string, cmd: UpdateProfileRequest): Promise<AxiosResponse<void>> {
+        username = encodeURIComponent(username);
+        const url = `auth/users/${username}`;
+        return this.axios.put<void>(process.env.VUE_APP_API_PREFIX + url, cmd);
     }
 
     importStrava(cmd: ImportStravaRequest): Promise<AxiosResponse<void>> {

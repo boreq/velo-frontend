@@ -1,5 +1,4 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
-
 import Notifications from '@/components/Notifications';
 import { ImportStravaRequest } from '@/dto/ImportStravaRequest';
 import { User } from '@/dto/User';
