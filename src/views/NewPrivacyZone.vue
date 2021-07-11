@@ -1,10 +1,12 @@
 <template>
     <div class="new-privacy-zone">
-        <main-header text="New privacy zone"></main-header>
+        <div class="wrapper">
+            <main-header text="New privacy zone"></main-header>
 
-        <privacy-zone-form :value="zone" @input="onInput"></privacy-zone-form>
+            <privacy-zone-form :value="zone" @input="onInput"></privacy-zone-form>
 
-        <app-button text="Save" @click="submit" :disabled="!formValid" :working="working"></app-button>
+            <app-button text="Save" @click="submit" :disabled="!formValid" :working="working"></app-button>
+        </div>
     </div>
 </template>
 <script lang="ts" src="./NewPrivacyZone.ts"></script>

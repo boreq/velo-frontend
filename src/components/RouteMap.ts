@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch, Ref } from 'vue-property-decorator';
 import { Point as PointDto, Route } from '@/dto/Route';
 import Map from 'ol/Map';
 import { Fill, Stroke, Style } from 'ol/style';
@@ -26,8 +26,12 @@ export default class RouteMap extends Vue {
     @Prop()
     route: Route;
 
+    @Ref('map-bounding-box')
+    readonly mapBoundingBox: HTMLDivElement;
+
     private routeSource: VectorSource = new VectorSource({});
     private map: Map;
+    private observer: ResizeObserver;
 
     private readonly padding = 40;
     private readonly lineWidth = 3;
@@ -44,7 +48,14 @@ export default class RouteMap extends Vue {
     }
 
     mounted(): void {
-        this.recreateMap();
+        this.observer = new ResizeObserver(() => {
+            this.recreateMap();
+        });
+        this.observer.observe(this.mapBoundingBox);
+    }
+
+    beforeDestory(): void {
+        this.observer.unobserve(this.mapBoundingBox);
     }
 
     private recreateMap(): void {

@@ -16,9 +16,7 @@
 
         <div class="content">
             <div class="container">
-                <div class="wrapper">
-                    <router-view/>
-                </div>
+                <router-view/>
             </div>
         </div>
         <notifications class="notifications"></notifications>

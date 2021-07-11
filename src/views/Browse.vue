@@ -1,6 +1,8 @@
 <template>
     <div class="browse">
-        Welcome!
+        <div class="wrapper">
+            Welcome!
+        </div>
     </div>
 </template>
 <script lang="ts" src="./Browse.ts"></script>
