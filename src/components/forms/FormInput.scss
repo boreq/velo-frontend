@@ -1,36 +1,70 @@
 .form-input {
     color: $box-normal-text-dimmed-color;
-    position: relative;
 
-    .icon {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        padding-left: .8em;
-    }
+    .form-input-wrapper {
+        $top-margin: 15px;
 
-    .icon+input{
-        padding-left: 3em;
-    }
+        position: relative;
 
-    input {
-        margin: 0;
-        padding: .8em;
-        border: 0;
-        font-size: inherit;
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        border-bottom: $box-normal-border-width-wide $box-normal-border-style $box-normal-border-color;
-        transition: $transition-duration border-color;
-        background-color: transparent;
+        .icon {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            padding-left: .8em;
+        }
 
-        &:focus {
-            border-color: $primary-color;
-            outline: none;
+        .icon+input{
+            padding-left: 3em;
+        }
+
+        input {
+            margin: $top-margin 0 0;
+            padding: 10px;
+            border: 0;
+            font-size: inherit;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: $box-normal-border-width-wide $box-normal-border-style $box-normal-border-color;
+            transition: $transition-duration border-color;
+            background-color: transparent;
+
+
+            &:focus {
+                border-color: $primary-color;
+                outline: none;
+            }
+        }
+
+        label {
+            position: absolute;
+            top: 10px;
+            transition: transform $transition-duration, font-size $transition-duration;
+            left: 10px;
+
+            &:hover {
+                cursor: text;
+            }
+        }
+
+        .icon ~ label {
+            left: 35px;
+        }
+
+        input:focus ~ label, label.move-aside {
+            font-size: 10px;
+            transform: translate(0, -($top-margin));
+        }
+
+        input:focus ~ label {
+            color: $primary-color;
+        }
+
+        label.move-aside {
+            color: inherit;
         }
     }
 }

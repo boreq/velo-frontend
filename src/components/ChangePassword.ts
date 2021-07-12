@@ -1,29 +1,28 @@
-import { Component, Vue, Watch } from 'vue-property-decorator';
-import Notifications from '@/components/Notifications';
-import { UpdateProfileRequest } from '@/dto/UpdateProfileRequest';
+import { Component, Vue, Ref, Watch } from 'vue-property-decorator';
 import { User } from '@/dto/User';
-import { ApiService } from '@/services/ApiService';
+import { Location } from 'vue-router';
 import { NavigationService } from '@/services/NavigationService';
+import { ApiService } from '@/services/ApiService';
+import Notifications from '@/components/Notifications';
+import { ChangePasswordRequest } from '@/dto/ChangePasswordRequest';
 
-import SettingsPage from '@/components/SettingsPage.vue';
-import ChangePassword from '@/components/ChangePassword.vue';
-import SubHeader from '@/components/SubHeader.vue';
+import Spinner from '@/components/Spinner.vue';
 import FormInput from '@/components/forms/FormInput.vue';
 import AppButton from '@/components/forms/AppButton.vue';
 
 
 @Component({
     components: {
-        SettingsPage,
-        SubHeader,
+        Spinner,
         FormInput,
         AppButton,
-        ChangePassword,
     },
 })
-export default class SettingsProfile extends Vue {
+export default class ChangePassword extends Vue {
 
-    cmd: UpdateProfileRequest = null;
+    cmd = new ChangePasswordRequest();
+    confirmPassword: string = null;
+
     working = false;
 
     private readonly apiService = new ApiService(this);
@@ -52,14 +51,14 @@ export default class SettingsProfile extends Vue {
 
         this.working = true;
 
-        this.apiService.updateProfile(this.user.username, this.cmd)
+        this.apiService.changePassword(this.user.username, this.cmd)
             .then(
                 () => {
                     this.load();
-                    Notifications.pushSuccess(this, 'Profile saved.');
+                    Notifications.pushSuccess(this, 'Password changed.');
                 },
                 error => {
-                    Notifications.pushError(this, 'Sign in process could not be completed.', error);
+                    Notifications.pushError(this, 'Password could not be changed.', error);
                 },
             ).finally(
                 () => {
@@ -69,16 +68,8 @@ export default class SettingsProfile extends Vue {
     }
 
     private load(): void {
-        this.apiService.refreshCurrentUser()
-            .then(
-                response => {
-                    this.cmd = {
-                        displayName: response.displayName,
-                    };
-                },
-                error => {
-                    Notifications.pushError(this, 'Could not refresh the current user.', error);
-                });
+        this.cmd = new ChangePasswordRequest();
+        this.confirmPassword = null;
     }
 
     get formValid(): boolean {
@@ -88,13 +79,18 @@ export default class SettingsProfile extends Vue {
     get formErrors(): string[] {
         const errors = [];
 
-        if (!this.cmd.displayName) {
-            errors.push('Display name can not be empty.');
+        if (!this.cmd.oldPassword) {
+            errors.push('Old password can not be empty.');
         }
 
-        if (this.cmd.displayName.length > 100) {
-            errors.push('Display name is too long.');
+        if (!this.cmd.newPassword) {
+            errors.push('New password can not be empty.');
         }
+
+        if (this.cmd.newPassword !== this.confirmPassword) {
+            errors.push('New password and its confirmation do not match.');
+        }
+
 
         return errors;
     }
@@ -102,4 +98,6 @@ export default class SettingsProfile extends Vue {
     get user(): User {
         return this.$store.state.user;
     }
+
+
 }

@@ -18,6 +18,18 @@ export default class FormInput extends Vue {
     @Prop()
     icon: string;
 
+    static idCounter = 0;
+
+    private idNumber: number = FormInput.idCounter++;
+
+    get id(): string {
+        return `form-input-${this.idNumber}`
+    }
+
+    get isPopulated(): boolean {
+        return !!this.value;
+    }
+
     onKeyDown(event: KeyboardEvent): void {
         if (event.key === 'Enter') {
             this.$emit('submit');

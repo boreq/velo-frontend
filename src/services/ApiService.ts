@@ -13,6 +13,7 @@ import { NewActivityRequest } from '@/dto/NewActivityRequest';
 import { EditActivityRequest } from '@/dto/EditActivityRequest';
 import { NewActivityResponse } from '@/dto/NewActivityResponse';
 import { ImportStravaRequest } from '@/dto/ImportStravaRequest';
+import { ChangePasswordRequest } from '@/dto/ChangePasswordRequest';
 import { Activity } from '@/dto/Activity';
 import { UserProfile } from '@/dto/UserProfile';
 import { UserActivities } from '@/dto/UserActivities';
@@ -213,6 +214,12 @@ export class ApiService {
     updateProfile(username: string, cmd: UpdateProfileRequest): Promise<AxiosResponse<void>> {
         username = encodeURIComponent(username);
         const url = `auth/users/${username}`;
+        return this.axios.put<void>(process.env.VUE_APP_API_PREFIX + url, cmd);
+    }
+
+    changePassword(username: string, cmd: ChangePasswordRequest): Promise<AxiosResponse<void>> {
+        username = encodeURIComponent(username);
+        const url = `auth/users/${username}/password`;
         return this.axios.put<void>(process.env.VUE_APP_API_PREFIX + url, cmd);
     }
 

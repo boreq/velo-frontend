@@ -11,37 +11,23 @@
                 </main-header-actions>
             </main-header>
 
-            <form>
-                <ul class="area actions">
-                    <li>
-                        <label for="title-input" class="primary">
-                            Title
-                        </label>
-                        <div class="secondary">
-                            Name your activity.
-                        </div>
+            <div class="edit area">
+                <form v-if="activity">
+                    <div class="title-row">
                         <form-input id="title-input" placeholder="Title"
                             :maxlength="maxTitleLength" v-model="request.title"
                             class="action">
                         </form-input>
-                    </li>
-                    <li>
-                        <label for="title-input" class="primary">
-                            Visibility
-                        </label>
-                        <div class="secondary">
-                            Specify who can see your activity.
-                        </div>
-
                         <form-radio :values="visibilityValues"
                             v-model="request.visibility" class="action">
                         </form-radio>
-                    </li>
-                    <li>
-                        <app-button text="Save" @click="submitEdit" :working="workingEdit"></app-button>
-                    </li>
-                </ul>
-            </form>
+                    </div>
+
+                    <app-button text="Save" @click="submitEdit" :working="workingEdit"></app-button>
+                </form>
+
+                <spinner v-if="!activity"></spinner>
+            </div>
 
             <sub-header text="Danger zone"></sub-header>
 

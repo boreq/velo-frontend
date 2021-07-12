@@ -1,11 +1,17 @@
 <template>
     <div class="form-input">
-        <div v-if="icon" class="icon">
-            <i :class="icon"></i>
+        <div class="form-input-wrapper">
+            <div v-if="icon" class="icon">
+                <i :class="icon"></i>
+            </div>
+            <input :type="type" 
+                   :value="value" @input="$emit('input', $event.target.value)"
+                   :maxlength="maxlength" @keydown="onKeyDown"
+                   :id="id">
+            <label class="label" :class="{ 'move-aside': isPopulated }" :for="id">
+                {{ placeholder }}
+            </label>
         </div>
-        <input :type="type" :placeholder="placeholder"
-               :value="value" @input="$emit('input', $event.target.value)"
-               :maxlength="maxlength" @keydown="onKeyDown">
     </div>
 </template>
 <script lang="ts" src="./FormInput.ts"></script>

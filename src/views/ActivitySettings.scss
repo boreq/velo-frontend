@@ -1,28 +1,33 @@
 .activity-settings {
-    .form-input {
-        min-width: 400px;
+    .edit {
+        .title-row {
+            display: flex;
+            flex-direction: row;
+            align-items: end;
+            margin: 1em 0;
+
+            .form-input {
+                margin: 0;
+                flex: 1;
+            }
+
+            .form-radio {
+                margin-left: .5em;
+            }
+        }
     }
 
     .area {
         margin: 1em 0;
-        padding: 0;
-        border: $border;
-        border-radius: $border-radius;
-
-        padding: 1em;
 
         li {
             list-style-type: none;
             margin: 0;
-            padding-bottom: 1em;
-
-            &:last-child {
-                padding-bottom: 0;
-            }
+            padding-top: 1em;
         }
 
-        .app-button {
-            margin: 0;
+        li:last-child {
+            margin-bottom: 1em;
         }
 
         &.danger {
@@ -50,6 +55,10 @@
 
                 .action {
                     grid-area: action;
+
+                    .app-button {
+                        margin: 0;
+                    }
                 }
 
                 .below {

@@ -3,12 +3,16 @@
         <settings-page name="profile">
             <sub-header text="Profile"></sub-header>
 
-            <form class="profile-form" v-if="cmd">
-                <form-input type="text" placeholder="Display name" icon="fas fa-pen"
+            <form class="profile-form area" v-if="cmd">
+                <form-input type="text" placeholder="Display name" icon="fas fa-user"
                     maxlength="100" v-model="cmd.displayName"></form-input>
                 <app-button text="Save profile" @click="submit" :disabled="!formValid"
                     :working="working"></app-button>
             </form>
+
+            <sub-header text="Change password"></sub-header>
+
+            <change-password></change-password>
         </settings-page>
     </div>
 </template>
