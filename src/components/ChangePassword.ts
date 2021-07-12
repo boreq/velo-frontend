@@ -1,6 +1,5 @@
-import { Component, Vue, Ref, Watch } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import { User } from '@/dto/User';
-import { Location } from 'vue-router';
 import { NavigationService } from '@/services/NavigationService';
 import { ApiService } from '@/services/ApiService';
 import Notifications from '@/components/Notifications';
