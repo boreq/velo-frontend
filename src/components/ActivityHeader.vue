@@ -16,8 +16,10 @@
             <i :class="visibilityIcon" v-tooltip="visibilityLabel"></i>
         </div>
 
-        <div class="title" v-tooltip="title" v-if="!hideTitle">
-            {{ title }}
+        <div class="title" v-if="!hideTitle">
+            <span v-tooltip="title">
+                {{ title }}
+            </span>
         </div>
 
         <a class="date">
