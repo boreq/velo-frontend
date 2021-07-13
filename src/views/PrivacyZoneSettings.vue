@@ -2,7 +2,7 @@
     <div class="activity-settings">
         <div class="wrapper">
 
-            <main-header text="Privacy zone settings">
+            <main-header text="Edit privacy zone">
                 <main-header-actions>
                     <main-header-action>
                         <router-link :to="privacyZonesLink">

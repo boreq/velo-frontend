@@ -15,7 +15,7 @@
                 <li v-for="zone in privacyZones" :key="zone.uuid">
                     <privacy-zone :zone="zone">
                         <router-link :to="zoneSettingsLink(zone)">
-                            Settings
+                            Edit
                         </router-link>
                     </privacy-zone>
                 </li>

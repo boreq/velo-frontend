@@ -5,7 +5,7 @@
                 <main-header-actions v-if="activity">
                     <main-header-action v-if="canEditActivity">
                         <router-link :to="activitySettingsLocation">
-                            Settings
+                            Edit
                         </router-link>
                     </main-header-action>
                 </main-header-actions>
