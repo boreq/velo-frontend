@@ -1,4 +1,4 @@
-import { Component, Prop, Ref, Vue } from 'vue-property-decorator';
+import { Component, Ref, Vue } from 'vue-property-decorator';
 
 @Component
 export default class FileUpload extends Vue {
