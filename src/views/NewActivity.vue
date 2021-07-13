@@ -11,6 +11,13 @@
                 <file-upload @file="onFile"></file-upload>
                 <app-button text="Save" @click="submit" :disabled="!formValid" :working="working"></app-button>
             </form>
+
+            <p class="tip">
+                Velo supports .gpx and .fit files. If you are experiencing
+                issues with uploading your route please <a
+                href="https://github.com/boreq/velo/issues">submit an
+                issue</a>.
+            </p>
         </div>
     </div>
 </template>

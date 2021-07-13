@@ -2,7 +2,7 @@
     .title-row {
         display: flex;
         flex-direction: row;
-        align-items: end;
+        align-items: flex-end;
         margin: 1em 0;
 
         .form-input {
@@ -13,5 +13,10 @@
         .form-radio {
             margin-left: .5em;
         }
+    }
+
+    .tip {
+        color: $text-color-dimmed;
+        text-align: center;
     }
 }

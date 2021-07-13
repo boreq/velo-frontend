@@ -3,16 +3,13 @@ import { Component, Prop, Ref, Vue } from 'vue-property-decorator';
 @Component
 export default class FileUpload extends Vue {
 
-    @Prop()
-    icon: string;
-
     isDragging = false;
     selectedFile: File = null;
 
     @Ref('input')
     readonly input: HTMLInputElement;
 
-    onDragover(event): void {
+    onDragover(event: DragEvent): void {
         this.isDragging = true;
         event.preventDefault();
     }
@@ -29,12 +26,12 @@ export default class FileUpload extends Vue {
         this.isDragging = false;
     }
 
-    onClick(event): void {
+    onClick(event: MouseEvent): void {
         event.preventDefault();
         this.input.click();
     }
 
-    onDrop(event): void {
+    onDrop(event: DragEvent): void {
         this.isDragging = false;
         this.handleFiles(event.dataTransfer.files);
     }
