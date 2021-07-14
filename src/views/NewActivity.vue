@@ -13,10 +13,7 @@
             </form>
 
             <p class="tip">
-                Velo supports .gpx and .fit files. If you are experiencing
-                issues with uploading your route please <a
-                href="https://github.com/boreq/velo/issues">submit an
-                issue</a>.
+                Velo supports .gpx and .fit files. 
             </p>
         </div>
     </div>

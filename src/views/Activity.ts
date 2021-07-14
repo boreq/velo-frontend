@@ -1,6 +1,5 @@
 import { Component, Vue, Watch, Ref } from 'vue-property-decorator';
 import { Location } from 'vue-router';
-import Spinner from '@/components/Spinner.vue';
 import { User } from '@/dto/User';
 import { ApiService } from '@/services/ApiService';
 import { NavigationService } from '@/services/NavigationService';
@@ -8,7 +7,7 @@ import { Activity as ActivityDto, getActivityTitle } from '@/dto/Activity';
 import { Route as RouteDto } from '@/dto/Route';
 import Notifications from '@/components/Notifications';
 
-import MainHeader from '@/components/MainHeader.vue';
+import Spinner from '@/components/Spinner.vue';
 import MainHeaderActions from '@/components/MainHeaderActions.vue';
 import MainHeaderAction from '@/components/MainHeaderAction.vue';
 import RouteMap from '@/components/RouteMap.vue';
@@ -18,7 +17,6 @@ import ActivityHeader from '@/components/ActivityHeader.vue';
 @Component({
     components: {
         Spinner,
-        MainHeader,
         MainHeaderActions,
         MainHeaderAction,
         RouteMap,

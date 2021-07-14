@@ -1,4 +1,48 @@
 .activity {
+    .header {
+        display: flex;
+        align-items: center;
+
+        .left, .right {
+            flex: 1 0;
+        }
+
+        $padding: 2em;
+
+        .left {
+            padding-right: $padding;
+        }
+
+        .center {
+            flex: 0 0 auto;
+            width: 100%;
+        }
+
+        .right {
+            padding-left: $padding;
+            text-align: right;
+
+            .action {
+                text-decoration: none;
+                font-size: 14px;
+            }
+        }
+    }
+
+    @media (max-width: 900px) {
+        .header {
+            flex-flow: column nowrap;
+        }
+
+        .left {
+            padding-right: 0;
+        }
+
+        .right {
+            padding-left: 0;
+        }
+    }
+
     .map-container {
         grid-area: map;
         margin: 0.5em -1em 0;
