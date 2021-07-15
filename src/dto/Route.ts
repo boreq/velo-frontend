@@ -9,6 +9,8 @@ export class Point {
     time: string;
     position: Position;
     altitude: number;
+    speed: number;
+    cumulativeDistance: number;
 }
 
 export class Position {

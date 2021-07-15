@@ -26,10 +26,15 @@ export default class RouteMap extends Vue {
     @Prop()
     route: Route;
 
+    @Prop()
+    highlightIndex: number;
+
     @Ref('map-bounding-box')
     readonly mapBoundingBox: HTMLDivElement;
 
     private routeSource: VectorSource = new VectorSource({});
+    private highlightPointSource: VectorSource = new VectorSource({});
+
     private map: Map;
     private observer: ResizeObserver;
 
@@ -44,6 +49,21 @@ export default class RouteMap extends Vue {
         if (this.route) {
             this.recreateMap();
             this.setPoints(this.route.points);
+        }
+    }
+
+    @Watch('highlightIndex')
+    onHighlightIndexChanged(): void {
+        this.highlightPointSource.clear();
+
+        if (this.highlightIndex !== null) {
+            const point = this.route.points[this.highlightIndex];
+            const coords = [point.position.longitude, point.position.latitude];
+            const feature = new Feature({
+                geometry: new Point(coords).transform('EPSG:4326', 'EPSG:3857'),
+            });
+            feature.setStyle(this.highlightPointStyle());
+            this.highlightPointSource.addFeature(feature);
         }
     }
 
@@ -89,6 +109,9 @@ export default class RouteMap extends Vue {
                         }),
                     ],
                 }),
+                new VectorLayer({
+                    source: this.highlightPointSource,
+                }),
             ],
             view: new View({
                 center: [0, 0],
@@ -117,13 +140,13 @@ export default class RouteMap extends Vue {
         const startFeature = new Feature({
             geometry: new Point(coords[0]).transform('EPSG:4326', 'EPSG:3857'),
         });
-        startFeature.setStyle(this.pointStyle(Icon.MapMarker));
+        startFeature.setStyle(this.pointStyle(Icon.MapMarker, Color.Primary));
         this.routeSource.addFeature(startFeature);
 
         const endFeature = new Feature({
             geometry: new Point(coords[coords.length - 1]).transform('EPSG:4326', 'EPSG:3857'),
         });
-        endFeature.setStyle(this.pointStyle(Icon.CheckeredFlag));
+        endFeature.setStyle(this.pointStyle(Icon.CheckeredFlag, Color.Secondary));
         this.routeSource.addFeature(endFeature);
 
         this.fitMapToRoute();
@@ -144,24 +167,38 @@ export default class RouteMap extends Vue {
         }
     }
 
-    private pointStyle(icon: string): Style[] {
+    private highlightPointStyle(): Style[] {
+        return [
+            new Style({
+                image: new CircleStyle({
+                    radius: 5,
+                    fill: new Fill({
+                        color: Color.Primary,
+                    }),
+                }),
+            }),
+        ];
+    }
+
+    private pointStyle(icon: string, color: string): Style[] {
         return [
             new Style({
                 image: new CircleStyle({
                     radius: 10,
-                    fill: new Fill({color: '#fff'}),
-                    stroke: new Stroke({color: '#ff0000', width: 1}),
+                    fill: new Fill({
+                        color: color,
+                    }),
                 }),
                 text: new Text({
                     text: icon,
-                    font: '900 15px "Font Awesome 5 Free"',
+                    font: '900 12px "Font Awesome 5 Free"',
                     fill: new Fill({
-                        color: Color.Secondary,
+                        color: '#fff',
                     }),
                     stroke: new Stroke({color: '#fff', width: 1}),
                     textAlign: 'center',
                     textBaseline: 'bottom',
-                    offsetY: 10,
+                    offsetY: 7,
                 }),
             }),
         ];

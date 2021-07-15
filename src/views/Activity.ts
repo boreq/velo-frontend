@@ -12,6 +12,8 @@ import MainHeaderActions from '@/components/MainHeaderActions.vue';
 import MainHeaderAction from '@/components/MainHeaderAction.vue';
 import RouteMap from '@/components/RouteMap.vue';
 import ActivityHeader from '@/components/ActivityHeader.vue';
+import AnalysisAltitude from '@/components/AnalysisAltitude.vue';
+import AnalysisSpeed from '@/components/AnalysisSpeed.vue';
 
 
 @Component({
@@ -21,15 +23,19 @@ import ActivityHeader from '@/components/ActivityHeader.vue';
         MainHeaderAction,
         RouteMap,
         ActivityHeader,
+        AnalysisAltitude,
+        AnalysisSpeed,
     },
 })
 export default class Activity extends Vue {
 
     activityUUID: string = null;
     activity: ActivityDto = null;
+    showAnalysis = false;
+    highlightIndex: number = null;
 
-    @Ref('map-wrapper')
-    readonly mapWrapperElement: HTMLDivElement;
+    @Ref('route-wrapper')
+    readonly routeWrapperElement: HTMLDivElement;
 
     private observer: ResizeObserver;
 
@@ -59,6 +65,14 @@ export default class Activity extends Vue {
         return this.user && this.user.username && this.user.username === this.activity.user.username;
     }
 
+    get toggleAnalysisIcon(): string {
+        if (this.showAnalysis) {
+            return 'fas fa-angle-down';
+        } else {
+            return 'fas fa-angle-up';
+        }
+    }
+
     @Watch('$route')
     onRouteChanged(): void {
         this.load();
@@ -73,7 +87,7 @@ export default class Activity extends Vue {
             this.rescaleMap();
         });
 
-        this.observer.observe(this.mapWrapperElement);
+        this.observer.observe(this.routeWrapperElement);
 
         window.addEventListener('resize', () => {
             this.rescaleMap();
@@ -83,7 +97,15 @@ export default class Activity extends Vue {
     }
 
     beforeDestory(): void {
-        this.observer.unobserve(this.mapWrapperElement);
+        this.observer.unobserve(this.routeWrapperElement);
+    }
+
+    toggleAnalysis(): void {
+        this.showAnalysis = !this.showAnalysis;
+    }
+
+    onIndex(index: number): void {
+        this.highlightIndex = index;
     }
 
     private load(): void {
@@ -104,18 +126,18 @@ export default class Activity extends Vue {
     }
 
     private rescaleMap(): void {
-        if (!this.mapWrapperElement) {
+        if (!this.routeWrapperElement) {
             return;
         }
 
         const windowHeight = window.innerHeight;
-        const elementBottomX = this.mapWrapperElement.getBoundingClientRect().top - window.scrollY;
+        const elementBottomX = this.routeWrapperElement.getBoundingClientRect().top - window.scrollY;
 
         const height = windowHeight - elementBottomX;
         if (height < 500) {
-            this.mapWrapperElement.style.height =  500 + 'px';
+            this.routeWrapperElement.style.height =  500 + 'px';
         } else {
-            this.mapWrapperElement.style.height =  height + 'px';
+            this.routeWrapperElement.style.height =  height + 'px';
         }
     }
 
