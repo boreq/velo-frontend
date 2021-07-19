@@ -1,5 +1,5 @@
 .subheader {
-    color: $box-normal-text-dimmed-color;
+    color: $text-color-dimmed;
     font-size: 12px;
     text-transform: uppercase;
     font-weight: bold;
@@ -11,8 +11,8 @@
     }
 
     .line {
-        height: $box-normal-border-width;
-        background-color: $box-normal-border-color;
+        height: $border-width;
+        background-color: $border-color;
         flex: 1;
         margin: 0 0 0 2em;
     }

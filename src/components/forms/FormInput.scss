@@ -1,5 +1,5 @@
 .form-input {
-    color: $box-normal-text-dimmed-color;
+    color: $text-color-dimmed;
 
     .form-input-wrapper {
         $top-margin: 15px;
@@ -28,7 +28,7 @@
             display: block;
             width: 100%;
             box-sizing: border-box;
-            border-bottom: $box-normal-border-width-wide $box-normal-border-style $box-normal-border-color;
+            border-bottom: $border-width-wide solid $border-color;
             transition: $transition-duration border-color;
             background-color: transparent;
 

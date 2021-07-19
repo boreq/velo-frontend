@@ -3,13 +3,13 @@ $disabled-color: #ddd;
 .app-button {
     margin: 1em 0;
     padding: .8em;
-    border: $box-normal-border-width-wide $box-normal-border-style $primary-color;
+    border: $border-width-wide solid $primary-color;
     color: $primary-color;
     display: block;
     text-align: center;
     font-weight: $font-weight-bold;
     transition: 200ms all;
-    border-radius: $box-border-radius;
+    border-radius: $border-radius;
 
     &:hover {
         background-color: $primary-color;

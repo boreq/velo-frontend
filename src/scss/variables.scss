@@ -7,45 +7,22 @@ $secondary-color: #785eef;
 
 $text-color: #000;
 $text-color-dimmed: #aaa;
-$box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+$color-danger: #e74c3c;
+
 $background-color: #fff;
+$background-color-alt: #fcfcfc;
+
+$box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
 $border-color: #eee;
 $border-radius: 5px;
-$border: 1px solid $border-color;
-
-
-$color-danger: #e74c3c;
-
-
-
-
-
-$box-border-radius: 5px;
-
-$box-dark-background-color: #222;
-$box-dark-text-color: #fff;
-$box-dark-text-dimmed-color: #888;
-
-$box-normal-background-color: #fff;
-$box-normal-background-color-alt: #fcfcfc;
-$box-normal-background-color-dark: #bababa;
-$box-normal-text-color: #222;
-$box-normal-text-dimmed-color: #aaa;
-$box-normal-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-$box-normal-border-color: #eee;
-$box-normal-border-width-wide: 2px;
-$box-normal-border-width: 1px;
-$box-normal-border-style: solid;
-$box-normal-border: $box-normal-border-width $box-normal-border-style $box-normal-border-color;
+$border-width: 1px;
+$border: $border-width solid $border-color;
+$border-width-wide: 2px;
 
 $page-width: 800px;
 
 $transition-duration: 200ms;
-
-
-
-
 
 $top-bar-height: 30px;
 $top-bar-font-size: 16px;

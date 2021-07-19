@@ -8,7 +8,7 @@ $extra-padding: 3em;
 
         .user {
             &:nth-child(even) {
-                background-color: $box-normal-background-color-alt;
+                background-color: $background-color-alt;
             }
         }
 
@@ -17,7 +17,7 @@ $extra-padding: 3em;
         }
 
         th {
-            border: 1px solid $box-normal-border-color;
+            border: $border;
         }
 
         thead, tr {
