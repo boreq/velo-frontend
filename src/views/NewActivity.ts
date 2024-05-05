@@ -113,8 +113,9 @@ export default class NewActivity extends Vue {
                     Notifications.pushError(this, 'Failed to create a new activity.', error);
                 },
             ).finally(
-            () => {
-                this.working = false;
-            });
+                () => {
+                    this.working = false;
+                },
+            );
     }
 }

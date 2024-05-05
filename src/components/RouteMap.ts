@@ -156,7 +156,7 @@ export default class RouteMap extends Vue {
         const features = this.routeSource.getFeatures();
 
         if (this.map && features && features.length > 0) {
-            this.map.getView().fit(features[0].getGeometry(), {
+            this.map.getView().fit(features[0].getGeometry().getExtent(), {
                 padding: [
                     this.padding,
                     this.padding,

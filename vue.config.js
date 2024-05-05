@@ -13,7 +13,7 @@ module.exports = {
     productionSourceMap: false,
     configureWebpack: {
         plugins: [
-            new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+           new webpack.IgnorePlugin({resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/})
         ]
     }
 };

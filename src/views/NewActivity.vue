@@ -5,7 +5,8 @@
 
             <form>
                 <div class="title-row">
-                    <form-input type="text" placeholder="Title" icon="fas fa-pen" v-model="request.title" maxlength="50"></form-input>
+                    <form-input type="text" placeholder="Title" icon="fas fa-pen" v-model="request.title"
+                                maxlength="50" @submit="submit"></form-input>
                     <form-radio :values="visibilityValues" v-model="request.visibility"></form-radio>
                 </div>
                 <file-upload @file="onFile"></file-upload>
