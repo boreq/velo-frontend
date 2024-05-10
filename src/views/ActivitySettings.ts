@@ -107,6 +107,7 @@ export default class ActivitySettings extends Vue {
             .then(
                 () => {
                     Notifications.pushSuccess(this, 'Activity saved.');
+                    this.$router.push(this.navigationService.getActivity(this.activityUUID));
                 },
                 error => {
                     Notifications.pushError(this, 'Failed to update the activity.', error);
